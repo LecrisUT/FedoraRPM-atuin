@@ -5,6 +5,10 @@ _:
       - sh -c 'echo ${PACKIT_DOWNSTREAM_PACKAGE_NAME}.spec'
     get-current-version:
       - sh -c 'rpmspec -q --qf "%{Version}" --srpm ${PACKIT_DOWNSTREAM_PACKAGE_NAME}.spec'
+  - &actions-rust2rpm
+    <<: *actions-use-spec
+    fix-spec-file:
+      - sh -c 'rust2rpm -r @${PACKIT_PROJECT_VERSION}'
 
 packages:
   atuin:
@@ -13,6 +17,42 @@ packages:
     downstream_package_name: atuin
     upstream_package_name: atuin
     actions: *actions-use-spec
+  rust-axum-server:
+    paths: [ rust-axum-server ]
+    specfile_path: rust-axum-server.spec
+    downstream_package_name: rust-axum-server
+    upstream_package_name: axum-server
+    actions: *actions-rust2rpm
+  rust-config:
+    paths: [ rust-config ]
+    specfile_path: rust-config.spec
+    downstream_package_name: rust-config
+    upstream_package_name: config
+    actions: *actions-rust2rpm
+  rust-divan:
+    paths: [ rust-divan ]
+    specfile_path: rust-divan.spec
+    downstream_package_name: rust-divan
+    upstream_package_name: divan
+    actions: *actions-rust2rpm
+  rust-postmark:
+    paths: [ rust-postmark ]
+    specfile_path: rust-postmark.spec
+    downstream_package_name: rust-postmark
+    upstream_package_name: postmark
+    actions: *actions-rust2rpm
+  rust-protox:
+    paths: [ rust-protox ]
+    specfile_path: rust-protox.spec
+    downstream_package_name: rust-protox
+    upstream_package_name: protox
+    actions: *actions-rust2rpm
+  rust-ratatui:
+    paths: [ rust-ratatui ]
+    specfile_path: rust-ratatui.spec
+    downstream_package_name: rust-ratatui
+    upstream_package_name: ratatui
+    actions: *actions-rust2rpm
 
 srpm_build_deps:
   - rust2rpm
