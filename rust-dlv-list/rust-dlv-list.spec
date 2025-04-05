@@ -14,6 +14,7 @@ URL:            https://crates.io/crates/dlv-list
 Source:         %{crates_source}
 
 BuildRequires:  cargo-rpm-macros >= 24
+BuildRequires:  tomcli
 
 %global _description %{expand:
 Semi-doubly linked list implemented using a vector.}
@@ -88,6 +89,9 @@ use the "std" feature of the "%{crate}" crate.
 %prep
 %autosetup -n %{crate}-%{version} -p1
 %cargo_prep
+# Remove dependency on coverage-helper.
+tomcli set Cargo.toml del dev-dependencies.coverage-helper
+sed -i '/use coverage_helper::test/d' src/*.rs
 
 %generate_buildrequires
 %cargo_generate_buildrequires
