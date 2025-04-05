@@ -1,2 +1,14 @@
 [features]
 hide = ["termwiz"]
+
+[requires]
+build = [
+    "tomcli",
+]
+
+[scripts.prep]
+post = [
+    "# Do not depend on criterion; it is needed only for benchmarks.",
+    "tomcli set Cargo.toml del dev-dependencies.criterion",
+]
+

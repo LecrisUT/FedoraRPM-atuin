@@ -1,0 +1,3 @@
+[tests]
+run = ["none"]
+comments = ["outdated dev-dependencies: notify"]

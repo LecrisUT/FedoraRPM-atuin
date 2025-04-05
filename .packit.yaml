@@ -27,6 +27,12 @@ packages:
     downstream_package_name: rust-axum-server
     upstream_package_name: axum-server
     actions: *actions-rust2rpm
+  rust-condtype:
+    paths: [ rust-condtype ]
+    specfile_path: rust-condtype.spec
+    downstream_package_name: rust-condtype
+    upstream_package_name: condtype
+    actions: *actions-rust2rpm
   rust-config:
     paths: [ rust-config ]
     specfile_path: rust-config.spec
@@ -39,11 +45,41 @@ packages:
     downstream_package_name: rust-divan
     upstream_package_name: divan
     actions: *actions-rust2rpm
+  rust-fakeit:
+    paths: [ rust-fakeit ]
+    specfile_path: rust-fakeit.spec
+    downstream_package_name: rust-fakeit
+    upstream_package_name: fakeit
+    actions: *actions-rust2rpm
+  rust-font8x8:
+    paths: [ rust-font8x8 ]
+    specfile_path: rust-font8x8.spec
+    downstream_package_name: rust-font8x8
+    upstream_package_name: font8x8
+    actions: *actions-rust2rpm
+  rust-httptest:
+    paths: [ rust-httptest ]
+    specfile_path: rust-httptest.spec
+    downstream_package_name: rust-httptest
+    upstream_package_name: httptest
+    actions: *actions-rust2rpm
+  rust-octocrab:
+    paths: [ rust-octocrab ]
+    specfile_path: rust-octocrab.spec
+    downstream_package_name: rust-octocrab
+    upstream_package_name: octocrab
+    actions: *actions-rust2rpm
   rust-postmark:
     paths: [ rust-postmark ]
     specfile_path: rust-postmark.spec
     downstream_package_name: rust-postmark
     upstream_package_name: postmark
+    actions: *actions-rust2rpm
+  rust-prost-reflect:
+    paths: [ rust-prost-reflect ]
+    specfile_path: rust-prost-reflect.spec
+    downstream_package_name: rust-prost-reflect
+    upstream_package_name: prost-reflect
     actions: *actions-rust2rpm
   rust-protox:
     paths: [ rust-protox ]
@@ -51,11 +87,23 @@ packages:
     downstream_package_name: rust-protox
     upstream_package_name: protox
     actions: *actions-rust2rpm
+  rust-protox-parse:
+    paths: [ rust-protox-parse ]
+    specfile_path: rust-protox-parse.spec
+    downstream_package_name: rust-protox-parse
+    upstream_package_name: protox-parse
+    actions: *actions-rust2rpm
   rust-ratatui:
     paths: [ rust-ratatui ]
     specfile_path: rust-ratatui.spec
     downstream_package_name: rust-ratatui
     upstream_package_name: ratatui
+    actions: *actions-rust2rpm
+  rust-rust-ini:
+    paths: [ rust-rust-ini ]
+    specfile_path: rust-rust-ini.spec
+    downstream_package_name: rust-rust-ini
+    upstream_package_name: rust-ini
     actions: *actions-rust2rpm
 
 srpm_build_deps:
