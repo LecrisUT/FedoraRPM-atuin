@@ -10,5 +10,10 @@ build = [
 post = [
     "# Do not depend on criterion; it is needed only for benchmarks.",
     "tomcli set Cargo.toml del dev-dependencies.criterion",
+    "# Do not depend on fakeit; it is needed only for benchmarks.",
+    "tomcli set Cargo.toml del dev-dependencies.fakeit",
+    "# Remove octocrab dependency and example",
+    "tomcli set Cargo.toml del dev-dependencies.octocrab",
+    "tomcli set Cargo.toml lists delitem --key=name example async",
 ]
 

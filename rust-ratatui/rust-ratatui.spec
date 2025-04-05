@@ -14,6 +14,7 @@ URL:            https://crates.io/crates/ratatui
 Source:         %{crates_source}
 
 BuildRequires:  cargo-rpm-macros >= 24
+BuildRequires:  tomcli
 
 %global _description %{expand:
 A library that's all about cooking up terminal user interfaces.}
@@ -223,6 +224,13 @@ use the "widget-calendar" feature of the "%{crate}" crate.
 %prep
 %autosetup -n %{crate}-%{version} -p1
 %cargo_prep
+# Do not depend on criterion; it is needed only for benchmarks.
+tomcli set Cargo.toml del dev-dependencies.criterion
+# Do not depend on fakeit; it is needed only for benchmarks.
+tomcli set Cargo.toml del dev-dependencies.fakeit
+# Remove octocrab dependency and example
+tomcli set Cargo.toml del dev-dependencies.octocrab
+tomcli set Cargo.toml lists delitem --key=name example async
 
 %generate_buildrequires
 %cargo_generate_buildrequires

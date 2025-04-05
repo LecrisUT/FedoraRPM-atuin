@@ -1,0 +1,3 @@
+[tests]
+run = ["none"]
+comments = ["They did not package the test files :/"]
