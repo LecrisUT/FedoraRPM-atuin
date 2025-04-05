@@ -8,6 +8,10 @@ _:
   - &actions-rust2rpm
     <<: *actions-use-spec
     fix-spec-file:
+      - sh -c 'rust2rpm @${PACKIT_PROJECT_VERSION}'
+  - &actions-rust2rpm-with-patch
+    <<: *actions-use-spec
+    fix-spec-file:
       - sh -c 'rust2rpm -r @${PACKIT_PROJECT_VERSION}'
 
 packages:
