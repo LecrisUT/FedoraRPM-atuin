@@ -116,8 +116,21 @@ cat > other_installs/profile.d/atuin.sh <<EOF
 if [ -n "\${BASH_VERSION-}" ]; then
   # Skip noninteractive shells.
   [[ \$- != *i* ]] && return
+
   # Use the statically written atuin init script
   source %{_libexecdir}/atuin/atuin-init.bash
+
+# Check for zsh environment
+elif [ -n "\$ZSH_VERSION-}" ]; then
+  # Skip noninteractive shells.
+  [[ \$- != *i* ]] && return
+
+  # The /etc/zprofile script calls 'emulate -L ksh', to make zsh
+  # happier when sourcing files in /etc/profile.d. However, atuin
+  # needs some zsh-specific functions (i.e. compinit), so we emulate
+  # zsh when sourcing the statically written atuin init script. See
+  # /etc/zprofile or 'man zshbuiltins' for more details.
+  emulate zsh -c "source %{_libexecdir}/atuin/atuin-init.zsh"
 fi
 EOF
 
