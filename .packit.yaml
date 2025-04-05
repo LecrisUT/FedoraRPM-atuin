@@ -22,88 +22,112 @@ packages:
     upstream_package_name: atuin
     actions: *actions-use-spec
   rust-axum-server:
+    # For atuin
     paths: [ rust-axum-server ]
     specfile_path: rust-axum-server.spec
     downstream_package_name: rust-axum-server
     upstream_package_name: axum-server
     actions: *actions-rust2rpm
   rust-condtype:
+    # For divan
     paths: [ rust-condtype ]
     specfile_path: rust-condtype.spec
     downstream_package_name: rust-condtype
     upstream_package_name: condtype
     actions: *actions-rust2rpm
   rust-config:
+    # For atuin
+    # https://bugzilla.redhat.com/show_bug.cgi?id=2262210
     paths: [ rust-config ]
     specfile_path: rust-config.spec
     downstream_package_name: rust-config
     upstream_package_name: config
     actions: *actions-rust2rpm
   rust-divan:
+    # For atuin
     paths: [ rust-divan ]
     specfile_path: rust-divan.spec
     downstream_package_name: rust-divan
     upstream_package_name: divan
     actions: *actions-rust2rpm
   rust-fakeit:
+    # For ratatui
     paths: [ rust-fakeit ]
     specfile_path: rust-fakeit.spec
     downstream_package_name: rust-fakeit
     upstream_package_name: fakeit
     actions: *actions-rust2rpm
   rust-font8x8:
+    # For ratatui
     paths: [ rust-font8x8 ]
     specfile_path: rust-font8x8.spec
     downstream_package_name: rust-font8x8
     upstream_package_name: font8x8
     actions: *actions-rust2rpm
   rust-httptest:
+    # For postmark
     paths: [ rust-httptest ]
     specfile_path: rust-httptest.spec
     downstream_package_name: rust-httptest
     upstream_package_name: httptest
     actions: *actions-rust2rpm
   rust-octocrab:
+    # For ratatui
     paths: [ rust-octocrab ]
     specfile_path: rust-octocrab.spec
     downstream_package_name: rust-octocrab
     upstream_package_name: octocrab
     actions: *actions-rust2rpm
   rust-postmark:
+    # For atuin
     paths: [ rust-postmark ]
     specfile_path: rust-postmark.spec
     downstream_package_name: rust-postmark
     upstream_package_name: postmark
     actions: *actions-rust2rpm
   rust-prost-reflect:
+    # For protox
     paths: [ rust-prost-reflect ]
     specfile_path: rust-prost-reflect.spec
     downstream_package_name: rust-prost-reflect
     upstream_package_name: prost-reflect
     actions: *actions-rust2rpm
   rust-protox:
+    # For atuin
     paths: [ rust-protox ]
     specfile_path: rust-protox.spec
     downstream_package_name: rust-protox
     upstream_package_name: protox
     actions: *actions-rust2rpm
   rust-protox-parse:
+    # For protox
     paths: [ rust-protox-parse ]
     specfile_path: rust-protox-parse.spec
     downstream_package_name: rust-protox-parse
     upstream_package_name: protox-parse
     actions: *actions-rust2rpm
   rust-ratatui:
+    # For atuin
+    # https://bugzilla.redhat.com/show_bug.cgi?id=2320186
     paths: [ rust-ratatui ]
     specfile_path: rust-ratatui.spec
     downstream_package_name: rust-ratatui
     upstream_package_name: ratatui
     actions: *actions-rust2rpm
   rust-rust-ini:
+    # For rust-config
+    # https://bugzilla.redhat.com/show_bug.cgi?id=2193253
     paths: [ rust-rust-ini ]
     specfile_path: rust-rust-ini.spec
     downstream_package_name: rust-rust-ini
     upstream_package_name: rust-ini
+    actions: *actions-rust2rpm
+  rust-yaml-rust2:
+    # For rust-config
+    paths: [ rust-yaml-rust2 ]
+    specfile_path: rust-yaml-rust2.spec
+    downstream_package_name: rust-yaml-rust2
+    upstream_package_name: yaml-rust2
     actions: *actions-rust2rpm
 
 srpm_build_deps:
