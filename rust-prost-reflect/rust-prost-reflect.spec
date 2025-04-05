@@ -12,8 +12,8 @@ Summary:        Protobuf library extending prost with reflection support and dyn
 License:        MIT OR Apache-2.0
 URL:            https://crates.io/crates/prost-reflect
 Source:         %{crates_source}
-Source2:        https://raw.githubusercontent.com/andrewhickman/prost-reflect/refs/tags/%{version}/LICENSE-APACHE
-Source3:        https://raw.githubusercontent.com/andrewhickman/prost-reflect/refs/tags/%{version}/LICENSE-MIT
+Source2:        https://raw.githubusercontent.com/andrewhickman/prost-reflect/refs/tags/0.14.6/LICENSE-APACHE
+Source3:        https://raw.githubusercontent.com/andrewhickman/prost-reflect/refs/tags/0.14.6/LICENSE-MIT
 
 BuildRequires:  cargo-rpm-macros >= 24
 
@@ -163,6 +163,8 @@ use the "text-format" feature of the "%{crate}" crate.
 %cargo_prep
 cp %{SOURCE2} .
 cp %{SOURCE3} .
+# Avoid circular dependency with protox
+tomcli set Cargo.toml del dev-dependencies.protox
 
 %generate_buildrequires
 %cargo_generate_buildrequires
@@ -175,7 +177,8 @@ cp %{SOURCE3} .
 
 %if %{with check}
 %check
-%cargo_test
+# * Avoid circular dependency with protox
+%cargo_test -- -- --skip expected_well_known_types
 %endif
 
 %changelog

@@ -9,8 +9,18 @@ file = "https://raw.githubusercontent.com/andrewhickman/prost-reflect/refs/tags/
 number = 3
 file = "https://raw.githubusercontent.com/andrewhickman/prost-reflect/refs/tags/0.14.6/LICENSE-MIT"
 
-[scripts]
-prep.post = [
+[scripts.prep]
+post = [
     "cp %{SOURCE2} .",
     "cp %{SOURCE3} .",
+    "# Avoid circular dependency with protox",
+    "tomcli set Cargo.toml del dev-dependencies.protox",
+]
+
+[tests]
+skip = [
+    "expected_well_known_types",
+]
+comments = [
+    "Avoid circular dependency with protox",
 ]
