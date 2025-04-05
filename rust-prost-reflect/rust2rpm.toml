@@ -3,11 +3,11 @@ license-files = ["LICENSE-APACHE", "LICENSE-MIT"]
 
 [[package.extra-sources]]
 number = 2
-file = "https://raw.githubusercontent.com/andrewhickman/prost-reflect/refs/tags/%{version}/LICENSE-APACHE"
+file = "https://raw.githubusercontent.com/andrewhickman/prost-reflect/refs/tags/0.14.6/LICENSE-APACHE"
 
 [[package.extra-sources]]
 number = 3
-file = "https://raw.githubusercontent.com/andrewhickman/prost-reflect/refs/tags/%{version}/LICENSE-MIT"
+file = "https://raw.githubusercontent.com/andrewhickman/prost-reflect/refs/tags/0.14.6/LICENSE-MIT"
 
 [scripts]
 prep.post = [
