@@ -1,0 +1,24 @@
+_:
+  - &actions-use-spec
+    fix-spec-file: []
+    create-archive:
+      - sh -c 'echo ${PACKIT_DOWNSTREAM_PACKAGE_NAME}.spec'
+    get-current-version:
+      - sh -c 'rpmspec -q --qf "%{Version}" --srpm ${PACKIT_DOWNSTREAM_PACKAGE_NAME}.spec'
+
+packages:
+  atuin:
+    paths: [ atuin ]
+    specfile_path: atuin.spec
+    downstream_package_name: atuin
+    upstream_package_name: atuin
+    actions: *actions-use-spec
+
+srpm_build_deps:
+  - rust2rpm
+
+jobs:
+  - job: copr_build
+    trigger: commit
+    owner: lecris
+    project: atuin
