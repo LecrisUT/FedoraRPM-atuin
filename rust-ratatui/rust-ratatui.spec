@@ -231,6 +231,8 @@ tomcli set Cargo.toml del dev-dependencies.fakeit
 # Remove octocrab dependency and example
 tomcli set Cargo.toml del dev-dependencies.octocrab
 tomcli set Cargo.toml lists delitem --key=name example async
+# remove executable bits from source files
+find -type f -executable -print -exec chmod -x {} +
 
 %generate_buildrequires
 %cargo_generate_buildrequires
