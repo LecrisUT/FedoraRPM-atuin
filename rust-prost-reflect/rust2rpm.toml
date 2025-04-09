@@ -9,6 +9,11 @@ file = "https://raw.githubusercontent.com/andrewhickman/prost-reflect/refs/tags/
 number = 3
 file = "https://raw.githubusercontent.com/andrewhickman/prost-reflect/refs/tags/0.14.6/LICENSE-MIT"
 
+[requires]
+build = [
+    "tomcli",
+]
+
 [scripts.prep]
 post = [
     "cp %{SOURCE2} .",

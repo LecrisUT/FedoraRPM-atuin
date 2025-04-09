@@ -16,6 +16,7 @@ Source2:        https://raw.githubusercontent.com/andrewhickman/prost-reflect/re
 Source3:        https://raw.githubusercontent.com/andrewhickman/prost-reflect/refs/tags/0.14.6/LICENSE-MIT
 
 BuildRequires:  cargo-rpm-macros >= 24
+BuildRequires:  tomcli
 
 %global _description %{expand:
 A protobuf library extending prost with reflection support and dynamic
