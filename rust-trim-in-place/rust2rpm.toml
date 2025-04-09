@@ -1,0 +1,10 @@
+[requires]
+build = [
+    "tomcli",
+]
+
+[scripts.prep]
+post = [
+    "# Drop benchmark only dependency.",
+    "tomcli set Cargo.toml del dev-dependencies.bencher",
+]
