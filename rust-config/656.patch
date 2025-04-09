@@ -1,0 +1,49 @@
+diff --git a/Cargo.toml b/Cargo.toml
+index 049614ce..76228411 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -113,7 +113,7 @@
+     "ron?/indexmap",
+ ]
+ toml = ["dep:toml"]
+-yaml = ["yaml-rust2"]
++yaml = ["saphyr"]
+
+ [lib]
+ name = "config"
+@@ -204,8 +204,8 @@
+ [dependencies.winnow]
+ version = "0.7.0"
+
+-[dependencies.yaml-rust2]
+-version = "0.10"
++[dependencies.saphyr]
++version = "0.0.3"
+ optional = true
+
+ [dev-dependencies.chrono]
+diff --git a/src/file/format/yaml.rs b/src/file/format/yaml.rs
+index 0035a8f6..475a7b4d 100644
+--- a/src/file/format/yaml.rs
++++ b/src/file/format/yaml.rs
+@@ -2,7 +2,7 @@ use std::error::Error;
+ use std::fmt;
+ use std::mem;
+ 
+-use yaml_rust2 as yaml;
++use saphyr as yaml;
+ 
+ use crate::format;
+ use crate::map::Map;
+@@ -13,9 +13,9 @@ pub(crate) fn parse(
+     text: &str,
+ ) -> Result<Map<String, Value>, Box<dyn Error + Send + Sync>> {
+     // Parse a YAML object from file
+-    let mut docs = yaml::YamlLoader::load_from_str(text)?;
++    let mut docs = yaml::Yaml::load_from_str(text)?;
+     let root = match docs.len() {
+-        0 => yaml::Yaml::Hash(yaml::yaml::Hash::new()),
++        0 => yaml::Yaml::Hash(yaml::Hash::new()),
+         1 => mem::replace(&mut docs[0], yaml::Yaml::Null),
+         n => {
+             return Err(Box::new(MultipleDocumentsError(n)));

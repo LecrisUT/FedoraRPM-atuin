@@ -1,3 +1,11 @@
 [tests]
 run = ["none"]
 comments = ["outdated dev-dependencies: notify"]
+
+[[package.extra-patches]]
+comments = [
+    "Switch yaml-rust2 dependency to saphyr",
+    "Cherry-picked from https://github.com/rust-cli/config-rs/pull/656",
+]
+file = "656.patch"
+number = 10

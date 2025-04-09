@@ -1,0 +1,18 @@
+[package]
+license-files.include = [
+    ".licenses/*"
+]
+cargo-install-bin = false
+
+[requires]
+build = [
+    "tomcli",
+]
+
+[scripts.prep]
+post = [
+    "# Remove circular dependency with saphyr.",
+    "tomcli set Cargo.toml del dev-dependencies.saphyr",
+    "# Saphyr was used in the test-suite tests.",
+    "tomcli set Cargo.toml lists delitem --key=path test async 'tests/yaml-test-suite.rs'",
+]
