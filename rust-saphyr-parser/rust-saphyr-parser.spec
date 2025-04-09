@@ -75,6 +75,8 @@ use the "debug_prints" feature of the "%{crate}" crate.
 # tomcli set Cargo.toml del dev-dependencies.saphyr
 # Saphyr was used in the test-suite tests.
 tomcli set Cargo.toml lists delitem --key=path test 'tests/yaml-test-suite.rs'
+# Can also drop libtest-mimic because it is only used in yaml-test-suite.rs
+tomcli set Cargo.toml del dev-dependencies.libtest-mimic
 
 %generate_buildrequires
 %cargo_generate_buildrequires
