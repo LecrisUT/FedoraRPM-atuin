@@ -23,9 +23,10 @@ post = [
 ]
 
 [tests]
-skip = [
-    "expected_well_known_types",
+run = [
+    "none",
 ]
 comments = [
     "Avoid circular dependency with protox",
+    "Also has an issue with src/descriptor/mod.rs and `mod tests`",
 ]
