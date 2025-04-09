@@ -21,6 +21,13 @@ packages:
     downstream_package_name: atuin
     upstream_package_name: atuin
     actions: *actions-use-spec
+  rust-arraydeque:
+    # For saphyr-parser
+    paths: [ rust-arraydeque ]
+    specfile_path: rust-arraydeque.spec
+    downstream_package_name: rust-arraydeque
+    upstream_package_name: axum-arraydeque
+    actions: *actions-rust2rpm
   rust-axum-server:
     # For atuin
     paths: [ rust-axum-server ]
