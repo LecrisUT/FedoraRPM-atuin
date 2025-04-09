@@ -5,7 +5,7 @@
 %global crate dlv-list
 
 Name:           rust-dlv-list
-Version:        0.6.0
+Version:        0.5.2
 Release:        %autorelease
 Summary:        Semi-doubly linked list implemented using a vector
 
@@ -48,18 +48,6 @@ This package contains library source intended for building other packages which
 use the "default" feature of the "%{crate}" crate.
 
 %files       -n %{name}+default-devel
-%ghost %{crate_instdir}/Cargo.toml
-
-%package     -n %{name}+const-random-devel
-Summary:        %{summary}
-BuildArch:      noarch
-
-%description -n %{name}+const-random-devel %{_description}
-
-This package contains library source intended for building other packages which
-use the "const-random" feature of the "%{crate}" crate.
-
-%files       -n %{name}+const-random-devel
 %ghost %{crate_instdir}/Cargo.toml
 
 %package     -n %{name}+serde-devel
