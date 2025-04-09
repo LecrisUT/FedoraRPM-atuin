@@ -17,6 +17,7 @@ URL:            https://crates.io/crates/saphyr-parser
 Source:         %{crates_source}
 
 BuildRequires:  cargo-rpm-macros >= 26
+BuildRequires:  tomcli
 
 %global _description %{expand:
 A fully YAML 1.2 compliant YAML library.}
@@ -69,6 +70,11 @@ use the "debug_prints" feature of the "%{crate}" crate.
 %prep
 %autosetup -n %{crate}-%{version} -p1
 %cargo_prep
+# Remove circular dependency with saphyr.
+# The circular dependency was stripped somehow.
+# tomcli set Cargo.toml del dev-dependencies.saphyr
+# Saphyr was used in the test-suite tests.
+tomcli set Cargo.toml lists delitem --key=path test 'tests/yaml-test-suite.rs'
 
 %generate_buildrequires
 %cargo_generate_buildrequires
