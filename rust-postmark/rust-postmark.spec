@@ -5,7 +5,7 @@
 %global crate postmark
 
 Name:           rust-postmark
-Version:        0.11.1
+Version:        0.11.2
 Release:        %autorelease
 Summary:        Rust client
 
@@ -101,17 +101,17 @@ use the "reqwest-rustls-tls" feature of the "%{crate}" crate.
 %cargo_prep
 
 %generate_buildrequires
-%cargo_generate_buildrequires
+%cargo_generate_buildrequires -a
 
 %build
-%cargo_build
+%cargo_build -a
 
 %install
-%cargo_install
+%cargo_install -a
 
 %if %{with check}
 %check
-%cargo_test
+%cargo_test -a
 %endif
 
 %changelog
