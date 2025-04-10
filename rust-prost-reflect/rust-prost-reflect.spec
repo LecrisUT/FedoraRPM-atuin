@@ -184,7 +184,18 @@ sed -i '/#\[cfg(test)\]/,/mod tests/d' src/descriptor/mod.rs
 
 %if %{with check}
 %check
-%cargo_test
+# * These tests require file_descriptor_set.bin which is not included.
+%{cargo_test -- -- %{shrink:
+    --skip dynamic::DynamicMessage::decode
+    --skip dynamic::DynamicMessage::fmt
+    --skip dynamic::DynamicMessage::has_field
+    --skip dynamic::DynamicMessage::try_set_field
+    --skip dynamic::DynamicMessage::try_set_field_by_name
+    --skip dynamic::DynamicMessage::try_set_field_by_number
+    --skip dynamic::unknown::UnknownField::decode
+    --skip dynamic::unknown::UnknownField::decode_value
+    --skip dynamic::unknown::UnknownField::fmt
+}}
 %endif
 
 %changelog
