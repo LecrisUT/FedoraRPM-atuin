@@ -94,7 +94,7 @@ tomcli set Cargo.toml lists delitem --key=path test 'tests/yaml-test-suite.rs'
 
 %install
 %cargo_install
-install -p .licenses %{buildroot}%{crate_instdir}/
+install -Dp .licenses/* -t %{buildroot}%{crate_instdir}/.licenses
 
 %if %{with check}
 %check
