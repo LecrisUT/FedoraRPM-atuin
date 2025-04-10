@@ -21,6 +21,7 @@ Patch12:        atuin-fix-metrics.patch
 Patch13:        atuin-Update-tiny-bip39.patch
 
 BuildRequires:  cargo-rpm-macros >= 24
+BuildRequires:  tomcli
 %if %{with check}
 BuildRequires:  postgresql-test-rpm-macros
 %endif
@@ -48,6 +49,8 @@ This package contains the init script to enable atuin for all users.
 %prep
 %autosetup -n atuin-%{version} -p1
 %cargo_prep
+# Relax minijinja requirement
+tomcli set Cargo.toml str workspace.dependencies.minijinja '2.8.0'
 
 %generate_buildrequires
 %cargo_generate_buildrequires -a

@@ -51,9 +51,16 @@ number = 13
 test = [
     "postgresql-test-rpm-macros",
 ]
+build = [
+    "tomcli",
+]
 
-[scripts.check]
-pre = [
+[scripts]
+prep.post = [
+    "# Relax minijinja requirement",
+    "tomcli set Cargo.toml str workspace.dependencies.minijinja '2.8.0'",
+]
+check.pre = [
     "# start a postgres instance for the tests to use",
     "export PGTESTS_LOCALE=\"C.UTF-8\"",
     "export PGTESTS_USERS=\"atuin:pass\"",
@@ -61,9 +68,6 @@ pre = [
     "export PGTESTS_PORT=5432",
     "%postgresql_tests_run",
 ]
-
-
-[scripts]
 build.post = [
     "# Create auxiliary files",
     "mkdir -p other_installs/shell_completion",
