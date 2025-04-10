@@ -40,7 +40,9 @@ skip = [
     "dynamic::unknown::UnknownField::decode_value",
     "dynamic::unknown::UnknownField::fmt",
     "src/lib.rs",
+    "dynamic::type_sizes",
 ]
 comments = [
-    "These tests require file_descriptor_set.bin which is not included.",
+    "- Almost all tests are skipped because they require file_descriptor_set.bin which is not included.",
+    "- dynamic::type_sizes This test uses std::mem::size_of which is inconsistent on i686",
 ]

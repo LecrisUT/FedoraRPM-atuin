@@ -184,7 +184,10 @@ sed -i '/#\[cfg(test)\]/,/mod tests/d' src/descriptor/mod.rs
 
 %if %{with check}
 %check
-# * These tests require file_descriptor_set.bin which is not included.
+# * - Almost all tests are skipped because they require file_descriptor_set.bin
+#   which is not included.
+# * - dynamic::type_sizes This test uses std::mem::size_of which is inconsistent
+#   on i686
 %{cargo_test -- -- %{shrink:
     --skip dynamic::DynamicMessage::decode
     --skip dynamic::DynamicMessage::fmt
@@ -196,6 +199,7 @@ sed -i '/#\[cfg(test)\]/,/mod tests/d' src/descriptor/mod.rs
     --skip dynamic::unknown::UnknownField::decode_value
     --skip dynamic::unknown::UnknownField::fmt
     --skip src/lib.rs
+    --skip dynamic::type_sizes
 }}
 %endif
 
