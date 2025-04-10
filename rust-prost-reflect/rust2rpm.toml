@@ -39,6 +39,7 @@ skip = [
     "dynamic::unknown::UnknownField::decode",
     "dynamic::unknown::UnknownField::decode_value",
     "dynamic::unknown::UnknownField::fmt",
+    "src/lib.rs",
 ]
 comments = [
     "These tests require file_descriptor_set.bin which is not included.",

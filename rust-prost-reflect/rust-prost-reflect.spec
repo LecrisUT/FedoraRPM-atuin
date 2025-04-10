@@ -195,6 +195,7 @@ sed -i '/#\[cfg(test)\]/,/mod tests/d' src/descriptor/mod.rs
     --skip dynamic::unknown::UnknownField::decode
     --skip dynamic::unknown::UnknownField::decode_value
     --skip dynamic::unknown::UnknownField::fmt
+    --skip src/lib.rs
 }}
 %endif
 
