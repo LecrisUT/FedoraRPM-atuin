@@ -138,26 +138,19 @@ packages:
     downstream_package_name: rust-rust-ini
     upstream_package_name: rust-ini
     actions: *actions-rust2rpm
-  rust-saphyr:
-    # For rust-config
-    paths: [ rust-saphyr ]
-    specfile_path: rust-saphyr.spec
-    downstream_package_name: rust-saphyr
-    upstream_package_name: saphyr
-    actions: *actions-use-spec
-  rust-saphyr-parser:
-    # For saphyr
-    paths: [ rust-saphyr-parser ]
-    specfile_path: rust-saphyr-parser.spec
-    downstream_package_name: rust-saphyr-parser
-    upstream_package_name: saphyr-parser
-    actions: *actions-use-spec
   rust-trim-in-place:
     # For rust-ini
     paths: [ rust-trim-in-place ]
     specfile_path: rust-trim-in-place.spec
     downstream_package_name: rust-trim-in-place
     upstream_package_name: trim-in-place
+    actions: *actions-rust2rpm
+  rust-yaml-rust2:
+    # For rust-config
+    paths: [ rust-yaml-rust2 ]
+    specfile_path: rust-yaml-rust2.spec
+    downstream_package_name: rust-yaml-rust2
+    upstream_package_name: yaml-rust2
     actions: *actions-rust2rpm
 
 srpm_build_deps:

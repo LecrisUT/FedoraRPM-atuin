@@ -13,9 +13,6 @@ Summary:        Layered configuration system for Rust applications
 License:        MIT OR Apache-2.0
 URL:            https://crates.io/crates/config
 Source:         %{crates_source}
-# * Switch yaml-rust2 dependency to saphyr
-# * Cherry-picked from https://github.com/rust-cli/config-rs/pull/656
-Patch10:        656.patch
 
 BuildRequires:  cargo-rpm-macros >= 24
 
