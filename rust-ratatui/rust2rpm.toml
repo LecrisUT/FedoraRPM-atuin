@@ -20,3 +20,13 @@ post = [
     "find -type f -executable -print -exec chmod -x {} +",
 ]
 
+[tests]
+skip = [
+    "buffer::buffer::Buffer::pos_of",
+    "buffer::buffer::tests::pos_of_panics_on_out_of_bounds",
+]
+comments = [
+    "- buffer::buffer::Buffer::pos_of this one panics only if in debug.",
+    "- buffer::buffer::tests::pos_of_panics_on_out_of_bounds same test as above",
+]
+

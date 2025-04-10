@@ -246,7 +246,12 @@ find -type f -executable -print -exec chmod -x {} +
 
 %if %{with check}
 %check
-%cargo_test
+# * - buffer::buffer::Buffer::pos_of this one panics only if in debug.
+# * - buffer::buffer::tests::pos_of_panics_on_out_of_bounds same test as above
+%{cargo_test -- -- %{shrink:
+    --skip buffer::buffer::Buffer::pos_of
+    --skip buffer::buffer::tests::pos_of_panics_on_out_of_bounds
+}}
 %endif
 
 %changelog
