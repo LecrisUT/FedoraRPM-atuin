@@ -24,4 +24,6 @@ post = [
     "# Disable test that use protox",
     "sed -r -i 's/(fn compare_parsed_and_coded_default_descriptors.*)/#[cfg(any())]\\n\\1/' src/reflect/wkt.rs",
     "sed -r -i 's/(fn expected_well_known_types.*)/#[cfg(any())]\\n\\1/' src/reflect/wkt.rs",
+    "# Broken test because tests.rs is not in crate",
+    "sed -i '/#\\[cfg(test)\\]/,/mod tests/d' src/descriptor/mod.rs",
 ]
