@@ -21,7 +21,6 @@ Patch12:        atuin-fix-metrics.patch
 Patch13:        atuin-Update-tiny-bip39.patch
 
 BuildRequires:  cargo-rpm-macros >= 24
-BuildRequires:  protobuf-devel
 %if %{with check}
 BuildRequires:  postgresql-test-rpm-macros
 %endif

@@ -44,9 +44,6 @@ file = "atuin-Update-tiny-bip39.patch"
 number = 13
 
 [requires]
-build = [
-    "protobuf-devel",
-]
 # TODO: make it a requires when it is packaged
 #bin = [
 #    "bash-preexec",
