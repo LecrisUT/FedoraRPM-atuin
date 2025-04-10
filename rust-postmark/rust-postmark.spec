@@ -5,7 +5,7 @@
 %global crate postmark
 
 Name:           rust-postmark
-Version:        0.11.2
+Version:        0.10.2
 Release:        %autorelease
 Summary:        Rust client
 
