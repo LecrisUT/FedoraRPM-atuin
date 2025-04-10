@@ -1,4 +1,6 @@
 [package]
+# This one licenses with %{crate_instdir}, but these are not installed there
+# Manually remove that
 license-files.include = [
     ".licenses/*"
 ]

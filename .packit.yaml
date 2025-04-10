@@ -144,14 +144,14 @@ packages:
     specfile_path: rust-saphyr.spec
     downstream_package_name: rust-saphyr
     upstream_package_name: saphyr
-    actions: *actions-rust2rpm
+    actions: *actions-use-spec
   rust-saphyr-parser:
     # For saphyr
     paths: [ rust-saphyr-parser ]
     specfile_path: rust-saphyr-parser.spec
     downstream_package_name: rust-saphyr-parser
     upstream_package_name: saphyr-parser
-    actions: *actions-rust2rpm
+    actions: *actions-use-spec
   rust-trim-in-place:
     # For rust-ini
     paths: [ rust-trim-in-place ]

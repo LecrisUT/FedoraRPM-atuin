@@ -34,10 +34,10 @@ This package contains library source intended for building other packages which
 use the "%{crate}" crate.
 
 %files          devel
-%license %{crate_instdir}/.licenses/ChenYuheng-Apache
-%license %{crate_instdir}/.licenses/ChenYuheng-MIT
-%license %{crate_instdir}/.licenses/Ethiraric-Apache
-%license %{crate_instdir}/.licenses/Ethiraric-MIT
+%license .licenses/ChenYuheng-Apache
+%license .licenses/ChenYuheng-MIT
+%license .licenses/Ethiraric-Apache
+%license .licenses/Ethiraric-MIT
 %license %{crate_instdir}/LICENSE
 %doc %{crate_instdir}/CHANGELOG.md
 %doc %{crate_instdir}/README.md
