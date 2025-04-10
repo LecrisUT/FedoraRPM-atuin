@@ -35,13 +35,6 @@ packages:
     downstream_package_name: rust-axum-server
     upstream_package_name: axum-server
     actions: *actions-rust2rpm
-  rust-condtype:
-    # For divan
-    paths: [ rust-condtype ]
-    specfile_path: rust-condtype.spec
-    downstream_package_name: rust-condtype
-    upstream_package_name: condtype
-    actions: *actions-rust2rpm
   rust-config:
     # For atuin
     # https://bugzilla.redhat.com/show_bug.cgi?id=2262210
@@ -49,20 +42,6 @@ packages:
     specfile_path: rust-config.spec
     downstream_package_name: rust-config
     upstream_package_name: config
-    actions: *actions-rust2rpm
-  rust-divan:
-    # For atuin
-    paths: [ rust-divan ]
-    specfile_path: rust-divan.spec
-    downstream_package_name: rust-divan
-    upstream_package_name: divan
-    actions: *actions-rust2rpm
-  rust-divan-macros:
-    # For divan
-    paths: [ rust-divan-macros ]
-    specfile_path: rust-divan-macros.spec
-    downstream_package_name: rust-divan-macros
-    upstream_package_name: divan-macros
     actions: *actions-rust2rpm
   rust-dlv-list:
     # For ordered-multimap
