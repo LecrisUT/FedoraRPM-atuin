@@ -1,0 +1,5 @@
+# Patching licenses is not working on hidden folders right now
+#[package]
+#license-files.include = [
+#    ".licenses/*"
+#]
