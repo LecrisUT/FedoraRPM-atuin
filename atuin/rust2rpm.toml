@@ -10,7 +10,7 @@ enable-all = true
 
 [package]
 url = "https://atuin.sh"
-source-url = "https://github.com/atuinsh/atuin/archive/refs/tags/%{upstream_version}.tar.gz"
+source-url = "https://github.com/atuinsh/atuin/archive/refs/tags/%{version}.tar.gz"
 extra-files = [
     "%{bash_completions_dir}/atuin.bash",
     "%{fish_completions_dir}/atuin.fish",
