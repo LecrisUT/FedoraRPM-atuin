@@ -34,6 +34,10 @@ This package contains library source intended for building other packages which
 use the "%{crate}" crate.
 
 %files          devel
+%license %{crate_instdir}/.licenses/ChenYuheng-Apache
+%license %{crate_instdir}/.licenses/ChenYuheng-MIT
+%license %{crate_instdir}/.licenses/Ethiraric-Apache
+%license %{crate_instdir}/.licenses/Ethiraric-MIT
 %license %{crate_instdir}/LICENSE
 %doc %{crate_instdir}/CHANGELOG.md
 %doc %{crate_instdir}/README.md
@@ -90,6 +94,7 @@ tomcli set Cargo.toml lists delitem --key=path test 'tests/yaml-test-suite.rs'
 
 %install
 %cargo_install
+install -p .licenses %{buildroot}%{crate_instdir}/
 
 %if %{with check}
 %check

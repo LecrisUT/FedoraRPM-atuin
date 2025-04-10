@@ -1,20 +1,20 @@
-# Patching licenses is not working on hidden folders right now
-#[package]
-#license-files.include = [
-#    ".licenses/*"
-#]
-
 [package]
 cargo-install-bin = false
+license-files.include = [
+    ".licenses/*"
+]
 
 [requires]
 build = [
     "tomcli",
 ]
 
-[scripts.prep]
-post = [
+[scripts]
+prep.post = [
     "# Drop libtest-mimic because it is too old",
     "tomcli set Cargo.toml del dev-dependencies.libtest-mimic",
     "tomcli set Cargo.toml lists delitem --key=path test 'tests/yaml-test-suite.rs'",
+]
+install.post = [
+    "install -p .licenses %{buildroot}%{crate_instdir}/",
 ]
