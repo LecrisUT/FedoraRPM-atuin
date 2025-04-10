@@ -228,9 +228,10 @@ use the "widget-calendar" feature of the "%{crate}" crate.
 tomcli set Cargo.toml del dev-dependencies.criterion
 # Do not depend on fakeit; it is needed only for benchmarks.
 tomcli set Cargo.toml del dev-dependencies.fakeit
+tomcli set Cargo.toml lists delitem --key=path example 'examples/table.rs'
 # Remove octocrab dependency and example
 tomcli set Cargo.toml del dev-dependencies.octocrab
-tomcli set Cargo.toml lists delitem --key=name example async
+tomcli set Cargo.toml lists delitem --key=path example 'examples/async.rs'
 # remove executable bits from source files
 find -type f -executable -print -exec chmod -x {} +
 
