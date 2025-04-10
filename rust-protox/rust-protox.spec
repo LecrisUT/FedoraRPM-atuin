@@ -78,6 +78,8 @@ use the "bin" feature of the "%{crate}" crate.
 %prep
 %autosetup -n %{crate}-%{version} -p1
 %cargo_prep
+# Broken test because tests.rs is not in crate
+sed -i '/#\[cfg(test)\]/,/mod tests/d' src/descriptor/mod.rs
 
 %generate_buildrequires
 %cargo_generate_buildrequires -f bin

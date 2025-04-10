@@ -1,0 +1,5 @@
+[scripts.prep]
+post = [
+    "# Broken test because tests.rs is not in crate",
+    "sed -i '/#\\[cfg(test)\\]/,/mod tests/d' src/descriptor/mod.rs",
+]
