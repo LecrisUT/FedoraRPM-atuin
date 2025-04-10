@@ -3,3 +3,18 @@
 #license-files.include = [
 #    ".licenses/*"
 #]
+
+[package]
+cargo-install-bin = false
+
+[requires]
+build = [
+    "tomcli",
+]
+
+[scripts.prep]
+post = [
+    "# Drop libtest-mimic because it is too old",
+    "tomcli set Cargo.toml del dev-dependencies.libtest-mimic",
+    "tomcli set Cargo.toml lists delitem --key=path test 'tests/yaml-test-suite.rs'",
+]
