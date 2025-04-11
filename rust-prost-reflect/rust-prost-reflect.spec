@@ -60,6 +60,18 @@ use the "miette" feature of the "%{crate}" crate.
 %files       -n %{name}+miette-devel
 %ghost %{crate_instdir}/Cargo.toml
 
+%package     -n %{name}+serde-devel
+Summary:        %{summary}
+BuildArch:      noarch
+
+%description -n %{name}+serde-devel %{_description}
+
+This package contains library source intended for building other packages which
+use the "serde" feature of the "%{crate}" crate.
+
+%files       -n %{name}+serde-devel
+%ghost %{crate_instdir}/Cargo.toml
+
 %package     -n %{name}+text-format-devel
 Summary:        %{summary}
 BuildArch:      noarch
