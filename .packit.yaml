@@ -101,7 +101,10 @@ packages:
     specfile_path: rust-protox.spec
     downstream_package_name: rust-protox
     upstream_package_name: protox
-    actions: *actions-rust2rpm
+    # Need to edit the license metadata and note the bundling
+    # https://github.com/andrewhickman/protox/pull/92
+    # https://github.com/andrewhickman/protox/issues/93
+    actions: *actions-use-spec
   rust-protox-parse:
     # For protox
     paths: [ rust-protox-parse ]
