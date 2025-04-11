@@ -51,6 +51,8 @@ This package contains the init script to enable atuin for all users.
 %cargo_prep
 # Relax minijinja requirement
 tomcli set Cargo.toml str workspace.dependencies.minijinja '2.8.0'
+# Update protox dependency
+tomcli set crates/atuin-daemon/Cargo.toml str build-dependencies.protox '0.8.0'
 # Drop divan. Seems like benchmark-only dependency
 tomcli set crates/atuin-history/Cargo.toml del dev-dependencies.divan
 

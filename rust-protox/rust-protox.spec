@@ -8,7 +8,7 @@
 %global crate protox
 
 Name:           rust-protox
-Version:        0.7.2
+Version:        0.8.0
 Release:        %autorelease
 Summary:        Rust implementation of the protobuf compiler
 

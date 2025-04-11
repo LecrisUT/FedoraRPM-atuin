@@ -5,15 +5,13 @@
 %global crate prost-reflect
 
 Name:           rust-prost-reflect
-Version:        0.14.7
+Version:        0.15.0
 Release:        %autorelease
 Summary:        Protobuf library extending prost with reflection support and dynamic messages
 
 License:        MIT OR Apache-2.0
 URL:            https://crates.io/crates/prost-reflect
 Source:         %{crates_source}
-Source2:        https://raw.githubusercontent.com/andrewhickman/prost-reflect/refs/tags/0.14.6/LICENSE-APACHE
-Source3:        https://raw.githubusercontent.com/andrewhickman/prost-reflect/refs/tags/0.14.6/LICENSE-MIT
 
 BuildRequires:  cargo-rpm-macros >= 24
 BuildRequires:  tomcli
@@ -51,18 +49,6 @@ use the "default" feature of the "%{crate}" crate.
 %files       -n %{name}+default-devel
 %ghost %{crate_instdir}/Cargo.toml
 
-%package     -n %{name}+base64-devel
-Summary:        %{summary}
-BuildArch:      noarch
-
-%description -n %{name}+base64-devel %{_description}
-
-This package contains library source intended for building other packages which
-use the "base64" feature of the "%{crate}" crate.
-
-%files       -n %{name}+base64-devel
-%ghost %{crate_instdir}/Cargo.toml
-
 %package     -n %{name}+derive-devel
 Summary:        %{summary}
 BuildArch:      noarch
@@ -73,18 +59,6 @@ This package contains library source intended for building other packages which
 use the "derive" feature of the "%{crate}" crate.
 
 %files       -n %{name}+derive-devel
-%ghost %{crate_instdir}/Cargo.toml
-
-%package     -n %{name}+logos-devel
-Summary:        %{summary}
-BuildArch:      noarch
-
-%description -n %{name}+logos-devel %{_description}
-
-This package contains library source intended for building other packages which
-use the "logos" feature of the "%{crate}" crate.
-
-%files       -n %{name}+logos-devel
 %ghost %{crate_instdir}/Cargo.toml
 
 %package     -n %{name}+miette-devel
@@ -99,18 +73,6 @@ use the "miette" feature of the "%{crate}" crate.
 %files       -n %{name}+miette-devel
 %ghost %{crate_instdir}/Cargo.toml
 
-%package     -n %{name}+prost-reflect-derive-devel
-Summary:        %{summary}
-BuildArch:      noarch
-
-%description -n %{name}+prost-reflect-derive-devel %{_description}
-
-This package contains library source intended for building other packages which
-use the "prost-reflect-derive" feature of the "%{crate}" crate.
-
-%files       -n %{name}+prost-reflect-derive-devel
-%ghost %{crate_instdir}/Cargo.toml
-
 %package     -n %{name}+serde-devel
 Summary:        %{summary}
 BuildArch:      noarch
@@ -121,30 +83,6 @@ This package contains library source intended for building other packages which
 use the "serde" feature of the "%{crate}" crate.
 
 %files       -n %{name}+serde-devel
-%ghost %{crate_instdir}/Cargo.toml
-
-%package     -n %{name}+serde-value-devel
-Summary:        %{summary}
-BuildArch:      noarch
-
-%description -n %{name}+serde-value-devel %{_description}
-
-This package contains library source intended for building other packages which
-use the "serde-value" feature of the "%{crate}" crate.
-
-%files       -n %{name}+serde-value-devel
-%ghost %{crate_instdir}/Cargo.toml
-
-%package     -n %{name}+serde1-devel
-Summary:        %{summary}
-BuildArch:      noarch
-
-%description -n %{name}+serde1-devel %{_description}
-
-This package contains library source intended for building other packages which
-use the "serde1" feature of the "%{crate}" crate.
-
-%files       -n %{name}+serde1-devel
 %ghost %{crate_instdir}/Cargo.toml
 
 %package     -n %{name}+text-format-devel
@@ -162,14 +100,6 @@ use the "text-format" feature of the "%{crate}" crate.
 %prep
 %autosetup -n %{crate}-%{version} -p1
 %cargo_prep
-cp %{SOURCE2} .
-cp %{SOURCE3} .
-# Avoid circular dependency with protox
-# https://github.com/andrewhickman/prost-reflect/issues/154
-tomcli set Cargo.toml del dev-dependencies.protox
-# Disable test that use protox
-sed -r -i 's/(fn compare_parsed_and_coded_default_descriptors.*)/#[cfg(any())]\n\1/' src/reflect/wkt.rs
-sed -r -i 's/(fn expected_well_known_types.*)/#[cfg(any())]\n\1/' src/reflect/wkt.rs
 # Broken test because tests.rs is not in crate
 sed -i '/#\[cfg(test)\]/,/mod tests/d' src/descriptor/mod.rs
 
