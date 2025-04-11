@@ -1,3 +1,11 @@
+[package]
+cargo-install-bin = false
+
+[features]
+hide = [
+    "bin",
+]
+
 [scripts.prep]
 post = [
     "# Broken test because tests.rs is not in crate",
