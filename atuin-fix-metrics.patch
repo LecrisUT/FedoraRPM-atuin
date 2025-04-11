@@ -1,30 +1,68 @@
-Subject: [PATCH] refactor: update metrics deps
-fix(metrics): update macros after update
+Subject: [PATCH] fix(metrics): update macros after update
 ---
+Index: crates/atuin-server-postgres/Cargo.toml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/crates/atuin-server-postgres/Cargo.toml b/crates/atuin-server-postgres/Cargo.toml
+--- a/crates/atuin-server-postgres/Cargo.toml	(revision 84589cab15253300984bfaca1392795c39d137fc)
++++ b/crates/atuin-server-postgres/Cargo.toml	(revision 897ba4389cf5eba0d12b52099853aa0a0a99c091)
+@@ -20,6 +20,6 @@
+ sqlx = { workspace = true }
+ async-trait = { workspace = true }
+ uuid = { workspace = true }
+-metrics = "0.21.1"
++metrics = "0.24"
+ futures-util = "0.3"
+ url = "2.5.2"
+Index: crates/atuin-server-postgres/src/lib.rs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/crates/atuin-server-postgres/src/lib.rs b/crates/atuin-server-postgres/src/lib.rs
+--- a/crates/atuin-server-postgres/src/lib.rs	(revision 84589cab15253300984bfaca1392795c39d137fc)
++++ b/crates/atuin-server-postgres/src/lib.rs	(revision 897ba4389cf5eba0d12b52099853aa0a0a99c091)
+@@ -670,11 +670,11 @@
+         let equal = res == cached_res;
+ 
+         if equal {
+-            counter!("atuin_store_idx_cache_consistent", 1);
++            counter!("atuin_store_idx_cache_consistent").increment(1);
+         } else {
+             // log the values if we have an inconsistent cache
+             tracing::debug!(user = user.username, cache_match = equal, res = ?res, cached = ?cached_res, "record store index request");
+-            counter!("atuin_store_idx_cache_inconsistent", 1);
++            counter!("atuin_store_idx_cache_inconsistent").increment(1);
+         };
+ 
+         for i in res.iter() {
 Index: crates/atuin-server/Cargo.toml
 IDEA additional info:
 Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/crates/atuin-server/Cargo.toml b/crates/atuin-server/Cargo.toml
---- a/crates/atuin-server/Cargo.toml	(revision 24d4d73a2bcbbccf97c2d5b322ad6a6dcc10c2e2)
-+++ b/crates/atuin-server/Cargo.toml	(revision f3c09096c3938e833671f7d263e496aa7217d5cd)
-@@ -35,5 +35,5 @@
- rustls-pemfile = "2.1"
+--- a/crates/atuin-server/Cargo.toml	(revision 84589cab15253300984bfaca1392795c39d137fc)
++++ b/crates/atuin-server/Cargo.toml	(revision 897ba4389cf5eba0d12b52099853aa0a0a99c091)
+@@ -32,6 +32,6 @@
+ rustls = { version = "0.23", features = ["ring"], default-features = false }
  argon2 = "0.5"
  semver = { workspace = true }
 -metrics-exporter-prometheus = "0.12.1"
 -metrics = "0.21.1"
 +metrics-exporter-prometheus = "0.16.0"
 +metrics = "0.24.1"
+ postmark = {version= "0.11", features=["reqwest", "reqwest-rustls-tls"]}
 Index: crates/atuin-server/src/handlers/history.rs
 IDEA additional info:
 Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/crates/atuin-server/src/handlers/history.rs b/crates/atuin-server/src/handlers/history.rs
---- a/crates/atuin-server/src/handlers/history.rs	(revision 24d4d73a2bcbbccf97c2d5b322ad6a6dcc10c2e2)
-+++ b/crates/atuin-server/src/handlers/history.rs	(revision 340ac2100dedfe96a276be8c1eb67df9c94af1ad)
+--- a/crates/atuin-server/src/handlers/history.rs	(revision 84589cab15253300984bfaca1392795c39d137fc)
++++ b/crates/atuin-server/src/handlers/history.rs	(revision 897ba4389cf5eba0d12b52099853aa0a0a99c091)
 @@ -65,7 +65,7 @@
  
      if req.sync_ts.unix_timestamp_nanos() < 0 || req.history_ts.unix_timestamp_nanos() < 0 {
@@ -67,9 +105,9 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/crates/atuin-server/src/handlers/user.rs b/crates/atuin-server/src/handlers/user.rs
---- a/crates/atuin-server/src/handlers/user.rs	(revision 24d4d73a2bcbbccf97c2d5b322ad6a6dcc10c2e2)
-+++ b/crates/atuin-server/src/handlers/user.rs	(revision 340ac2100dedfe96a276be8c1eb67df9c94af1ad)
-@@ -143,7 +143,7 @@
+--- a/crates/atuin-server/src/handlers/user.rs	(revision 84589cab15253300984bfaca1392795c39d137fc)
++++ b/crates/atuin-server/src/handlers/user.rs	(revision 897ba4389cf5eba0d12b52099853aa0a0a99c091)
+@@ -146,7 +146,7 @@
          .await;
      }
  
@@ -78,7 +116,7 @@ diff --git a/crates/atuin-server/src/handlers/user.rs b/crates/atuin-server/src/
  
      match db.add_session(&new_session).await {
          Ok(_) => Ok(Json(RegisterResponse { session: token })),
-@@ -170,7 +170,7 @@
+@@ -173,7 +173,7 @@
              .with_status(StatusCode::INTERNAL_SERVER_ERROR));
      };
  
@@ -93,8 +131,8 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/crates/atuin-server/src/handlers/v0/record.rs b/crates/atuin-server/src/handlers/v0/record.rs
---- a/crates/atuin-server/src/handlers/v0/record.rs	(revision 24d4d73a2bcbbccf97c2d5b322ad6a6dcc10c2e2)
-+++ b/crates/atuin-server/src/handlers/v0/record.rs	(revision 340ac2100dedfe96a276be8c1eb67df9c94af1ad)
+--- a/crates/atuin-server/src/handlers/v0/record.rs	(revision 84589cab15253300984bfaca1392795c39d137fc)
++++ b/crates/atuin-server/src/handlers/v0/record.rs	(revision 897ba4389cf5eba0d12b52099853aa0a0a99c091)
 @@ -25,14 +25,14 @@
          "request to add records"
      );
@@ -127,8 +165,8 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/crates/atuin-server/src/handlers/v0/store.rs b/crates/atuin-server/src/handlers/v0/store.rs
---- a/crates/atuin-server/src/handlers/v0/store.rs	(revision 24d4d73a2bcbbccf97c2d5b322ad6a6dcc10c2e2)
-+++ b/crates/atuin-server/src/handlers/v0/store.rs	(revision 340ac2100dedfe96a276be8c1eb67df9c94af1ad)
+--- a/crates/atuin-server/src/handlers/v0/store.rs	(revision 84589cab15253300984bfaca1392795c39d137fc)
++++ b/crates/atuin-server/src/handlers/v0/store.rs	(revision 897ba4389cf5eba0d12b52099853aa0a0a99c091)
 @@ -24,14 +24,14 @@
      }) = state;
  
@@ -152,9 +190,9 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
 diff --git a/crates/atuin-server/src/metrics.rs b/crates/atuin-server/src/metrics.rs
---- a/crates/atuin-server/src/metrics.rs	(revision 24d4d73a2bcbbccf97c2d5b322ad6a6dcc10c2e2)
-+++ b/crates/atuin-server/src/metrics.rs	(revision 340ac2100dedfe96a276be8c1eb67df9c94af1ad)
-@@ -49,8 +49,8 @@
+--- a/crates/atuin-server/src/metrics.rs	(revision 84589cab15253300984bfaca1392795c39d137fc)
++++ b/crates/atuin-server/src/metrics.rs	(revision 897ba4389cf5eba0d12b52099853aa0a0a99c091)
+@@ -48,8 +48,8 @@
          ("status", status),
      ];
  
