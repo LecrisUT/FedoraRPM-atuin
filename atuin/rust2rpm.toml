@@ -17,6 +17,9 @@ extra-files = [
     "%{zsh_completions_dir}/_atuin",
     "%{_libexecdir}/atuin",
 ]
+license-files.exclude = [
+    "crates/atuin/LICENSE",
+]
 
 summary = "Magical shell history"
 
