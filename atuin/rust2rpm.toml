@@ -62,14 +62,7 @@ prep.post = [
     "# Drop divan. Seems like benchmark-only dependency",
     "tomcli set crates/atuin-history/Cargo.toml del dev-dependencies.divan",
 ]
-check.pre = [
-    "# start a postgres instance for the tests to use",
-    "export PGTESTS_LOCALE=\"C.UTF-8\"",
-    "export PGTESTS_USERS=\"atuin:pass\"",
-    "export PGTESTS_DATABASES=\"atuin:atuin\"",
-    "export PGTESTS_PORT=5432",
-    "%postgresql_tests_run",
-]
+
 build.post = [
     "# Create auxiliary files",
     "mkdir -p other_installs/shell_completion",
@@ -112,6 +105,7 @@ build.post = [
     "fi",
     "EOF",
 ]
+
 install.post = [
     "install -Dpm 0755 target/rpm/atuin -t %{buildroot}%{_bindir}",
     "# Install the auxiliary files",
@@ -126,4 +120,13 @@ install.post = [
     "done",
     "# Profile.d init script for all users",
     "install -Dpm 0755 other_installs/profile.d/atuin.sh %{buildroot}%{_sysconfdir}/profile.d/atuin.sh",
+]
+
+check.pre = [
+    "# start a postgres instance for the tests to use",
+    "export PGTESTS_LOCALE=\"C.UTF-8\"",
+    "export PGTESTS_USERS=\"atuin:pass\"",
+    "export PGTESTS_DATABASES=\"atuin:atuin\"",
+    "export PGTESTS_PORT=5432",
+    "%postgresql_tests_run",
 ]
