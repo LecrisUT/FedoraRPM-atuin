@@ -6,8 +6,8 @@ hide = [
     "bin",
 ]
 
-[scripts.prep]
-post = [
+[scripts]
+prep.post = [
     "# Broken test because tests.rs is not in crate",
     "sed -i '/#\\[cfg(test)\\]/,/mod tests/d' src/file/mod.rs",
     "sed -i '/#\\[cfg(test)\\]/,/mod tests/d' src/compile/mod.rs",

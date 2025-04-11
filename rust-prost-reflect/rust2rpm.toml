@@ -14,8 +14,8 @@ build = [
     "tomcli",
 ]
 
-[scripts.prep]
-post = [
+[scripts]
+prep.post = [
     "cp %{SOURCE2} .",
     "cp %{SOURCE3} .",
     "# Avoid circular dependency with protox",

@@ -3,8 +3,8 @@ build = [
     "tomcli",
 ]
 
-[scripts.prep]
-post = [
+[scripts]
+prep.post = [
     "# Remove dependency on coverage-helper.",
     "tomcli set Cargo.toml del dev-dependencies.coverage-helper",
     "sed -i '/use coverage_helper::test/d' src/*.rs",
