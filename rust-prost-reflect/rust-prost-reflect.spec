@@ -89,7 +89,7 @@ use the "text-format" feature of the "%{crate}" crate.
 %autosetup -n %{crate}-%{version} -p1
 %cargo_prep
 # Relax logos dependency
-tomcli set Cargo.toml str dependencies.logos '>=0.14.0,<0.16'
+tomcli set Cargo.toml str dependencies.logos.version '>=0.14.0,<0.16'
 # Broken test because tests.rs is not in crate
 sed -i '/#\[cfg(test)\]/,/mod tests/d' src/descriptor/mod.rs
 
