@@ -51,13 +51,6 @@ packages:
     downstream_package_name: rust-dlv-list
     upstream_package_name: dlv-list
     actions: *actions-rust2rpm
-  rust-font8x8:
-    # For ratatui
-    paths: [ rust-font8x8 ]
-    specfile_path: rust-font8x8.spec
-    downstream_package_name: rust-font8x8
-    upstream_package_name: font8x8
-    actions: *actions-rust2rpm
   rust-hashlink:
     # For yaml-rust2
     # https://bugzilla.redhat.com/show_bug.cgi?id=2331134

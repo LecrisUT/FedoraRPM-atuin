@@ -224,6 +224,9 @@ use the "widget-calendar" feature of the "%{crate}" crate.
 %prep
 %autosetup -n %{crate}-%{version} -p1
 %cargo_prep
+# Drop unused dependency font8x8.
+# https://github.com/ratatui/ratatui/pull/1777
+tomcli set Cargo.toml del dev-dependencies.font8x8
 # Do not depend on criterion; it is needed only for benchmarks.
 tomcli set Cargo.toml del dev-dependencies.criterion
 # Do not depend on fakeit; it is needed only for benchmarks.
