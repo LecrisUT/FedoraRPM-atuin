@@ -4,11 +4,6 @@ hide = [
     "serde",
 ]
 
-[requires]
-build = [
-    "tomcli",
-]
-
 [scripts]
 prep.post = [
     "# Broken test because tests.rs is not in crate",

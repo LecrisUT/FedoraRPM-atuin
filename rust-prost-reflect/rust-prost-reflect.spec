@@ -14,7 +14,6 @@ URL:            https://crates.io/crates/prost-reflect
 Source:         %{crates_source}
 
 BuildRequires:  cargo-rpm-macros >= 24
-BuildRequires:  tomcli
 
 %global _description %{expand:
 A protobuf library extending prost with reflection support and dynamic
