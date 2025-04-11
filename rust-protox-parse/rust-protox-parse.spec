@@ -6,7 +6,7 @@
 %global crate protox-parse
 
 Name:           rust-protox-parse
-Version:        0.7.0
+Version:        0.8.0
 Release:        %autorelease
 Summary:        Parsing of protobuf source files
 
