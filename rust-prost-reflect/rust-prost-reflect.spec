@@ -49,18 +49,6 @@ use the "default" feature of the "%{crate}" crate.
 %files       -n %{name}+default-devel
 %ghost %{crate_instdir}/Cargo.toml
 
-%package     -n %{name}+derive-devel
-Summary:        %{summary}
-BuildArch:      noarch
-
-%description -n %{name}+derive-devel %{_description}
-
-This package contains library source intended for building other packages which
-use the "derive" feature of the "%{crate}" crate.
-
-%files       -n %{name}+derive-devel
-%ghost %{crate_instdir}/Cargo.toml
-
 %package     -n %{name}+miette-devel
 Summary:        %{summary}
 BuildArch:      noarch
@@ -71,18 +59,6 @@ This package contains library source intended for building other packages which
 use the "miette" feature of the "%{crate}" crate.
 
 %files       -n %{name}+miette-devel
-%ghost %{crate_instdir}/Cargo.toml
-
-%package     -n %{name}+serde-devel
-Summary:        %{summary}
-BuildArch:      noarch
-
-%description -n %{name}+serde-devel %{_description}
-
-This package contains library source intended for building other packages which
-use the "serde" feature of the "%{crate}" crate.
-
-%files       -n %{name}+serde-devel
 %ghost %{crate_instdir}/Cargo.toml
 
 %package     -n %{name}+text-format-devel

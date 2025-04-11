@@ -1,3 +1,9 @@
+[features]
+hide = [
+    "derive",
+    "serde",
+]
+
 [requires]
 build = [
     "tomcli",
