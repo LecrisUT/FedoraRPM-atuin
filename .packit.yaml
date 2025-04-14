@@ -138,6 +138,7 @@ packages:
 
 srpm_build_deps:
   - rust2rpm
+  - rust2rpm-helper
 
 targets:
   - fedora-rawhide
