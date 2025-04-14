@@ -5,16 +5,18 @@
 %global crate prost-reflect
 
 Name:           rust-prost-reflect
-Version:        0.15.0
+Version:        0.15.1
 Release:        %autorelease
 Summary:        Protobuf library extending prost with reflection support and dynamic messages
 
 License:        MIT OR Apache-2.0
 URL:            https://crates.io/crates/prost-reflect
 Source:         %{crates_source}
+# Manually created patch for downstream crate metadata changes
+# * Relax logos dependency
+Patch:          prost-reflect-fix-metadata.diff
 
 BuildRequires:  cargo-rpm-macros >= 24
-BuildRequires:  tomcli
 
 %global _description %{expand:
 A protobuf library extending prost with reflection support and dynamic
@@ -88,8 +90,6 @@ use the "text-format" feature of the "%{crate}" crate.
 %prep
 %autosetup -n %{crate}-%{version} -p1
 %cargo_prep
-# Relax logos dependency
-tomcli set Cargo.toml str dependencies.logos.version '>=0.14.0,<0.16'
 # Broken test because tests.rs is not in crate
 sed -i '/#\[cfg(test)\]/,/mod tests/d' src/descriptor/mod.rs
 

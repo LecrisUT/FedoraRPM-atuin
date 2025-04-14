@@ -3,18 +3,14 @@ cargo-install-bin = false
 license-files.include = [
     ".licenses/*"
 ]
-
-[requires]
-build = [
-    "tomcli",
+cargo-toml-patch-comments = [
+    """
+    Drop libtest-mimic because it is too old
+    (Used in tests/yaml-test-suite.rs)
+    """,
 ]
 
 [scripts]
-prep.post = [
-    "# Drop libtest-mimic because it is too old",
-    "tomcli set Cargo.toml del dev-dependencies.libtest-mimic",
-    "tomcli set Cargo.toml lists delitem --key=path test 'tests/yaml-test-suite.rs'",
-]
 install.post = [
     "install -Dp .licenses/* -t %{buildroot}%{crate_instdir}/.licenses",
 ]

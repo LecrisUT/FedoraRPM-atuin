@@ -12,9 +12,12 @@ Summary:        Semi-doubly linked list implemented using a vector
 License:        MIT OR Apache-2.0
 URL:            https://crates.io/crates/dlv-list
 Source:         %{crates_source}
+# Manually created patch for downstream crate metadata changes
+# * Remove dependency on coverage-helper
+#   https://github.com/sgodwincs/dlv-list-rs/pull/24
+Patch:          dlv-list-fix-metadata.diff
 
 BuildRequires:  cargo-rpm-macros >= 24
-BuildRequires:  tomcli
 
 %global _description %{expand:
 Semi-doubly linked list implemented using a vector.}
@@ -78,7 +81,6 @@ use the "std" feature of the "%{crate}" crate.
 %autosetup -n %{crate}-%{version} -p1
 %cargo_prep
 # Remove dependency on coverage-helper.
-tomcli set Cargo.toml del dev-dependencies.coverage-helper
 sed -i '/use coverage_helper::test/d' src/*.rs
 
 %generate_buildrequires

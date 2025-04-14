@@ -15,9 +15,12 @@ Summary:        Rust implementation of the protobuf compiler
 License:        (MIT OR Apache-2.0) AND BSD-3-Clause
 URL:            https://crates.io/crates/protox
 Source:         %{crates_source}
+# Manually created patch for downstream crate metadata changes
+# * Fix the license metadata
+#   https://github.com/andrewhickman/protox/pull/92
+Patch:          protox-fix-metadata.diff
 
 BuildRequires:  cargo-rpm-macros >= 26
-BuildRequires:  tomcli
 
 %global _description %{expand:
 A rust implementation of the protobuf compiler.}
@@ -60,9 +63,6 @@ use the "default" feature of the "%{crate}" crate.
 # Broken test because tests.rs is not in crate
 sed -i '/#\[cfg(test)\]/,/mod tests/d' src/file/mod.rs
 sed -i '/#\[cfg(test)\]/,/mod tests/d' src/compile/mod.rs
-# Fix the license metadata
-# https://github.com/andrewhickman/protox/pull/92
-tomcli set Cargo.toml str package.license '(MIT OR Apache-2.0) AND BSD-3-Clause'
 
 %generate_buildrequires
 %cargo_generate_buildrequires -f bin

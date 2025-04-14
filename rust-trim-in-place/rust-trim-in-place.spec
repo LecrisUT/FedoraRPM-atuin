@@ -12,9 +12,11 @@ Summary:        In-place trimming strings
 License:        MIT
 URL:            https://crates.io/crates/trim-in-place
 Source:         %{crates_source}
+# Manually created patch for downstream crate metadata changes
+# * Do not depend on bencher; it is needed only for benchmarks.
+Patch:          trim-in-place-fix-metadata.diff
 
 BuildRequires:  cargo-rpm-macros >= 24
-BuildRequires:  tomcli
 
 %global _description %{expand:
 In-place trimming strings.}
@@ -50,8 +52,6 @@ use the "default" feature of the "%{crate}" crate.
 %prep
 %autosetup -n %{crate}-%{version} -p1
 %cargo_prep
-# Drop benchmark only dependency.
-tomcli set Cargo.toml del dev-dependencies.bencher
 
 %generate_buildrequires
 %cargo_generate_buildrequires

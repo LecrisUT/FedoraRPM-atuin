@@ -1,0 +1,48 @@
+--- ratatui-0.29.0/Cargo.toml	1970-01-01T00:00:01+00:00
++++ ratatui-0.29.0/Cargo.toml	2025-04-14T09:00:21.560026+00:00
+@@ -65,12 +65,6 @@
+ bench = false
+ 
+ [[example]]
+-name = "async"
+-path = "examples/async.rs"
+-doc-scrape-examples = true
+-required-features = ["crossterm"]
+-
+-[[example]]
+ name = "barchart"
+ path = "examples/barchart.rs"
+ doc-scrape-examples = true
+@@ -260,12 +254,6 @@
+ required-features = ["crossterm"]
+ 
+ [[example]]
+-name = "table"
+-path = "examples/table.rs"
+-doc-scrape-examples = true
+-required-features = ["crossterm"]
+-
+-[[example]]
+ name = "tabs"
+ path = "examples/tabs.rs"
+ doc-scrape-examples = true
+@@ -423,19 +411,9 @@
+ [dev-dependencies.color-eyre]
+ version = "0.6.2"
+ 
+-[dev-dependencies.criterion]
+-version = "0.5.1"
+-features = ["html_reports"]
+-
+ [dev-dependencies.crossterm]
+ version = "0.28.1"
+ features = ["event-stream"]
+-
+-[dev-dependencies.fakeit]
+-version = "1.1"
+-
+-[dev-dependencies.font8x8]
+-version = "0.3.1"
+ 
+ [dev-dependencies.futures]
+ version = "0.3.30"

@@ -12,9 +12,16 @@ Summary:        Library that's all about cooking up terminal user interfaces
 License:        MIT
 URL:            https://crates.io/crates/ratatui
 Source:         %{crates_source}
+# Manually created patch for downstream crate metadata changes
+# * Drop unused dependency font8x8.
+#   https://github.com/ratatui/ratatui/pull/1777
+# * Do not depend on criterion; it is needed only for benchmarks.
+# * Do not depend on fakeit; it is needed only for benchmarks.
+#   (examples/table.rs is also removed)
+# * Remove octocrab dependency and examples/async.rs
+Patch:          ratatui-fix-metadata.diff
 
 BuildRequires:  cargo-rpm-macros >= 24
-BuildRequires:  tomcli
 
 %global _description %{expand:
 A library that's all about cooking up terminal user interfaces.}
@@ -224,17 +231,6 @@ use the "widget-calendar" feature of the "%{crate}" crate.
 %prep
 %autosetup -n %{crate}-%{version} -p1
 %cargo_prep
-# Drop unused dependency font8x8.
-# https://github.com/ratatui/ratatui/pull/1777
-tomcli set Cargo.toml del dev-dependencies.font8x8
-# Do not depend on criterion; it is needed only for benchmarks.
-tomcli set Cargo.toml del dev-dependencies.criterion
-# Do not depend on fakeit; it is needed only for benchmarks.
-tomcli set Cargo.toml del dev-dependencies.fakeit
-tomcli set Cargo.toml lists delitem --key=path example 'examples/table.rs'
-# Remove octocrab dependency and example
-tomcli set Cargo.toml del dev-dependencies.octocrab
-tomcli set Cargo.toml lists delitem --key=path example 'examples/async.rs'
 # remove executable bits from source files
 find -type f -executable -print -exec chmod -x {} +
 

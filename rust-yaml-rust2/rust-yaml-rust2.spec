@@ -15,9 +15,12 @@ Summary:        Fully YAML 1.2 compliant YAML parser
 License:        MIT OR Apache-2.0
 URL:            https://crates.io/crates/yaml-rust2
 Source:         %{crates_source}
+# Manually created patch for downstream crate metadata changes
+# * Drop libtest-mimic because it is too old
+#   (Used in tests/yaml-test-suite.rs)
+Patch:          yaml-rust2-fix-metadata.diff
 
 BuildRequires:  cargo-rpm-macros >= 26
-BuildRequires:  tomcli
 
 %global _description %{expand:
 A fully YAML 1.2 compliant YAML parser.}
@@ -82,9 +85,6 @@ use the "encoding" feature of the "%{crate}" crate.
 %prep
 %autosetup -n %{crate}-%{version} -p1
 %cargo_prep
-# Drop libtest-mimic because it is too old
-tomcli set Cargo.toml del dev-dependencies.libtest-mimic
-tomcli set Cargo.toml lists delitem --key=path test 'tests/yaml-test-suite.rs'
 
 %generate_buildrequires
 %cargo_generate_buildrequires

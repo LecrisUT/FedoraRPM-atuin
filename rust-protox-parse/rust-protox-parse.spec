@@ -12,9 +12,11 @@ Summary:        Parsing of protobuf source files
 License:        MIT OR Apache-2.0
 URL:            https://crates.io/crates/protox-parse
 Source:         %{crates_source}
+# Manually created patch for downstream crate metadata changes
+# * Relax logos dependency
+Patch:          protox-parse-fix-metadata.diff
 
 BuildRequires:  cargo-rpm-macros >= 24
-BuildRequires:  tomcli
 
 %global _description %{expand:
 Parsing of protobuf source files.}
@@ -51,8 +53,6 @@ use the "default" feature of the "%{crate}" crate.
 %prep
 %autosetup -n %{crate}-%{version} -p1
 %cargo_prep
-# Relax logos dependency
-tomcli set Cargo.toml str dependencies.logos '>=0.14.0,<0.16'
 # Broken test because tests.rs is not in crate
 sed -i '/#\[cfg(test)\]/,/mod tests/d' src/lex/mod.rs
 sed -i '/#\[cfg(test)\]/,/mod tests/d' src/lib.rs

@@ -12,9 +12,12 @@ Summary:        Insertion ordered multimap
 License:        MIT
 URL:            https://crates.io/crates/ordered-multimap
 Source:         %{crates_source}
+# Manually created patch for downstream crate metadata changes
+# * Remove dependency on coverage-helper
+#   https://github.com/sgodwincs/ordered-multimap-rs/pull/35
+Patch:          ordered-multimap-fix-metadata.diff
 
 BuildRequires:  cargo-rpm-macros >= 24
-BuildRequires:  tomcli
 
 %global _description %{expand:
 Insertion ordered multimap.}
@@ -77,7 +80,6 @@ use the "std" feature of the "%{crate}" crate.
 %autosetup -n %{crate}-%{version} -p1
 %cargo_prep
 # Remove dependency on coverage-helper.
-tomcli set Cargo.toml del dev-dependencies.coverage-helper
 sed -i '/use coverage_helper::test/d' src/*.rs
 
 %generate_buildrequires
