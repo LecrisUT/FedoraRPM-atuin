@@ -5,7 +5,7 @@
 %global crate prost-reflect
 
 Name:           rust-prost-reflect
-Version:        0.15.1
+Version:        0.15.2
 Release:        %autorelease
 Summary:        Protobuf library extending prost with reflection support and dynamic messages
 
@@ -38,6 +38,7 @@ use the "%{crate}" crate.
 %license %{crate_instdir}/LICENSE-MIT
 %doc %{crate_instdir}/README.md
 %{crate_instdir}/
+%exclude %{crate_instdir}/src/file_descriptor_set.bin
 
 %package     -n %{name}+default-devel
 Summary:        %{summary}
@@ -90,8 +91,6 @@ use the "text-format" feature of the "%{crate}" crate.
 %prep
 %autosetup -n %{crate}-%{version} -p1
 %cargo_prep
-# Broken test because tests.rs is not in crate
-sed -i '/#\[cfg(test)\]/,/mod tests/d' src/descriptor/mod.rs
 
 %generate_buildrequires
 %cargo_generate_buildrequires
@@ -104,23 +103,7 @@ sed -i '/#\[cfg(test)\]/,/mod tests/d' src/descriptor/mod.rs
 
 %if %{with check}
 %check
-# * - Almost all tests are skipped because they require file_descriptor_set.bin
-#   which is not included.
-# * - dynamic::type_sizes This test uses std::mem::size_of which is inconsistent
-#   on i686
-%{cargo_test -- -- %{shrink:
-    --skip dynamic::DynamicMessage::decode
-    --skip dynamic::DynamicMessage::fmt
-    --skip dynamic::DynamicMessage::has_field
-    --skip dynamic::DynamicMessage::try_set_field
-    --skip dynamic::DynamicMessage::try_set_field_by_name
-    --skip dynamic::DynamicMessage::try_set_field_by_number
-    --skip dynamic::unknown::UnknownField::decode
-    --skip dynamic::unknown::UnknownField::decode_value
-    --skip dynamic::unknown::UnknownField::fmt
-    --skip src/lib.rs
-    --skip dynamic::type_sizes
-}}
+%cargo_test
 %endif
 
 %changelog

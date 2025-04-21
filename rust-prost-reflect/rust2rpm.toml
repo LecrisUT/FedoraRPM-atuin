@@ -7,28 +7,7 @@ hide = [
 cargo-toml-patch-comments = [
     "Relax logos dependency",
 ]
-
-[scripts]
-prep.post = [
-    "# Broken test because tests.rs is not in crate",
-    "sed -i '/#\\[cfg(test)\\]/,/mod tests/d' src/descriptor/mod.rs",
-]
-
-[tests]
-skip = [
-    "dynamic::DynamicMessage::decode",
-    "dynamic::DynamicMessage::fmt",
-    "dynamic::DynamicMessage::has_field",
-    "dynamic::DynamicMessage::try_set_field",
-    "dynamic::DynamicMessage::try_set_field_by_name",
-    "dynamic::DynamicMessage::try_set_field_by_number",
-    "dynamic::unknown::UnknownField::decode",
-    "dynamic::unknown::UnknownField::decode_value",
-    "dynamic::unknown::UnknownField::fmt",
-    "src/lib.rs",
-    "dynamic::type_sizes",
-]
-comments = [
-    "- Almost all tests are skipped because they require file_descriptor_set.bin which is not included.",
-    "- dynamic::type_sizes This test uses std::mem::size_of which is inconsistent on i686",
+exclude-crate-files = [
+    # This file is for tests only
+    "src/file_descriptor_set.bin",
 ]
