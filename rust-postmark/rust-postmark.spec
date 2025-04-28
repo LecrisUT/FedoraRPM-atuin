@@ -7,7 +7,7 @@
 Name:           rust-postmark
 Version:        0.10.2
 Release:        %autorelease
-Summary:        Rust client
+Summary:        Postmark rust client
 
 # Upstream license specification: MIT/Apache-2.0
 License:        MIT OR Apache-2.0
@@ -17,7 +17,7 @@ Source:         %{crates_source}
 BuildRequires:  cargo-rpm-macros >= 24
 
 %global _description %{expand:
-Postmark rust client.}
+A rust library to query Postmark API.}
 
 %description %{_description}
 

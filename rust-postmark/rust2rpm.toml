@@ -1,2 +1,6 @@
 [features]
 enable-all = true
+
+[package]
+summary = "Postmark rust client"
+description = "A rust library to query Postmark API."
