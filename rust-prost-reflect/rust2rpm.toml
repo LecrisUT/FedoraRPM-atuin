@@ -11,6 +11,6 @@ exclude-crate-files = [
     # These files are for tests and docs only
     "src/file_descriptor_set.bin",
     "src/doctest.proto",
-    "doc",
+    "doc/*.bin",
     "tests",
 ]

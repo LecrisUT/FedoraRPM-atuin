@@ -40,7 +40,7 @@ use the "%{crate}" crate.
 %{crate_instdir}/
 %exclude %{crate_instdir}/src/file_descriptor_set.bin
 %exclude %{crate_instdir}/src/doctest.proto
-%exclude %{crate_instdir}/doc
+%exclude %{crate_instdir}/doc/*.bin
 %exclude %{crate_instdir}/tests
 
 %package     -n %{name}+default-devel
