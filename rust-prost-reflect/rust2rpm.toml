@@ -8,6 +8,9 @@ cargo-toml-patch-comments = [
     "Relax logos dependency",
 ]
 exclude-crate-files = [
-    # This file is for tests only
+    # These files are for tests and docs only
     "src/file_descriptor_set.bin",
+    "src/doctest.proto",
+    "doc",
+    "tests",
 ]

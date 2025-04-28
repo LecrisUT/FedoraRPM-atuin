@@ -39,6 +39,9 @@ use the "%{crate}" crate.
 %doc %{crate_instdir}/README.md
 %{crate_instdir}/
 %exclude %{crate_instdir}/src/file_descriptor_set.bin
+%exclude %{crate_instdir}/src/doctest.proto
+%exclude %{crate_instdir}/doc
+%exclude %{crate_instdir}/tests
 
 %package     -n %{name}+default-devel
 Summary:        %{summary}
