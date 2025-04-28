@@ -1,0 +1,8 @@
+[package]
+cargo-toml-patch-comments = [
+  "Bump rust-ini to 0.18",
+]
+
+[tests]
+run = ["none"]
+comments = ["Tests are missing artifacts, and stil fail even with those"]

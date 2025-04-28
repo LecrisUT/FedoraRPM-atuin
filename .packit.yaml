@@ -62,6 +62,72 @@ packages:
     downstream_package_name: rust-yaml-rust2
     upstream_package_name: yaml-rust2
     actions: *actions-rust2rpm-with-patch
+  fido-device-onboard:
+    # Uses rust-config
+    paths: [ fido-device-onboard ]
+    specfile_path: fido-device-onboard.spec
+    downstream_package_name: fido-device-onboard
+    actions: *actions-use-spec
+  keylime-agent-rust:
+    # Uses rust-config
+    paths: [ keylime-agent-rust ]
+    specfile_path: keylime-agent-rust.spec
+    downstream_package_name: keylime-agent-rust
+    actions: *actions-use-spec
+  rust-binfmt-dispatcher:
+    # Uses rust-config
+    paths: [ rust-binfmt-dispatcher ]
+    specfile_path: rust-binfmt-dispatcher.spec
+    downstream_package_name: rust-binfmt-dispatcher
+    actions: *actions-use-spec
+  rust-erdtree:
+    # Uses rust-config
+    paths: [ rust-erdtree ]
+    specfile_path: rust-erdtree.spec
+    downstream_package_name: rust-erdtree
+    actions: *actions-use-spec
+  rust-asahi-btsync:
+    # Uses rust-rust-ini
+    paths: [ rust-asahi-btsync ]
+    specfile_path: rust-asahi-btsync.spec
+    downstream_package_name: rust-asahi-btsync
+    actions: *actions-use-spec
+  rust-asahi-wifisync:
+    # Uses rust-rust-ini
+    paths: [ rust-asahi-wifisync ]
+    specfile_path: rust-asahi-wifisync.spec
+    downstream_package_name: rust-asahi-wifisync
+    actions: *actions-use-spec
+  rust-linicon-theme:
+    # Uses rust-rust-ini
+    paths: [ rust-linicon-theme ]
+    specfile_path: rust-linicon-theme.spec
+    downstream_package_name: rust-linicon-theme
+    actions: *actions-use-spec
+  rust-prefixdevname:
+    # Uses rust-rust-ini
+    paths: [ rust-prefixdevname ]
+    specfile_path: rust-prefixdevname.spec
+    downstream_package_name: rust-prefixdevname
+    actions: *actions-use-spec
+  rust-uu_env:
+    # Uses rust-rust-ini
+    paths: [ rust-uu_env ]
+    specfile_path: rust-uu_env.spec
+    downstream_package_name: rust-uu_env
+    actions: *actions-use-spec
+  rust-zram-generator:
+    # Uses rust-rust-ini
+    paths: [ rust-zram-generator ]
+    specfile_path: rust-zram-generator.spec
+    downstream_package_name: rust-zram-generator
+    actions: *actions-use-spec
+  tuigreet:
+    # Uses rust-rust-ini
+    paths: [ tuigreet ]
+    specfile_path: tuigreet.spec
+    downstream_package_name: tuigreet
+    actions: *actions-use-spec
 
 srpm_build_deps:
   - rust2rpm

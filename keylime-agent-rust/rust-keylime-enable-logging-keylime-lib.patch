@@ -1,0 +1,29 @@
+From 43db7bdf66a11658614be63f06d74e379a18e0d8 Mon Sep 17 00:00:00 2001
+From: Anderson Toshiyuki Sasaki <ansasaki@redhat.com>
+Date: Tue, 21 Jan 2025 15:31:00 +0100
+Subject: [PATCH] dist: Enable logging for keylime library in the service
+
+Set the logging level as INFO for the keylime library in the systemd
+service file.
+
+Some of the messages were moved from main to the library and would not
+be logged without this setting.
+
+Signed-off-by: Anderson Toshiyuki Sasaki <ansasaki@redhat.com>
+---
+ dist/systemd/system/keylime_agent.service | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/dist/systemd/system/keylime_agent.service b/dist/systemd/system/keylime_agent.service
+index c5df621d..7ec1a7a1 100644
+--- a/dist/systemd/system/keylime_agent.service
++++ b/dist/systemd/system/keylime_agent.service
+@@ -17,7 +17,7 @@ ExecStart=/usr/bin/keylime_agent
+ TimeoutSec=60s
+ Restart=on-failure
+ RestartSec=120s
+-Environment="RUST_LOG=keylime_agent=info"
++Environment="RUST_LOG=keylime_agent=info,keylime=info"
+ # If using swtpm with tpm2-abrmd service, uncomment the line below to set TCTI
+ # variable on the service environment
+ #Environment="TCTI=tabrmd:"

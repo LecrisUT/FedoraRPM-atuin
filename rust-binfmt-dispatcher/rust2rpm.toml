@@ -1,0 +1,38 @@
+[package]
+description = "binfmt-dispatcher is a simple dispatcher for binfmt_misc that dynamically picks the best interpreter to use at runtime."
+extra-files = [
+  "%doc docs/binfmt-dispatcher.toml.example",
+  "%dir %{_prefix}/lib/binfmt-dispatcher.d/",
+  "%ifnarch %{ix86} %{x86_64}",
+  "%{_binfmtdir}/zz-binfmt-dispatcher-*.conf",
+  "%{_prefix}/lib/binfmt-dispatcher.d/*.toml",
+  "%endif",
+  "%{_datadir}/polkit-1/actions/org.AsahiLinux.binfmt_dispatcher.policy",
+  "%config(noreplace) %ghost %{_sysconfdir}/binfmt-dispatcher.toml",
+]
+
+[requires]
+build = [
+  "make",
+  "systemd-rpm-macros",
+]
+bin = [
+  "polkit",
+  "systemd",
+]
+
+[scripts]
+install.post = [
+  "make install-data DESTDIR=\"%{buildroot}\"",
+  "install -Ddpm0755 %{buildroot}%{_prefix}/lib/binfmt-dispatcher.d",
+  "%ifarch %{ix86} %{x86_64}",
+  # Do not install any default config on x86
+  "rm %{buildroot}%{_binfmtdir}/binfmt-dispatcher-*.conf",
+  "rm %{buildroot}%{_sysconfdir}/binfmt-dispatcher.toml",
+  "%else",
+  # Prefix zz- to the binfmt.d configs to ensure they take precendence.
+  "for f in %{buildroot}%{_binfmtdir}/binfmt-dispatcher-*.conf; do mv \"$f\" \"$(dirname \"$f\")/zz-$(basename \"$f\")\"; done",
+  # Relocate the default config to /usr
+  "mv %{buildroot}%{_sysconfdir}/binfmt-dispatcher.toml %{buildroot}%{_prefix}/lib/binfmt-dispatcher.d/00-default.toml",
+  "%endif",
+]
