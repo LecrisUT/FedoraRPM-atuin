@@ -1,7 +1,7 @@
 _:
   - &trigger
     trigger: commit
-    branch: main
+    branch: epel
   - &actions-use-spec
     fix-spec-file: []
     create-archive:
@@ -76,12 +76,13 @@ srpm_build_deps:
   - rust2rpm-helper
 
 targets:
-  - fedora-rawhide
+  - centos-stream+epel-next-9
+  - epel10
 
 jobs:
   - job: copr_build
     owner: lecris
-    project: atuin
+    project: atuin-epel
     <<: *trigger
   - job: tests
     <<: *trigger
