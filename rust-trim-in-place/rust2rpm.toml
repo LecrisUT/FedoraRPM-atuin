@@ -1,4 +1,0 @@
-[package]
-cargo-toml-patch-comments = [
-    "Do not depend on bencher; it is needed only for benchmarks.",
-]

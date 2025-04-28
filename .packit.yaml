@@ -21,13 +21,6 @@ packages:
     downstream_package_name: atuin
     upstream_package_name: atuin
     actions: *actions-use-spec
-  rust-arraydeque:
-    # For yaml-rust2
-    paths: [ rust-arraydeque ]
-    specfile_path: rust-arraydeque.spec
-    downstream_package_name: rust-arraydeque
-    upstream_package_name: axum-arraydeque
-    actions: *actions-rust2rpm
   rust-axum-server:
     # For atuin
     paths: [ rust-axum-server ]
@@ -58,13 +51,6 @@ packages:
     specfile_path: rust-hashlink.spec
     downstream_package_name: rust-hashlink
     upstream_package_name: hashlink
-    actions: *actions-rust2rpm
-  rust-httptest:
-    # For postmark
-    paths: [ rust-httptest ]
-    specfile_path: rust-httptest.spec
-    downstream_package_name: rust-httptest
-    upstream_package_name: httptest
     actions: *actions-rust2rpm
   rust-ordered-multimap:
     # For rust-ini
@@ -121,13 +107,6 @@ packages:
     downstream_package_name: rust-rust-ini
     upstream_package_name: rust-ini
     actions: *actions-rust2rpm
-  rust-trim-in-place:
-    # For rust-ini
-    paths: [ rust-trim-in-place ]
-    specfile_path: rust-trim-in-place.spec
-    downstream_package_name: rust-trim-in-place
-    upstream_package_name: trim-in-place
-    actions: *actions-rust2rpm-with-patch
   rust-yaml-rust2:
     # For rust-config
     paths: [ rust-yaml-rust2 ]
