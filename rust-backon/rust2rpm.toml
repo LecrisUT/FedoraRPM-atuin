@@ -1,0 +1,12 @@
+[package]
+cargo-toml-patch-comments = [
+    "drop WASM-specific features",
+    "relax spin dependency to allow building with both 0.9 and 0.10",
+]
+
+[features]
+hide = [
+    "embassy-sleep",
+    "embassy-time",
+]
+

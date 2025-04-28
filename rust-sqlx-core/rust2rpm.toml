@@ -1,0 +1,11 @@
+[features]
+hide = [
+    "_tls-rustls-aws-lc-rs",
+]
+
+[tests]
+comments = [
+    "resolve dependency loop with sqlx",
+]
+run = ["none"]
+

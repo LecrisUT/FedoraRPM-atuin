@@ -1,0 +1,23 @@
+[features]
+enable-all = true
+
+[scripts.prep]
+post = [
+    "# Remove dev-dependency on sqlx. It is used only for doctests",
+    "# https://github.com/launchbadge/sqlx/commit/71f72e2620a7e7b628f8abe0a07978ad155357d9",
+    "tomcli set Cargo.toml del dev-dependencies.sqlx",
+]
+
+[requires]
+build = [
+    "tomcli",
+]
+
+[tests]
+skip = [
+    "options::MySqlConnectOptions",
+]
+comments = [
+    "Skip tests that require main sqlx package"
+]
+

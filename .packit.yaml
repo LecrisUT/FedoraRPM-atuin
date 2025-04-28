@@ -1,6 +1,6 @@
 _:
   - &actions-use-spec
-    fix-spec-file: []
+    fix-spec-file: [ ]
     create-archive:
       - sh -c 'echo ${PACKIT_DOWNSTREAM_PACKAGE_NAME}.spec'
     get-current-version:
@@ -15,105 +15,53 @@ _:
       - sh -c 'rust2rpm -r @${PACKIT_PROJECT_VERSION}'
 
 packages:
+  # Main packages
+  rust-sqlx:
+    paths: [ rust-sqlx ]
+    specfile_path: rust-sqlx.spec
+    downstream_package_name: rust-sqlx
+    actions: *actions-rust2rpm
+  rust-sqlx-core:
+    paths: [ rust-sqlx-core ]
+    specfile_path: rust-sqlx-core.spec
+    downstream_package_name: rust-sqlx-core
+    actions: *actions-rust2rpm
+  rust-sqlx-macros:
+    paths: [ rust-sqlx-macros ]
+    specfile_path: rust-sqlx-macros.spec
+    downstream_package_name: rust-sqlx-macros
+    actions: *actions-rust2rpm
+  rust-sqlx-macros-core:
+    paths: [ rust-sqlx-macros-core ]
+    specfile_path: rust-sqlx-macros-core.spec
+    downstream_package_name: rust-sqlx-macros-core
+    actions: *actions-rust2rpm
+  rust-sqlx-mysql:
+    paths: [ rust-sqlx-mysql ]
+    specfile_path: rust-sqlx-mysql.spec
+    downstream_package_name: rust-sqlx-mysql
+    actions: *actions-rust2rpm
+  rust-sqlx-postgres:
+    paths: [ rust-sqlx-postgres ]
+    specfile_path: rust-sqlx-postgres.spec
+    downstream_package_name: rust-sqlx-postgres
+    actions: *actions-rust2rpm
+  rust-sqlx-sqlite:
+    paths: [ rust-sqlx-sqlite ]
+    specfile_path: rust-sqlx-sqlite.spec
+    downstream_package_name: rust-sqlx-sqlite
+    actions: *actions-rust2rpm
+  # Dependencies
   atuin:
     paths: [ atuin ]
     specfile_path: atuin.spec
     downstream_package_name: atuin
-    upstream_package_name: atuin
     actions: *actions-use-spec
-  rust-axum-server:
-    # For atuin
-    paths: [ rust-axum-server ]
-    specfile_path: rust-axum-server.spec
-    downstream_package_name: rust-axum-server
-    upstream_package_name: axum-server
-    actions: *actions-rust2rpm
-  rust-config:
-    # For atuin
-    # https://bugzilla.redhat.com/show_bug.cgi?id=2262210
-    paths: [ rust-config ]
-    specfile_path: rust-config.spec
-    downstream_package_name: rust-config
-    upstream_package_name: config
-    actions: *actions-rust2rpm-with-patch
-  rust-dlv-list:
-    # For ordered-multimap
-    # https://bugzilla.redhat.com/show_bug.cgi?id=1989392
-    paths: [ rust-dlv-list ]
-    specfile_path: rust-dlv-list.spec
-    downstream_package_name: rust-dlv-list
-    upstream_package_name: dlv-list
-    actions: *actions-rust2rpm-with-patch
-  rust-hashlink:
-    # For yaml-rust2
-    # https://bugzilla.redhat.com/show_bug.cgi?id=2331134
-    paths: [ rust-hashlink ]
-    specfile_path: rust-hashlink.spec
-    downstream_package_name: rust-hashlink
-    upstream_package_name: hashlink
-    actions: *actions-rust2rpm
-  rust-ordered-multimap:
-    # For rust-ini
-    # https://bugzilla.redhat.com/show_bug.cgi?id=1976416
-    paths: [ rust-ordered-multimap ]
-    specfile_path: rust-ordered-multimap.spec
-    downstream_package_name: rust-ordered-multimap
-    upstream_package_name: ordered-multimap
-    actions: *actions-rust2rpm-with-patch
-  rust-postmark:
-    # For atuin
-    paths: [ rust-postmark ]
-    specfile_path: rust-postmark.spec
-    downstream_package_name: rust-postmark
-    upstream_package_name: postmark
-    actions: *actions-rust2rpm
-  rust-prost-reflect:
-    # For protox
-    paths: [ rust-prost-reflect ]
-    specfile_path: rust-prost-reflect.spec
-    downstream_package_name: rust-prost-reflect
-    upstream_package_name: prost-reflect
-    actions: *actions-rust2rpm-with-patch
-  rust-protox:
-    # For atuin
-    paths: [ rust-protox ]
-    specfile_path: rust-protox.spec
-    downstream_package_name: rust-protox
-    upstream_package_name: protox
-    # Need to edit the license metadata and note the bundling
-    # https://github.com/andrewhickman/protox/pull/92
-    # https://github.com/andrewhickman/protox/issues/93
+  rust-backon:
+    paths: [ rust-backon ]
+    specfile_path: rust-backon.spec
+    downstream_package_name: rust-backon
     actions: *actions-use-spec
-  rust-protox-parse:
-    # For protox
-    paths: [ rust-protox-parse ]
-    specfile_path: rust-protox-parse.spec
-    downstream_package_name: rust-protox-parse
-    upstream_package_name: protox-parse
-    actions: *actions-rust2rpm-with-patch
-  rust-ratatui:
-    # For atuin
-    # https://bugzilla.redhat.com/show_bug.cgi?id=2320186
-    paths: [ rust-ratatui ]
-    specfile_path: rust-ratatui.spec
-    downstream_package_name: rust-ratatui
-    upstream_package_name: ratatui
-    actions: *actions-rust2rpm-with-patch
-  rust-rust-ini:
-    # For rust-config
-    # https://bugzilla.redhat.com/show_bug.cgi?id=2193253
-    paths: [ rust-rust-ini ]
-    specfile_path: rust-rust-ini.spec
-    downstream_package_name: rust-rust-ini
-    upstream_package_name: rust-ini
-    actions: *actions-rust2rpm
-  rust-yaml-rust2:
-    # For rust-config
-    paths: [ rust-yaml-rust2 ]
-    specfile_path: rust-yaml-rust2.spec
-    downstream_package_name: rust-yaml-rust2
-    upstream_package_name: yaml-rust2
-    actions: *actions-rust2rpm-with-patch
 
 srpm_build_deps:
   - rust2rpm
@@ -125,5 +73,6 @@ targets:
 jobs:
   - job: copr_build
     trigger: commit
+    branch: impact-check/sqlx
     owner: lecris
-    project: atuin
+    project: rust-sqlx

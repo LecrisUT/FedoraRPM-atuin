@@ -1,4 +1,0 @@
-[package]
-exclude-crate-files = [
-    "examples/self-signed-certs/"
-]

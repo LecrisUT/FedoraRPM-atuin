@@ -10,15 +10,12 @@ enable-all = true
 
 [package]
 url = "https://atuin.sh"
-source-url = "https://github.com/atuinsh/atuin/archive/refs/tags/%{version}.tar.gz"
+source-url = "https://github.com/atuinsh/atuin/archive/refs/tags/v%{version}.tar.gz"
 extra-files = [
     "%{bash_completions_dir}/atuin.bash",
     "%{fish_completions_dir}/atuin.fish",
     "%{zsh_completions_dir}/_atuin",
     "%{_libexecdir}/atuin",
-]
-license-files.exclude = [
-    "crates/atuin/LICENSE",
 ]
 
 summary = "Magical shell history"
@@ -29,6 +26,22 @@ additional context for your commands. Additionally, it provides optional and
 fully encrypted synchronization of your history between machines, via an Atuin
 server.
 """
+
+[[package.extra-patches]]
+comments = [
+    "Switch cli-clipboard for arboard",
+    "Cherry-picked from https://github.com/atuinsh/atuin/pull/2067",
+]
+file = "atuin-drop-cli-clipboard.patch"
+number = 10
+
+[[package.extra-patches]]
+comments = [
+    "Update tonic and prost dependencies",
+    "Cherry-picked from https://github.com/atuinsh/atuin/pull/2250 and https://github.com/atuinsh/atuin/pull/2251",
+]
+file = "atuin-bump-tonic.patch"
+number = 11
 
 [[package.extra-patches]]
 comments = [
@@ -46,7 +59,18 @@ comments = [
 file = "atuin-Update-tiny-bip39.patch"
 number = 13
 
+[[package.extra-patches]]
+comments = [
+    "Update tracing-tree to 0.4.0",
+    "Cherry-picked https://github.com/atuinsh/atuin/pull/2259",
+]
+file = "atuin-update-tracing-tree.patch"
+number = 14
+
 [requires]
+build = [
+    "protobuf-devel",
+]
 # TODO: make it a requires when it is packaged
 #bin = [
 #    "bash-preexec",
@@ -54,20 +78,19 @@ number = 13
 test = [
     "postgresql-test-rpm-macros",
 ]
-build = [
-    "tomcli",
+
+[scripts.check]
+pre = [
+    "# start a postgres instance for the tests to use",
+    "export PGTESTS_LOCALE=\"C.UTF-8\"",
+    "export PGTESTS_USERS=\"atuin:pass\"",
+    "export PGTESTS_DATABASES=\"atuin:atuin\"",
+    "export PGTESTS_PORT=5432",
+    "%postgresql_tests_run",
 ]
+
 
 [scripts]
-prep.post = [
-    "# Relax minijinja requirement",
-    "tomcli set Cargo.toml str workspace.dependencies.minijinja '2.8.0'",
-    "# Update protox dependency",
-    "tomcli set crates/atuin-daemon/Cargo.toml str build-dependencies.protox '0.8.0'",
-    "# Drop divan. Seems like benchmark-only dependency",
-    "tomcli set crates/atuin-history/Cargo.toml del dev-dependencies.divan",
-]
-
 build.post = [
     "# Create auxiliary files",
     "mkdir -p other_installs/shell_completion",
@@ -110,7 +133,6 @@ build.post = [
     "fi",
     "EOF",
 ]
-
 install.post = [
     "install -Dpm 0755 target/rpm/atuin -t %{buildroot}%{_bindir}",
     "# Install the auxiliary files",
@@ -125,13 +147,4 @@ install.post = [
     "done",
     "# Profile.d init script for all users",
     "install -Dpm 0755 other_installs/profile.d/atuin.sh %{buildroot}%{_sysconfdir}/profile.d/atuin.sh",
-]
-
-check.pre = [
-    "# start a postgres instance for the tests to use",
-    "export PGTESTS_LOCALE=\"C.UTF-8\"",
-    "export PGTESTS_USERS=\"atuin:pass\"",
-    "export PGTESTS_DATABASES=\"atuin:atuin\"",
-    "export PGTESTS_PORT=5432",
-    "%postgresql_tests_run",
 ]

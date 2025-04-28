@@ -1,0 +1,9 @@
+[features]
+enable-all = true
+
+[tests]
+comments = [
+    "prevent circular dependency",
+]
+run = ["none"]
+
