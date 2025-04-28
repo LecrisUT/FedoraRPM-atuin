@@ -42,7 +42,7 @@ packages:
     specfile_path: rust-config.spec
     downstream_package_name: rust-config
     upstream_package_name: config
-    actions: *actions-rust2rpm
+    actions: *actions-rust2rpm-with-patch
   rust-dlv-list:
     # For ordered-multimap
     # https://bugzilla.redhat.com/show_bug.cgi?id=1989392

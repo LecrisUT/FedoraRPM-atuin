@@ -13,6 +13,10 @@ Summary:        Layered configuration system for Rust applications
 License:        MIT OR Apache-2.0
 URL:            https://crates.io/crates/config
 Source:         %{crates_source}
+# Manually created patch for downstream crate metadata changes
+# * Relax ron dependency. Proper update is still worked on.
+#   https://github.com/rust-cli/config-rs/pull/476
+Patch:          config-fix-metadata.diff
 
 BuildRequires:  cargo-rpm-macros >= 24
 
