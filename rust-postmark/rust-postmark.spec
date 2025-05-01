@@ -5,11 +5,10 @@
 %global crate postmark
 
 Name:           rust-postmark
-Version:        0.10.2
+Version:        0.11.3
 Release:        %autorelease
 Summary:        Postmark rust client
 
-# Upstream license specification: MIT/Apache-2.0
 License:        MIT OR Apache-2.0
 URL:            https://crates.io/crates/postmark
 Source:         %{crates_source}
@@ -31,7 +30,8 @@ This package contains library source intended for building other packages which
 use the "%{crate}" crate.
 
 %files          devel
-%license %{crate_instdir}/LICENSE
+%license %{crate_instdir}/LICENSE-APACHE
+%license %{crate_instdir}/LICENSE-MIT
 %doc %{crate_instdir}/CHANGELOG.md
 %doc %{crate_instdir}/README.md
 %{crate_instdir}/

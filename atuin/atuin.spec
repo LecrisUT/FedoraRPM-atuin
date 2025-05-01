@@ -46,6 +46,9 @@ Patch12:        atuin-fix-metrics.patch
 # * Update tiny-bip39 to 2.0.0
 # * Cherry-picked https://github.com/atuinsh/atuin/pull/2643
 Patch13:        atuin-Update-tiny-bip39.patch
+# * Update postmark to 0.11
+# * Cherry-picked https://github.com/atuinsh/atuin/pull/2730
+Patch14:        atuin-Update-postmark.patch
 
 BuildRequires:  cargo-rpm-macros >= 24
 BuildRequires:  tomcli
