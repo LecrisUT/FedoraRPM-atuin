@@ -2,3 +2,4 @@
 *.tar.gz
 *.crate
 atuin-*/
+!/rust-prefixdevname/prefixdevname-0.2.0-vendor.tar.gz
