@@ -1,0 +1,8 @@
+--- asahi-btsync-0.2.4/Cargo.toml	1970-01-01T00:00:01+00:00
++++ asahi-btsync-0.2.4/Cargo.toml	2025-05-01T13:55:04.076081+00:00
+@@ -42,4 +42,4 @@
+ version = "1.11.1"
+ 
+ [dependencies.rust-ini]
+-version = "0.18.0"
++version = "0.21.0"

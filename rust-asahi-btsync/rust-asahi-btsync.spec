@@ -11,6 +11,8 @@ Summary:        Tool to sync Bluetooth pairing keys with macos on ARM Macs
 License:        MIT
 URL:            https://crates.io/crates/asahi-btsync
 Source:         %{crates_source}
+# Manually created patch for downstream crate metadata changes
+Patch:          asahi-btsync-fix-metadata.diff
 
 BuildRequires:  cargo-rpm-macros >= 24
 BuildRequires:  systemd-rpm-macros

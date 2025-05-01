@@ -1,0 +1,11 @@
+--- zram-generator-1.2.1/Cargo.toml	1970-01-01T00:00:01+00:00
++++ zram-generator-1.2.1/Cargo.toml	2025-05-01T14:51:35.542471+00:00
+@@ -75,7 +75,7 @@
+ features = ["std"]
+ 
+ [dependencies.rust-ini]
+-version = ">=0.15, <0.19"
++version = "0.21"
+ 
+ [dev-dependencies.ctor]
+ version = "0.2"

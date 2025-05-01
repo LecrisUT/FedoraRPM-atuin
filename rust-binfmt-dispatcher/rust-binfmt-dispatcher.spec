@@ -11,6 +11,10 @@ Summary:        Smart dispatcher for binfmt_misc
 License:        MIT
 URL:            https://crates.io/crates/binfmt-dispatcher
 Source:         %{crates_source}
+# Manually created patch for downstream crate metadata changes
+# * Update config to 0.15
+#   https://github.com/AsahiLinux/binfmt-dispatcher/pull/8
+Patch:          binfmt-dispatcher-fix-metadata.diff
 
 BuildRequires:  cargo-rpm-macros >= 24
 BuildRequires:  make

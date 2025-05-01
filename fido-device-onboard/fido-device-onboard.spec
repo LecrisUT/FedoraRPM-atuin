@@ -12,6 +12,8 @@ URL:            https://github.com/fdo-rs/fido-device-onboard-rs
 Source0:        %{url}/archive/v%{version}/%{name}-rs-%{version}.tar.gz
 Source1:        %{name}-rs-%{version}-vendor-patched.tar.xz
 Patch1:         0001-use-released-aws-nitro-enclaves-cose-version.patch
+# Cherry-picked https://github.com/fdo-rs/fido-device-onboard-rs/pull/756
+Patch2:         756.patch
 
 # Because nobody cares
 ExcludeArch: %{ix86}

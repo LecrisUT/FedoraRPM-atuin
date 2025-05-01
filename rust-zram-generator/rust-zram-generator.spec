@@ -24,6 +24,11 @@ Source1:        zram-generator.conf
 #   cargo vendor && tar Jcvf ../%%{crate}-%%{version}-vendor.tar.xz vendor/ ; popd
 Source2:        %{crate}-1.2.0-vendor.tar.xz
 
+# Manually created patch for downstream crate metadata changes
+# * Bump rust-ini dependency to 0.21
+#   https://github.com/systemd/zram-generator/pull/231
+Patch:          zram-generator-fix-metadata.diff
+
 %if 0%{?bundled_rust_deps}
 BuildRequires:  rust-toolset
 BuildRequires:  make

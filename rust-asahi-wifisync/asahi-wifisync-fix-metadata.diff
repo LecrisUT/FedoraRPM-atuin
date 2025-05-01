@@ -1,0 +1,8 @@
+--- asahi-wifisync-0.2.2/Cargo.toml	1970-01-01T00:00:01+00:00
++++ asahi-wifisync-0.2.2/Cargo.toml	2025-05-01T14:01:11.062447+00:00
+@@ -36,4 +36,4 @@
+ features = ["cargo"]
+ 
+ [dependencies.rust-ini]
+-version = "0.18.0"
++version = "0.21.0"

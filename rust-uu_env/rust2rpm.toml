@@ -6,10 +6,6 @@ description = "env ~ (uutils) set each NAME to VALUE in the environment and run 
 # for binary, see rust-coreutils
 cargo-install-bin = false
 
-cargo-toml-patch-comments = [
-  "temporarily downgrade rust-ini from 0.21 to 0.18",
-]
-
 extra-patches = [
   { "number" = 2, "file" = "uu_env-fix-iteration.diff", "comments" = [ "fix iteration of ini file" ] },
 ]

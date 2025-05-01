@@ -1,0 +1,8 @@
+[package]
+summary = "Cross-platform multi-threaded filesystem and disk usage analysis tool"
+cargo-toml-patch-comments = [
+  """
+  Update config to 0.15
+  https://github.com/solidiquis/erdtree/pull/261
+  """,
+]

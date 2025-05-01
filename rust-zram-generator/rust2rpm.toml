@@ -1,0 +1,15 @@
+[package]
+cargo-toml-patch-comments = [
+    """
+    Bump rust-ini dependency to 0.21
+    https://github.com/systemd/zram-generator/pull/231
+    """,
+]
+
+[requires]
+build = [
+    "systemd-rpm-macros",
+    "/usr/bin/ronn",
+    "/usr/bin/make",
+    "pkgconfig(systemd)",
+]

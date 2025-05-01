@@ -10,6 +10,12 @@ extra-files = [
   "%{_datadir}/polkit-1/actions/org.AsahiLinux.binfmt_dispatcher.policy",
   "%config(noreplace) %ghost %{_sysconfdir}/binfmt-dispatcher.toml",
 ]
+cargo-toml-patch-comments = [
+  """
+  Update config to 0.15
+  https://github.com/AsahiLinux/binfmt-dispatcher/pull/8
+  """,
+]
 
 [requires]
 build = [

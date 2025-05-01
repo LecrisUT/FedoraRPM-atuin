@@ -1,0 +1,105 @@
+From 62acfd95bd97daf3c3b5fd942d40f40bd8837f00 Mon Sep 17 00:00:00 2001
+From: "dependabot[bot]" <49699333+dependabot[bot]@users.noreply.github.com>
+Date: Fri, 28 Mar 2025 08:30:24 +0000
+Subject: [PATCH] chore: bump config from 0.13.4 to 0.15.11
+
+Bumps [config](https://github.com/rust-cli/config-rs) from 0.13.4 to 0.15.11.
+- [Changelog](https://github.com/rust-cli/config-rs/blob/main/CHANGELOG.md)
+- [Commits](https://github.com/rust-cli/config-rs/compare/v0.13.4...v0.15.11)
+
+---
+updated-dependencies:
+- dependency-name: config
+  dependency-type: direct:production
+  update-type: version-update:semver-minor
+...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+---
+ Cargo.lock                         | 215 +++++++++++++++++++++++------
+ admin-tool/Cargo.toml              |   2 +-
+ manufacturing-server/Cargo.toml    |   2 +-
+ owner-onboarding-server/Cargo.toml |   2 +-
+ rendezvous-server/Cargo.toml       |   2 +-
+ serviceinfo-api-server/Cargo.toml  |   2 +-
+ util/Cargo.toml                    |   2 +-
+ 7 files changed, 179 insertions(+), 48 deletions(-)
+
+diff --git a/admin-tool/Cargo.toml b/admin-tool/Cargo.toml
+index 6a6a64091..581610e42 100644
+--- a/admin-tool/Cargo.toml
++++ b/admin-tool/Cargo.toml
+@@ -8,7 +8,7 @@ edition = "2018"
+ 
+ [dependencies]
+ anyhow = "1"
+-config = "0.13.4"
++config = "0.15.11"
+ openssl = "0.10.70"
+ log = "0.4"
+ time = "0.3"
+diff --git a/manufacturing-server/Cargo.toml b/manufacturing-server/Cargo.toml
+index f468ef18b..eda4c162b 100644
+--- a/manufacturing-server/Cargo.toml
++++ b/manufacturing-server/Cargo.toml
+@@ -8,7 +8,7 @@ edition = "2018"
+ 
+ [dependencies]
+ anyhow = "1"
+-config = "0.13.4"
++config = "0.15.11"
+ tokio = { version = "1", features = ["full"] }
+ thiserror= "1"
+ serde = "1"
+diff --git a/owner-onboarding-server/Cargo.toml b/owner-onboarding-server/Cargo.toml
+index 64cf2b662..986e217fe 100644
+--- a/owner-onboarding-server/Cargo.toml
++++ b/owner-onboarding-server/Cargo.toml
+@@ -8,7 +8,7 @@ edition = "2018"
+ 
+ [dependencies]
+ anyhow = "1"
+-config = "0.13.4"
++config = "0.15.11"
+ tokio = { version = "1", features = ["full"] }
+ thiserror= "1"
+ serde = "1"
+diff --git a/rendezvous-server/Cargo.toml b/rendezvous-server/Cargo.toml
+index d889eab0f..86a596a0e 100644
+--- a/rendezvous-server/Cargo.toml
++++ b/rendezvous-server/Cargo.toml
+@@ -8,7 +8,7 @@ edition = "2018"
+ 
+ [dependencies]
+ anyhow = "1"
+-config = "0.13.4"
++config = "0.15.11"
+ tokio = { version = "1", features = ["full"] }
+ thiserror= "1"
+ serde = "1"
+diff --git a/serviceinfo-api-server/Cargo.toml b/serviceinfo-api-server/Cargo.toml
+index 3cf7ab985..a669dbc7c 100644
+--- a/serviceinfo-api-server/Cargo.toml
++++ b/serviceinfo-api-server/Cargo.toml
+@@ -7,7 +7,7 @@ edition = "2021"
+ 
+ [dependencies]
+ anyhow = "1"
+-config = "0.13.4"
++config = "0.15.11"
+ hex = "0.4"
+ tokio = { version = "1", features = ["full"] }
+ warp = "0.3.6"
+diff --git a/util/Cargo.toml b/util/Cargo.toml
+index 53f2059a9..76c3deca6 100644
+--- a/util/Cargo.toml
++++ b/util/Cargo.toml
+@@ -8,7 +8,7 @@ edition = "2018"
+ 
+ [dependencies]
+ anyhow = "1"
+-config = "0.13.4"
++config = "0.15.11"
+ glob = "0.3.1"
+ log = "0.4"
+ serde = "1"

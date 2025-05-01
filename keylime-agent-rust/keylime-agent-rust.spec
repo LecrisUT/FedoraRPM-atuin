@@ -59,6 +59,7 @@ Source1:        rust-keylime-%{version}-vendor.tar.xz
 Patch0:         rust-keylime-enable-logging-keylime-lib.patch
 ## (100-199) Patches for building from system Rust libraries (Fedora)
 # Drop completely the legacy-python-actions feature
+# Cherry-picked from https://github.com/keylime/rust-keylime/pull/986
 Patch100:       rust-keylime-metadata.patch
 ## (200+) Patches for building from vendored Rust libraries (RHEL)
 

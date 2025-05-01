@@ -1,0 +1,11 @@
+--- binfmt-dispatcher-0.1.2/Cargo.toml	1970-01-01T00:00:01+00:00
++++ binfmt-dispatcher-0.1.2/Cargo.toml	2025-05-01T14:24:10.858473+00:00
+@@ -39,7 +39,7 @@
+ version = "1.0"
+ 
+ [dependencies.config]
+-version = "0.13"
++version = "0.15"
+ 
+ [dependencies.env_logger]
+ version = "0.11"

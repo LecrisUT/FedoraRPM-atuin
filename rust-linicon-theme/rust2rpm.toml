@@ -1,6 +1,6 @@
 [package]
 cargo-toml-patch-comments = [
-  "Bump rust-ini to 0.18",
+  "Bump rust-ini to 0.21",
 ]
 
 [tests]

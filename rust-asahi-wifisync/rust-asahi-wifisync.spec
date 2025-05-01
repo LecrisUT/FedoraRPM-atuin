@@ -11,6 +11,8 @@ Summary:        Tool to sync Wifi passwords with macos on ARM Macs
 License:        MIT
 URL:            https://crates.io/crates/asahi-wifisync
 Source:         %{crates_source}
+# Manually created patch for downstream crate metadata changes
+Patch:          asahi-wifisync-fix-metadata.diff
 
 BuildRequires:  cargo-rpm-macros >= 24
 

@@ -15,6 +15,8 @@ Source:         %{crates_source}
 Source:         %{crate}-%{version}-vendor.tar.gz
 # Upstream PR (https://github.com/msekletar/prefixdevname/pull/29)
 Patch0001:      0001-Drop-unnecessary-cast.patch
+# Manually created patch for downstream crate metadata changes
+Patch:          prefixdevname-fix-metadata.diff
 
 %if 0%{?rhel}
 BuildRequires:  rust-toolset

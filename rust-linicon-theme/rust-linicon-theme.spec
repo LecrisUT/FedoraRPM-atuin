@@ -14,7 +14,7 @@ License:        MPL-2.0
 URL:            https://crates.io/crates/linicon-theme
 Source:         %{crates_source}
 # Manually created patch for downstream crate metadata changes
-# * Bump rust-ini to 0.18
+# * Bump rust-ini to 0.21
 Patch:          linicon-theme-fix-metadata.diff
 
 BuildRequires:  cargo-rpm-macros >= 24
