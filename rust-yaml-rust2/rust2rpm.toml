@@ -8,6 +8,7 @@ cargo-toml-patch-comments = [
     Drop libtest-mimic because it is too old
     (Used in tests/yaml-test-suite.rs)
     """,
+    "Relax hashlink dependency to include 0.9",
 ]
 
 [scripts]

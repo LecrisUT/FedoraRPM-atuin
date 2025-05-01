@@ -44,14 +44,6 @@ packages:
     downstream_package_name: rust-dlv-list
     upstream_package_name: dlv-list
     actions: *actions-rust2rpm-with-patch
-  rust-hashlink:
-    # For yaml-rust2
-    # https://bugzilla.redhat.com/show_bug.cgi?id=2331134
-    paths: [ rust-hashlink ]
-    specfile_path: rust-hashlink.spec
-    downstream_package_name: rust-hashlink
-    upstream_package_name: hashlink
-    actions: *actions-rust2rpm
   rust-ordered-multimap:
     # For rust-ini
     # https://bugzilla.redhat.com/show_bug.cgi?id=1976416

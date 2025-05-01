@@ -18,6 +18,7 @@ Source:         %{crates_source}
 # Manually created patch for downstream crate metadata changes
 # * Drop libtest-mimic because it is too old
 #   (Used in tests/yaml-test-suite.rs)
+# * Relax hashlink dependency to include 0.9
 Patch:          yaml-rust2-fix-metadata.diff
 
 BuildRequires:  cargo-rpm-macros >= 26

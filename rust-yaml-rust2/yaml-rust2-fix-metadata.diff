@@ -1,5 +1,5 @@
 --- yaml-rust2-0.10.1/Cargo.toml	1970-01-01T00:00:01+00:00
-+++ yaml-rust2-0.10.1/Cargo.toml	2025-04-14T09:04:59.603024+00:00
++++ yaml-rust2-0.10.1/Cargo.toml	2025-05-01T18:20:17.457795+00:00
 @@ -79,11 +79,6 @@
  name = "test_round_trip"
  path = "tests/test_round_trip.rs"
@@ -12,13 +12,15 @@
  [dependencies.arraydeque]
  version = "0.5.1"
  
-@@ -94,9 +89,6 @@
- [dependencies.hashlink]
- version = "0.10"
+@@ -92,10 +87,7 @@
+ optional = true
  
+ [dependencies.hashlink]
+-version = "0.10"
+-
 -[dev-dependencies.libtest-mimic]
 -version = "0.4.0"
--
++version = ">=0.9,<0.11"
+ 
  [dev-dependencies.quickcheck]
  version = "1.0"
- 
