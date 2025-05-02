@@ -14,6 +14,7 @@ URL:            https://crates.io/crates/ordered-multimap
 Source:         %{crates_source}
 # Manually created patch for downstream crate metadata changes
 # * Remove dependency on coverage-helper
+#   Also bump to hashbrown 0.15
 #   https://github.com/sgodwincs/ordered-multimap-rs/pull/35
 Patch:          ordered-multimap-fix-metadata.diff
 

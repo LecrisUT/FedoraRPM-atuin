@@ -2,6 +2,7 @@
 cargo-toml-patch-comments = [
     """
     Remove dependency on coverage-helper
+    Also bump to hashbrown 0.15
     https://github.com/sgodwincs/ordered-multimap-rs/pull/35
     """,
 ]
