@@ -76,3 +76,6 @@ jobs:
     branch: impact-check/sqlx
     owner: lecris
     project: rust-sqlx
+  - job: tests
+    trigger: commit
+    branch: impact-check/sqlx
