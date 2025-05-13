@@ -1,4 +1,7 @@
 _:
+  - &trigger
+    trigger: commit
+    branch: main
   - &actions-use-spec
     fix-spec-file: []
     create-archive:
@@ -116,6 +119,8 @@ targets:
 
 jobs:
   - job: copr_build
-    trigger: commit
     owner: lecris
     project: atuin
+    <<: *trigger
+  - job: tests
+    <<: *trigger
