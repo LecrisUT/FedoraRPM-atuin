@@ -20,12 +20,12 @@ packages:
     paths: [ rust-sqlx ]
     specfile_path: rust-sqlx.spec
     downstream_package_name: rust-sqlx
-    actions: *actions-rust2rpm
+    actions: *actions-rust2rpm-with-patch
   rust-sqlx-core:
     paths: [ rust-sqlx-core ]
     specfile_path: rust-sqlx-core.spec
     downstream_package_name: rust-sqlx-core
-    actions: *actions-rust2rpm
+    actions: *actions-rust2rpm-with-patch
   rust-sqlx-macros:
     paths: [ rust-sqlx-macros ]
     specfile_path: rust-sqlx-macros.spec
@@ -35,12 +35,12 @@ packages:
     paths: [ rust-sqlx-macros-core ]
     specfile_path: rust-sqlx-macros-core.spec
     downstream_package_name: rust-sqlx-macros-core
-    actions: *actions-rust2rpm
+    actions: *actions-rust2rpm-with-patch
   rust-sqlx-mysql:
     paths: [ rust-sqlx-mysql ]
     specfile_path: rust-sqlx-mysql.spec
     downstream_package_name: rust-sqlx-mysql
-    actions: *actions-rust2rpm
+    actions: *actions-rust2rpm-with-patch
   rust-sqlx-postgres:
     paths: [ rust-sqlx-postgres ]
     specfile_path: rust-sqlx-postgres.spec
@@ -50,7 +50,7 @@ packages:
     paths: [ rust-sqlx-sqlite ]
     specfile_path: rust-sqlx-sqlite.spec
     downstream_package_name: rust-sqlx-sqlite
-    actions: *actions-rust2rpm
+    actions: *actions-rust2rpm-with-patch
   # Dependencies
   atuin:
     paths: [ atuin ]

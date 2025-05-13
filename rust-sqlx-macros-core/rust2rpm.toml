@@ -3,3 +3,7 @@ hide = [
     "_tls-rustls-aws-lc-rs",
 ]
 
+[package]
+cargo-toml-patch-comments = [
+    "Make sqlite feature the same as sqlite-unbundled",
+]

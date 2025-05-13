@@ -3,6 +3,13 @@ hide = [
     "tls-rustls-aws-lc-rs",
 ]
 
+[package]
+cargo-toml-patch-comments = [
+    "Do not depend on criterion; it is needed only for benchmarks.",
+    "Relax libsqlite3 dependency",
+    "Make sqlite feature the same as sqlite-unbundled",
+]
+
 [tests]
 comments = [
     "tests in tests folder fail to compile because they rely on unpublished sqlx-test crate",
@@ -11,17 +18,10 @@ run = ["doc", "lib"]
 
 [scripts.prep]
 post = [
-    "# Do not depend on criterion; it is needed only for benchmarks.",
-    "tomcli set Cargo.toml del dev-dependencies.criterion",
     "# Remove unnecessary packaged files",
     "rm -rf contrib gen-changelog.sh rust-toolchain.toml",
     "# Examples are also removed because they call sqlx-cli which we do not package",
     "rm -rf examples",
     "# Remove lib tests that require sqlx-test crate and other auxiliary files",
     "rm -rf tests",
-]
-
-[requires]
-build = [
-    "tomcli",
 ]

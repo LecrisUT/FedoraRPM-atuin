@@ -3,18 +3,9 @@ enable-all = true
 
 [package]
 cargo-toml-patch-comments = [
-    "- Relax libsqlite3 dependency",
-    "  https://github.com/launchbadge/sqlx/pull/3382",
-    "- Fix libsqlite3 features",
+    "Relax libsqlite3 dependency",
+    "Drop unpackaged libsqlite3 features",
 ]
-
-[[package.extra-patches]]
-comments = [
-    "https://github.com/launchbadge/sqlx/pull/3281",
-    "Add SQLITE_OPEN_URI to all in-memory sqlite",
-]
-file = "sqlx-sqlite-0.7.4-Fix_openuri_flag.patch"
-number = 10
 
 [tests]
 comments = [

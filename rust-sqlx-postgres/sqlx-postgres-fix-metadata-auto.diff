@@ -1,6 +1,6 @@
---- sqlx-postgres-0.8.2/Cargo.toml	1970-01-01T00:00:01+00:00
-+++ sqlx-postgres-0.8.2/Cargo.toml	2024-09-10T17:05:59.796371+00:00
-@@ -242,11 +242,9 @@
+--- sqlx-postgres-0.8.5/Cargo.toml	1970-01-01T00:00:01+00:00
++++ sqlx-postgres-0.8.5/Cargo.toml	2025-05-13T12:11:48.547090+00:00
+@@ -247,11 +247,9 @@
      "sqlx-core/uuid",
  ]
  

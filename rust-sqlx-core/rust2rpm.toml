@@ -3,6 +3,11 @@ hide = [
     "_tls-rustls-aws-lc-rs",
 ]
 
+[package]
+cargo-toml-patch-comments = [
+    "Relax hashlink dependency",
+]
+
 [tests]
 comments = [
     "resolve dependency loop with sqlx",
