@@ -1,5 +1,7 @@
 [features]
-enable-all = true
+enable = [
+    "reqwest",
+]
 
 [package]
 summary = "Postmark rust client"

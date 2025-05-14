@@ -12,6 +12,10 @@ cargo-toml-patch-comments = [
 ]
 
 [scripts]
+install.pre = [
+    "# Remove extraneous files from being installed",
+    "rm -rf tests/yaml-test-suite documents appveyor.yml garden.yml justfile",
+]
 install.post = [
     "install -Dp .licenses/* -t %{buildroot}%{crate_instdir}/.licenses",
 ]

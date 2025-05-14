@@ -94,6 +94,8 @@ use the "encoding" feature of the "%{crate}" crate.
 %cargo_build
 
 %install
+# Remove extraneous files from being installed
+rm -rf tests/yaml-test-suite documents appveyor.yml garden.yml justfile
 %cargo_install
 install -Dp .licenses/* -t %{buildroot}%{crate_instdir}/.licenses
 

@@ -101,17 +101,17 @@ use the "reqwest-rustls-tls" feature of the "%{crate}" crate.
 %cargo_prep
 
 %generate_buildrequires
-%cargo_generate_buildrequires -a
+%cargo_generate_buildrequires -f reqwest
 
 %build
-%cargo_build -a
+%cargo_build -f reqwest
 
 %install
-%cargo_install -a
+%cargo_install -f reqwest
 
 %if %{with check}
 %check
-%cargo_test -a
+%cargo_test -f reqwest
 %endif
 
 %changelog
