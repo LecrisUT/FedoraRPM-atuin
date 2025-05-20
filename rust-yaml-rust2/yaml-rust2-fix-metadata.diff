@@ -1,6 +1,6 @@
---- yaml-rust2-0.10.1/Cargo.toml	1970-01-01T00:00:01+00:00
-+++ yaml-rust2-0.10.1/Cargo.toml	2025-05-01T18:20:17.457795+00:00
-@@ -79,11 +79,6 @@
+--- yaml-rust2-0.10.2/Cargo.toml	1970-01-01T00:00:01+00:00
++++ yaml-rust2-0.10.2/Cargo.toml	2025-05-20T16:59:35.396012+00:00
+@@ -80,11 +80,6 @@
  name = "test_round_trip"
  path = "tests/test_round_trip.rs"
  
@@ -12,7 +12,7 @@
  [dependencies.arraydeque]
  version = "0.5.1"
  
-@@ -92,10 +87,7 @@
+@@ -93,10 +88,7 @@
  optional = true
  
  [dependencies.hashlink]

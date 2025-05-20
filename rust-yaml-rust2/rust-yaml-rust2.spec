@@ -8,11 +8,11 @@
 %global crate yaml-rust2
 
 Name:           rust-yaml-rust2
-Version:        0.10.1
+Version:        0.10.2
 Release:        %autorelease
 Summary:        Fully YAML 1.2 compliant YAML parser
 
-License:        MIT OR Apache-2.0
+License:        MIT OR (MIT AND Apache-2.0)
 URL:            https://crates.io/crates/yaml-rust2
 Source:         %{crates_source}
 # Manually created patch for downstream crate metadata changes
@@ -38,10 +38,8 @@ This package contains library source intended for building other packages which
 use the "%{crate}" crate.
 
 %files          devel
-%license %{crate_instdir}/.licenses/ChenYuheng-Apache
-%license %{crate_instdir}/.licenses/ChenYuheng-MIT
-%license %{crate_instdir}/.licenses/Ethiraric-Apache
-%license %{crate_instdir}/.licenses/Ethiraric-MIT
+%license %{crate_instdir}/.licenses/Apache-LICENSE
+%license %{crate_instdir}/.licenses/MIT-LICENSE
 %license %{crate_instdir}/LICENSE
 %doc %{crate_instdir}/CHANGELOG.md
 %doc %{crate_instdir}/README.md
