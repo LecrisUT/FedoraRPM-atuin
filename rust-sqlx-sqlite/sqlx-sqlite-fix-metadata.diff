@@ -1,6 +1,6 @@
---- sqlx-sqlite-0.8.5/Cargo.toml	1970-01-01T00:00:01+00:00
-+++ sqlx-sqlite-0.8.5/Cargo.toml	2025-05-13T12:39:46.174174+00:00
-@@ -69,10 +69,8 @@
+--- sqlx-sqlite-0.8.6/Cargo.toml	1970-01-01T00:00:01+00:00
++++ sqlx-sqlite-0.8.6/Cargo.toml	2025-05-20T08:02:32.541443+00:00
+@@ -79,10 +79,8 @@
  default-features = false
  
  [dependencies.libsqlite3-sys]
@@ -12,7 +12,7 @@
      "unlock_notify",
  ]
  default-features = false
-@@ -133,7 +131,6 @@
+@@ -143,7 +141,6 @@
  
  [features]
  any = ["sqlx-core/any"]

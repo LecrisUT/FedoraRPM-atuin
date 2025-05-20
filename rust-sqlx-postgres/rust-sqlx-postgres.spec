@@ -6,7 +6,7 @@
 %global crate sqlx-postgres
 
 Name:           rust-sqlx-postgres
-Version:        0.8.5
+Version:        0.8.6
 Release:        %autorelease
 Summary:        PostgreSQL driver implementation for SQLx
 

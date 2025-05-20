@@ -6,7 +6,7 @@
 %global crate sqlx-sqlite
 
 Name:           rust-sqlx-sqlite
-Version:        0.8.5
+Version:        0.8.6
 Release:        %autorelease
 Summary:        SQLite driver implementation for SQLx
 

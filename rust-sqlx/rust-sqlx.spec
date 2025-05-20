@@ -5,7 +5,7 @@
 %global crate sqlx
 
 Name:           rust-sqlx
-Version:        0.8.5
+Version:        0.8.6
 Release:        %autorelease
 Summary:        🧰 The Rust SQL Toolkit
 

@@ -5,7 +5,7 @@
 %global crate sqlx-macros
 
 Name:           rust-sqlx-macros
-Version:        0.8.5
+Version:        0.8.6
 Release:        %autorelease
 Summary:        Macros for SQLx, the rust SQL toolkit. Not intended to be used directly
 

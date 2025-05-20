@@ -1,11 +1,11 @@
---- sqlx-mysql-0.8.5/Cargo.toml	1970-01-01T00:00:01+00:00
-+++ sqlx-mysql-0.8.5/Cargo.toml	2025-05-13T12:09:14.180568+00:00
+--- sqlx-mysql-0.8.6/Cargo.toml	1970-01-01T00:00:01+00:00
++++ sqlx-mysql-0.8.6/Cargo.toml	2025-05-20T07:37:02.488847+00:00
 @@ -193,11 +193,6 @@
  version = "1.2.1"
  default-features = false
  
 -[dev-dependencies.sqlx]
--version = "=0.8.5"
+-version = "=0.8.6"
 -features = ["mysql"]
 -default-features = false
 -

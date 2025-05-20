@@ -5,7 +5,7 @@
 %global crate sqlx-macros-core
 
 Name:           rust-sqlx-macros-core
-Version:        0.8.5
+Version:        0.8.6
 Release:        %autorelease
 Summary:        Macro support core for SQLx, the Rust SQL toolkit
 

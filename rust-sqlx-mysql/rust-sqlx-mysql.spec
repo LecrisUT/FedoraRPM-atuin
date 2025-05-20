@@ -5,7 +5,7 @@
 %global crate sqlx-mysql
 
 Name:           rust-sqlx-mysql
-Version:        0.8.5
+Version:        0.8.6
 Release:        %autorelease
 Summary:        MySQL driver implementation for SQLx
 

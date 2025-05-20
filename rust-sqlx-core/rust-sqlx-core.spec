@@ -6,7 +6,7 @@
 %global crate sqlx-core
 
 Name:           rust-sqlx-core
-Version:        0.8.5
+Version:        0.8.6
 Release:        %autorelease
 Summary:        Core of SQLx, the rust SQL toolkit. Not intended to be used directly
 
