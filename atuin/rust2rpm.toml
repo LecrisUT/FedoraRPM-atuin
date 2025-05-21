@@ -10,7 +10,7 @@ enable-all = true
 
 [package]
 url = "https://atuin.sh"
-source-url = "https://github.com/atuinsh/atuin/archive/refs/tags/%{version}.tar.gz"
+source-url = "%forgesource"
 extra-files = [
     "%{bash_completions_dir}/atuin.bash",
     "%{fish_completions_dir}/atuin.fish",
@@ -32,6 +32,13 @@ server.
 
 [[package.extra-patches]]
 comments = [
+    "Remove divan, seems like it's a benchmark-only dependency",
+]
+file = "atuin-remove-divan.patch"
+number = 11
+
+[[package.extra-patches]]
+comments = [
     "Bump metrics dependencies",
     "Cherry-picked from https://github.com/atuinsh/atuin/pull/2062",
 ]
@@ -46,14 +53,6 @@ comments = [
 file = "atuin-Update-tiny-bip39.patch"
 number = 13
 
-[[package.extra-patches]]
-comments = [
-    "Update postmark to 0.11",
-    "Cherry-picked https://github.com/atuinsh/atuin/pull/2730",
-]
-file = "atuin-Update-postmark.patch"
-number = 14
-
 [requires]
 # TODO: make it a requires when it is packaged
 #bin = [
@@ -62,20 +61,8 @@ number = 14
 test = [
     "postgresql-test-rpm-macros",
 ]
-build = [
-    "tomcli",
-]
 
 [scripts]
-prep.post = [
-    "# Relax minijinja requirement",
-    "tomcli set Cargo.toml str workspace.dependencies.minijinja '2.8.0'",
-    "# Update protox dependency",
-    "tomcli set crates/atuin-daemon/Cargo.toml str build-dependencies.protox '0.8.0'",
-    "# Drop divan. Seems like benchmark-only dependency",
-    "tomcli set crates/atuin-history/Cargo.toml del dev-dependencies.divan",
-]
-
 build.post = [
     "# Create auxiliary files",
     "mkdir -p other_installs/shell_completion",
