@@ -12,6 +12,9 @@ Summary:        High level server designed to be used with axum framework
 License:        MIT
 URL:            https://crates.io/crates/axum-server
 Source:         %{crates_source}
+# Manually created patch for downstream crate metadata changes
+# * Change the default rustls provide to ring
+Patch:          axum-server-fix-metadata.diff
 
 BuildRequires:  cargo-rpm-macros >= 24
 
