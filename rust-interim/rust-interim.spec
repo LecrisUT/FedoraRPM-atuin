@@ -14,6 +14,7 @@ URL:            https://crates.io/crates/interim
 Source:         %{crates_source}
 # Manually created patch for downstream crate metadata changes
 # * Remove unused features: jiff_0.1
+# * Relax logos dependency
 Patch:          interim-fix-metadata.diff
 
 BuildRequires:  cargo-rpm-macros >= 24

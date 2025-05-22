@@ -2,6 +2,7 @@
 summary = "Parses simple English dates, inspired by Linux date command"
 cargo-toml-patch-comments = [
     "Remove unused features: jiff_0.1",
+    "Relax logos dependency",
 ]
 
 [features]
