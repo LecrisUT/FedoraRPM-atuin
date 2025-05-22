@@ -39,36 +39,6 @@ packages:
     downstream_package_name: rust-config
     upstream_package_name: config
     actions: *actions-rust2rpm-with-patch
-  rust-dlv-list:
-    # For ordered-multimap
-    # https://bugzilla.redhat.com/show_bug.cgi?id=1989392
-    paths: [ rust-dlv-list ]
-    specfile_path: rust-dlv-list.spec
-    downstream_package_name: rust-dlv-list
-    upstream_package_name: dlv-list
-    actions: *actions-rust2rpm-with-patch
-  rust-ordered-multimap:
-    # For rust-ini
-    # https://bugzilla.redhat.com/show_bug.cgi?id=1976416
-    paths: [ rust-ordered-multimap ]
-    specfile_path: rust-ordered-multimap.spec
-    downstream_package_name: rust-ordered-multimap
-    upstream_package_name: ordered-multimap
-    actions: *actions-rust2rpm-with-patch
-  rust-postmark:
-    # For atuin
-    paths: [ rust-postmark ]
-    specfile_path: rust-postmark.spec
-    downstream_package_name: rust-postmark
-    upstream_package_name: postmark
-    actions: *actions-rust2rpm
-  rust-prost-reflect:
-    # For protox
-    paths: [ rust-prost-reflect ]
-    specfile_path: rust-prost-reflect.spec
-    downstream_package_name: rust-prost-reflect
-    upstream_package_name: prost-reflect
-    actions: *actions-rust2rpm-with-patch
   rust-protox:
     # For atuin
     paths: [ rust-protox ]
@@ -86,22 +56,6 @@ packages:
     downstream_package_name: rust-protox-parse
     upstream_package_name: protox-parse
     actions: *actions-rust2rpm-with-patch
-  rust-ratatui:
-    # For atuin
-    # https://bugzilla.redhat.com/show_bug.cgi?id=2320186
-    paths: [ rust-ratatui ]
-    specfile_path: rust-ratatui.spec
-    downstream_package_name: rust-ratatui
-    upstream_package_name: ratatui
-    actions: *actions-rust2rpm-with-patch
-  rust-rust-ini:
-    # For rust-config
-    # https://bugzilla.redhat.com/show_bug.cgi?id=2193253
-    paths: [ rust-rust-ini ]
-    specfile_path: rust-rust-ini.spec
-    downstream_package_name: rust-rust-ini
-    upstream_package_name: rust-ini
-    actions: *actions-rust2rpm
   rust-yaml-rust2:
     # For rust-config
     paths: [ rust-yaml-rust2 ]
