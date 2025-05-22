@@ -17,6 +17,7 @@ Source:         %{crates_source}
 Patch:          protox-parse-fix-metadata.diff
 
 BuildRequires:  cargo-rpm-macros >= 24
+BuildRequires:  dos2unix
 
 %global _description %{expand:
 Parsing of protobuf source files.}
@@ -53,6 +54,10 @@ use the "default" feature of the "%{crate}" crate.
 %prep
 %autosetup -n %{crate}-%{version} -p1
 %cargo_prep
+# Some temporary fixes until upstream adds CD workflows
+# https://github.com/andrewhickman/protox/pull/95
+# Fix the README CRLF
+dos2unix --keepdate README.md
 # Broken test because tests.rs is not in crate
 sed -i '/#\[cfg(test)\]/,/mod tests/d' src/lex/mod.rs
 sed -i '/#\[cfg(test)\]/,/mod tests/d' src/lib.rs

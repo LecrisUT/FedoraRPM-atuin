@@ -3,8 +3,18 @@ cargo-toml-patch-comments = [
     "Relax logos dependency",
 ]
 
+[requires]
+build = [
+    # TODO: Remove in the next release (hopefully)
+    "dos2unix",
+]
+
 [scripts]
 prep.post = [
+    "# Some temporary fixes until upstream adds CD workflows",
+    "# https://github.com/andrewhickman/protox/pull/95",
+    "# Fix the README CRLF",
+    "dos2unix --keepdate README.md",
     "# Broken test because tests.rs is not in crate",
     "sed -i '/#\\[cfg(test)\\]/,/mod tests/d' src/lex/mod.rs",
     "sed -i '/#\\[cfg(test)\\]/,/mod tests/d' src/lib.rs",
