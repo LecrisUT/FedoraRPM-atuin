@@ -39,6 +39,34 @@ packages:
     downstream_package_name: rust-config
     upstream_package_name: config
     actions: *actions-rust2rpm-with-patch
+  rust-interim:
+    # For atuin
+    paths: [ rust-interim ]
+    specfile_path: rust-interim.spec
+    downstream_package_name: rust-interim
+    upstream_package_name: interim
+    actions: *actions-rust2rpm-with-patch
+  rust-logos:
+    # For interim
+    paths: [ rust-logos ]
+    specfile_path: rust-logos.spec
+    downstream_package_name: rust-logos
+    upstream_package_name: logos
+    actions: *actions-rust2rpm
+  rust-logos-codegen:
+    # For logos-derive
+    paths: [ rust-logos-codegen ]
+    specfile_path: rust-logos-codegen.spec
+    downstream_package_name: rust-logos-codegen
+    upstream_package_name: logos-codegen
+    actions: *actions-rust2rpm
+  rust-logos-derive:
+    # For logos
+    paths: [ rust-logos-derive ]
+    specfile_path: rust-logos-derive.spec
+    downstream_package_name: rust-logos-derive
+    upstream_package_name: logos-derive
+    actions: *actions-rust2rpm
   rust-protox:
     # For atuin
     paths: [ rust-protox ]
