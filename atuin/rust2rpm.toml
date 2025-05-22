@@ -32,6 +32,14 @@ server.
 
 [[package.extra-patches]]
 comments = [
+    "Relax MSRV",
+    "Upstream insists on using the latest rust, but for epel we need to relax it",
+]
+file = "atuin-relax-MSRV.patch"
+number = 10
+
+[[package.extra-patches]]
+comments = [
     "Remove divan, seems like it's a benchmark-only dependency",
 ]
 file = "atuin-remove-divan.patch"

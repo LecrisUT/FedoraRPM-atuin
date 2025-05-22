@@ -46,6 +46,9 @@ License:       %_license
 
 URL:            https://atuin.sh
 Source:         %forgesource
+# * Relax MSRV
+# * Upstream insists on using the latest rust, but for epel we need to relax it
+Patch10:        atuin-relax-MSRV.patch
 # * Remove divan, seems like it's a benchmark-only dependency
 Patch11:        atuin-remove-divan.patch
 # * Bump metrics dependencies
