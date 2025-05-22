@@ -77,7 +77,7 @@ srpm_build_deps:
 
 targets:
   - centos-stream+epel-next-9
-  - epel10
+#  - epel10
 
 jobs:
   - job: copr_build
