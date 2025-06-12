@@ -69,7 +69,7 @@ packages:
     specfile_path: rust-yaml-rust2.spec
     downstream_package_name: rust-yaml-rust2
     upstream_package_name: yaml-rust2
-    actions: *actions-rust2rpm-with-patch
+    actions: *actions-rust2rpm
 
 srpm_build_deps:
   - rust2rpm
