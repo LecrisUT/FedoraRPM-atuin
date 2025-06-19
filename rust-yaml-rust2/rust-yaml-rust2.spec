@@ -33,9 +33,8 @@ This package contains library source intended for building other packages which
 use the "%{crate}" crate.
 
 %files          devel
-%license %{crate_instdir}/.licenses/Apache-LICENSE
-%license %{crate_instdir}/.licenses/MIT-LICENSE
-%license %{crate_instdir}/LICENSE
+%license %{crate_instdir}/Apache-LICENSE
+%license %{crate_instdir}/MIT-LICENSE
 %doc %{crate_instdir}/CHANGELOG.md
 %doc %{crate_instdir}/README.md
 %{crate_instdir}/
@@ -89,8 +88,11 @@ use the "encoding" feature of the "%{crate}" crate.
 %install
 # Remove extraneous files from being installed
 rm -rf appveyor.yml garden.yml justfile
+# Move the license files to top-level to avoid packaging hidden folders
+# https://github.com/Ethiraric/yaml-rust2/pull/61
+mv .licenses/* ./
+rmdir .licenses
 %cargo_install
-install -Dp .licenses/* -t %{buildroot}%{crate_instdir}/.licenses
 
 %if %{with check}
 %check

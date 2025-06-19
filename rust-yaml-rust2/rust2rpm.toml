@@ -1,14 +1,16 @@
 [package]
 cargo-install-bin = false
-license-files.include = [
-    ".licenses/*"
+license-files = [
+    "Apache-LICENSE",
+    "MIT-LICENSE",
 ]
 
 [scripts]
 install.pre = [
     "# Remove extraneous files from being installed",
     "rm -rf appveyor.yml garden.yml justfile",
-]
-install.post = [
-    "install -Dp .licenses/* -t %{buildroot}%{crate_instdir}/.licenses",
+    "# Move the license files to top-level to avoid packaging hidden folders",
+    "# https://github.com/Ethiraric/yaml-rust2/pull/61",
+    "mv .licenses/* ./",
+    "rmdir .licenses",
 ]
