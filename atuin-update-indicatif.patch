@@ -1,0 +1,39 @@
+From 6deb0d2a47acf6a27be949f115087545e7ea85aa Mon Sep 17 00:00:00 2001
+From: "Benjamin A. Beasley" <code@musicinmybrain.net>
+Date: Mon, 21 Jul 2025 09:18:53 -0400
+Subject: [PATCH] Update indicatif to 0.18.0
+
+---
+ crates/atuin-client/Cargo.toml | 2 +-
+ crates/atuin/Cargo.toml        | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/crates/atuin-client/Cargo.toml b/crates/atuin-client/Cargo.toml
+index 4b9737f0..78f8a882 100644
+--- a/crates/atuin-client/Cargo.toml
++++ b/crates/atuin-client/Cargo.toml
+@@ -67,7 +67,7 @@ urlencoding = { version = "2.1.0", optional = true }
+ reqwest = { workspace = true, optional = true }
+ hex = { version = "0.4", optional = true }
+ sha2 = { version = "0.10", optional = true }
+-indicatif = "0.17.7"
++indicatif = ">=0.17.7, <0.19.0"
+ tiny-bip39 = "2"
+ 
+ [dev-dependencies]
+diff --git a/crates/atuin/Cargo.toml b/crates/atuin/Cargo.toml
+index 419734bb..cb123765 100644
+--- a/crates/atuin/Cargo.toml
++++ b/crates/atuin/Cargo.toml
+@@ -55,7 +55,7 @@ env_logger = "0.11.2"
+ time = { workspace = true }
+ eyre = { workspace = true }
+ directories = { workspace = true }
+-indicatif = "0.17.5"
++indicatif = ">=0.17.5, <0.19.0"
+ serde = { workspace = true }
+ serde_json = { workspace = true }
+ crossterm = { version = "0.27", features = ["use-dev-tty"] }
+-- 
+2.50.1
+
