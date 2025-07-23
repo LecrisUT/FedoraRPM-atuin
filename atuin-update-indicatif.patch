@@ -1,12 +1,13 @@
-From 6deb0d2a47acf6a27be949f115087545e7ea85aa Mon Sep 17 00:00:00 2001
+From 8d8d8a2ba5d4678ddd663a682fa2de8cfcbf847c Mon Sep 17 00:00:00 2001
 From: "Benjamin A. Beasley" <code@musicinmybrain.net>
 Date: Mon, 21 Jul 2025 09:18:53 -0400
 Subject: [PATCH] Update indicatif to 0.18.0
 
 ---
- crates/atuin-client/Cargo.toml | 2 +-
- crates/atuin/Cargo.toml        | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ crates/atuin-client/Cargo.toml  | 2 +-
+ crates/atuin-history/Cargo.toml | 2 +-
+ crates/atuin/Cargo.toml         | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/crates/atuin-client/Cargo.toml b/crates/atuin-client/Cargo.toml
 index 4b9737f0..78f8a882 100644
@@ -21,6 +22,19 @@ index 4b9737f0..78f8a882 100644
  tiny-bip39 = "2"
  
  [dev-dependencies]
+diff --git a/crates/atuin-history/Cargo.toml b/crates/atuin-history/Cargo.toml
+index 4437da94..54c09149 100644
+--- a/crates/atuin-history/Cargo.toml
++++ b/crates/atuin-history/Cargo.toml
+@@ -20,7 +20,7 @@ log = { workspace = true }
+ time = { workspace = true }
+ eyre = { workspace = true }
+ directories = { workspace = true }
+-indicatif = "0.17.5"
++indicatif = ">=0.17.5, <0.19.0"
+ serde = { workspace = true }
+ serde_json = { workspace = true }
+ crossterm = { version = "0.27", features = ["use-dev-tty"] }
 diff --git a/crates/atuin/Cargo.toml b/crates/atuin/Cargo.toml
 index 419734bb..cb123765 100644
 --- a/crates/atuin/Cargo.toml
