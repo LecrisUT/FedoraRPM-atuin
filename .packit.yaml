@@ -46,30 +46,6 @@ packages:
     downstream_package_name: rust-interim
     upstream_package_name: interim
     actions: *actions-rust2rpm-with-patch
-  rust-protox:
-    # For atuin
-    paths: [ rust-protox ]
-    specfile_path: rust-protox.spec
-    downstream_package_name: rust-protox
-    upstream_package_name: protox
-    # Need to edit the license metadata and note the bundling
-    # https://github.com/andrewhickman/protox/pull/92
-    # https://github.com/andrewhickman/protox/issues/93
-    actions: *actions-use-spec
-  rust-protox-parse:
-    # For protox
-    paths: [ rust-protox-parse ]
-    specfile_path: rust-protox-parse.spec
-    downstream_package_name: rust-protox-parse
-    upstream_package_name: protox-parse
-    actions: *actions-rust2rpm-with-patch
-  rust-yaml-rust2:
-    # For rust-config
-    paths: [ rust-yaml-rust2 ]
-    specfile_path: rust-yaml-rust2.spec
-    downstream_package_name: rust-yaml-rust2
-    upstream_package_name: yaml-rust2
-    actions: *actions-rust2rpm
 
 srpm_build_deps:
   - rust2rpm
