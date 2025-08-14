@@ -1,0 +1,36 @@
+Subject: [PATCH] Relax indicatif requirement
+---
+Index: crates/atuin-client/Cargo.toml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/crates/atuin-client/Cargo.toml b/crates/atuin-client/Cargo.toml
+--- a/crates/atuin-client/Cargo.toml	(revision 678e052e9affbeefd1b93a8fb230245c2f89ee8c)
++++ b/crates/atuin-client/Cargo.toml	(revision 80a0bf20ee53021ede38d03d52f213873b5de5d7)
+@@ -64,7 +64,7 @@
+ reqwest = { workspace = true, optional = true }
+ hex = { version = "0.4", optional = true }
+ sha2 = { version = "0.10", optional = true }
+-indicatif = "0.17.7"
++indicatif = ">=0.17,<0.19"
+ tiny-bip39 = "2.0.0"
+ 
+ # theme
+Index: crates/atuin/Cargo.toml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/crates/atuin/Cargo.toml b/crates/atuin/Cargo.toml
+--- a/crates/atuin/Cargo.toml	(revision 678e052e9affbeefd1b93a8fb230245c2f89ee8c)
++++ b/crates/atuin/Cargo.toml	(revision 80a0bf20ee53021ede38d03d52f213873b5de5d7)
+@@ -55,7 +55,7 @@
+ log = { workspace = true }
+ time = { workspace = true }
+ eyre = { workspace = true }
+-indicatif = "0.17.5"
++indicatif = ">=0.17,<0.19"
+ serde = { workspace = true }
+ serde_json = { workspace = true }
+ crossterm = { version = "0.28.1", features = ["use-dev-tty"] }

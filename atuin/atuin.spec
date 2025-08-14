@@ -61,8 +61,9 @@ Patch12:        atuin-fix-metrics.patch
 # * Cherry-picked https://github.com/atuinsh/atuin/pull/2643
 Patch13:        atuin-Update-tiny-bip39.patch
 # * Relax config to allow 0.13
-# * Cherry-picked https://github.com/atuinsh/atuin/pull/2643
 Patch14:        atuin-relax-config.patch
+# * Relax indicatif to allow 0.18
+Patch15:        atuin-relax-indicatif.patch
 
 BuildRequires:  cargo-rpm-macros >= 24
 %if %{with check}
