@@ -60,6 +60,9 @@ Patch12:        atuin-fix-metrics.patch
 # * Update tiny-bip39 to 2.0.0
 # * Cherry-picked https://github.com/atuinsh/atuin/pull/2643
 Patch13:        atuin-Update-tiny-bip39.patch
+# * Relax config to allow 0.13
+# * Cherry-picked https://github.com/atuinsh/atuin/pull/2643
+Patch14:        atuin-relax-config.patch
 
 BuildRequires:  cargo-rpm-macros >= 24
 %if %{with check}
@@ -155,7 +158,6 @@ install -Dpm 0755 other_installs/profile.d/atuin.sh %{buildroot}%{_sysconfdir}/p
 
 %if %{with check}
 %check
-%if %{with pgtests}
 # start a postgres instance for the tests to use
 export PGTESTS_LOCALE="C.UTF-8"
 export PGTESTS_USERS="atuin:pass"
@@ -163,9 +165,6 @@ export PGTESTS_DATABASES="atuin:atuin"
 export PGTESTS_PORT=5432
 %postgresql_tests_run
 %cargo_test -a
-%else
-%cargo_test -a -- -- --skip sync --skip change_password --skip multi_user_test --skip registration
-%endif
 %endif
 
 %files

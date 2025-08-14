@@ -31,14 +31,6 @@ packages:
     downstream_package_name: rust-axum-server
     upstream_package_name: axum-server
     actions: *actions-rust2rpm-with-patch
-  rust-config:
-    # For atuin
-    # https://bugzilla.redhat.com/show_bug.cgi?id=2262210
-    paths: [ rust-config ]
-    specfile_path: rust-config.spec
-    downstream_package_name: rust-config
-    upstream_package_name: config
-    actions: *actions-rust2rpm-with-patch
   rust-interim:
     # For atuin
     paths: [ rust-interim ]

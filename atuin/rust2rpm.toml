@@ -61,6 +61,14 @@ comments = [
 file = "atuin-Update-tiny-bip39.patch"
 number = 13
 
+[[package.extra-patches]]
+comments = [
+    "Relax config to allow 0.13",
+    "Cherry-picked https://github.com/atuinsh/atuin/pull/2643",
+]
+file = "atuin-relax-config.patch"
+number = 14
+
 [requires]
 # TODO: make it a requires when it is packaged
 #bin = [

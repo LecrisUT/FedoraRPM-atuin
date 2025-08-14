@@ -1,0 +1,19 @@
+Subject: [PATCH] Relax config requirement
+---
+Index: Cargo.toml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Cargo.toml b/Cargo.toml
+--- a/Cargo.toml	(revision 5e5f408c42ea6bea0f8d799ad6ac0cc836eb196d)
++++ b/Cargo.toml	(revision 678e052e9affbeefd1b93a8fb230245c2f89ee8c)
+@@ -23,7 +23,7 @@
+   "local-offset",
+ ] }
+ clap = { version = "4.5.7", features = ["derive"] }
+-config = { version = "0.15.8", default-features = false, features = ["toml"] }
++config = { version = ">=0.13,<0.16", default-features = false, features = ["toml"] }
+ directories = "5.0.1"
+ eyre = "0.6"
+ fs-err = "3.1"
