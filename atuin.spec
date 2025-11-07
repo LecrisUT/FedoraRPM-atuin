@@ -88,6 +88,10 @@ Patch15:        atuin-update-indicatif.patch
 # * chore: update rusty_paseto and rusty_paserk
 # * https://github.com/atuinsh/atuin/pull/2942
 Patch16:        atuin-update-paseto-paserk.patch
+# * Update the directories dependency to 6.0.0
+# * https://github.com/atuinsh/atuin/pull/2982
+# * Downstream, we *allow* rather than *requiring* 6.0.0.
+Patch17:        atuin-relax-directories.patch
 
 BuildRequires:  cargo-rpm-macros >= 24
 %if %{with check}
