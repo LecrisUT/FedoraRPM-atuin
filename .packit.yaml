@@ -24,20 +24,6 @@ packages:
     downstream_package_name: atuin
     upstream_package_name: atuin
     actions: *actions-use-spec
-  rust-axum-server:
-    # For atuin
-    paths: [ rust-axum-server ]
-    specfile_path: rust-axum-server.spec
-    downstream_package_name: rust-axum-server
-    upstream_package_name: axum-server
-    actions: *actions-rust2rpm-with-patch
-  rust-interim:
-    # For atuin
-    paths: [ rust-interim ]
-    specfile_path: rust-interim.spec
-    downstream_package_name: rust-interim
-    upstream_package_name: interim
-    actions: *actions-rust2rpm-with-patch
 
 srpm_build_deps:
   - rust2rpm
@@ -45,6 +31,7 @@ srpm_build_deps:
 
 targets:
   - fedora-rawhide
+  - epel9
 
 jobs:
   - job: copr_build

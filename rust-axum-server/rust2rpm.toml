@@ -1,7 +1,0 @@
-[package]
-exclude-crate-files = [
-    "examples/self-signed-certs/"
-]
-cargo-toml-patch-comments = [
-    "Change the default rustls provide to ring",
-]
