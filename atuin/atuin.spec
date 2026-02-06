@@ -7,7 +7,7 @@
 %global forgeurl https://github.com/atuinsh/atuin
 
 Name:           atuin
-Version:        18.6.1
+Version:        18.11.0
 Release:        %autorelease
 Summary:        Magical shell history
 
@@ -68,34 +68,15 @@ License:        %{shrink:
 
 URL:            https://atuin.sh
 Source:         %forgesource
-# * Relax MSRV
-# * Upstream insists on using the latest rust, but for epel we need to relax it
-Patch10:        atuin-relax-MSRV.patch
 # * Remove divan, seems like it's a benchmark-only dependency
-Patch11:        atuin-remove-divan.patch
-# * Bump metrics dependencies
-# * Cherry-picked from https://github.com/atuinsh/atuin/pull/2062
-Patch12:        atuin-fix-metrics.patch
+Patch:        atuin-remove-divan.patch
 # * Update tiny-bip39 to 2.0.0
 # * Cherry-picked https://github.com/atuinsh/atuin/pull/2643
-Patch13:        atuin-Update-tiny-bip39.patch
-# * Relax config to allow 0.13
-Patch14:        atuin-relax-config.patch
-# * Update indicatif to 0.18.0
-# * Cherry-picked https://github.com/atuinsh/atuin/pull/2833
-# * Adjusted to still allow 0.17.x
-Patch15:        atuin-update-indicatif.patch
-# * chore: update rusty_paseto and rusty_paserk
-# * https://github.com/atuinsh/atuin/pull/2942
-Patch16:        atuin-update-paseto-paserk.patch
-# * Update the directories dependency to 6.0.0
-# * https://github.com/atuinsh/atuin/pull/2982
-# * Downstream, we *allow* rather than *requiring* 6.0.0.
-Patch17:        atuin-relax-directories.patch
+Patch:        atuin-Update-tiny-bip39.patch
 # * chore(deps): update whoami dependency to v2
 # * https://github.com/atuinsh/atuin/pull/3118
 # * Without changes to Cargo.lock
-Patch18:        atuin-whoami2.patch
+Patch:        atuin-whoami2.patch
 
 BuildRequires:  cargo-rpm-macros >= 24
 %if %{with check} && %{with pgtests}
