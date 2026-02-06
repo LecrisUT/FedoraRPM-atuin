@@ -12,37 +12,56 @@ Release:        %autorelease
 Summary:        Magical shell history
 
 SourceLicense:  MIT
-%global _license %{shrink:
-((Apache-2.0 OR MIT) AND BSD-3-Clause) AND
-((MIT OR Apache-2.0) AND Unicode-DFS-2016) AND
-(0BSD OR MIT OR Apache-2.0) AND
-(Apache-2.0) AND
-(Apache-2.0 AND ISC AND (MIT OR Apache-2.0)) AND
-(Apache-2.0 AND MIT) AND
-(Apache-2.0 OR BSL-1.0) AND
-(Apache-2.0 OR BSL-1.0 OR MIT) AND
-(Apache-2.0 OR ISC OR MIT) AND
-(Apache-2.0 OR MIT) AND
-(Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT) AND
-(BSD-2-Clause OR Apache-2.0 OR MIT) AND
-(BSD-3-Clause) AND
-(CDLA-Permissive-2.0) AND
-(ISC) AND
-(MIT) AND
-(MIT AND (MIT OR Apache-2.0)) AND
-(MIT AND Apache-2.0) AND
-(MIT AND BSD-3-Clause) AND
-(MIT OR Apache-2.0) AND
-(MIT OR Apache-2.0 OR Zlib) AND
-(MIT OR Zlib OR Apache-2.0) AND
-(MPL-2.0) AND
-(Unicode-3.0) AND
-(Unlicense OR MIT) AND
-(Zlib) AND
-(Zlib OR Apache-2.0 OR MIT)
+# (Apache-2.0 OR MIT) AND BSD-3-Clause
+# (MIT OR Apache-2.0) AND Unicode-3.0
+# (MIT OR Apache-2.0) AND Unicode-DFS-2016
+# 0BSD OR MIT OR Apache-2.0
+# Apache-2.0
+# Apache-2.0 AND ISC AND (MIT OR Apache-2.0)
+# Apache-2.0 AND MIT
+# Apache-2.0 OR BSL-1.0
+# Apache-2.0 OR BSL-1.0 OR MIT
+# Apache-2.0 OR ISC OR MIT
+# Apache-2.0 OR MIT
+# Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT
+# BSD-2-Clause OR Apache-2.0 OR MIT
+# BSD-3-Clause
+# BSD-3-Clause OR Apache-2.0
+# CDLA-Permissive-2.0
+# ISC
+# MIT
+# MIT AND (MIT OR Apache-2.0)
+# MIT AND Apache-2.0
+# MIT AND BSD-3-Clause
+# MIT OR Apache-2.0
+# MIT OR Apache-2.0 OR Zlib
+# MIT OR Zlib OR Apache-2.0
+# MPL-2.0
+# Unicode-3.0
+# Unlicense OR MIT
+# Zlib
+# Zlib OR Apache-2.0 OR MIT
+License:        %{shrink:
+    MIT AND
+    Apache-2.0 AND
+    BSD-3-Clause AND
+    CDLA-Permissive-2.0 AND
+    ISC AND
+    MPL-2.0 AND
+    Unicode-3.0 AND
+    Unicode-DFS-2016 AND
+    Zlib AND
+    (0BSD OR MIT OR Apache-2.0) AND
+    (Apache-2.0 OR BSL-1.0) AND
+    (Apache-2.0 OR BSL-1.0 OR MIT) AND
+    (Apache-2.0 OR ISC OR MIT) AND
+    (Apache-2.0 OR MIT) AND
+    (Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT) AND
+    (BSD-2-Clause OR Apache-2.0 OR MIT) AND
+    (BSD-3-Clause OR Apache-2.0) AND
+    (MIT OR Apache-2.0 OR Zlib) AND
+    (Unlicense OR MIT)
 }
-
-License:       %_license
 # LICENSE.dependencies contains a full license breakdown
 
 %forgemeta
@@ -62,11 +81,24 @@ Patch12:        atuin-fix-metrics.patch
 Patch13:        atuin-Update-tiny-bip39.patch
 # * Relax config to allow 0.13
 Patch14:        atuin-relax-config.patch
-# * Relax indicatif to allow 0.18
-Patch15:        atuin-relax-indicatif.patch
+# * Update indicatif to 0.18.0
+# * Cherry-picked https://github.com/atuinsh/atuin/pull/2833
+# * Adjusted to still allow 0.17.x
+Patch15:        atuin-update-indicatif.patch
+# * chore: update rusty_paseto and rusty_paserk
+# * https://github.com/atuinsh/atuin/pull/2942
+Patch16:        atuin-update-paseto-paserk.patch
+# * Update the directories dependency to 6.0.0
+# * https://github.com/atuinsh/atuin/pull/2982
+# * Downstream, we *allow* rather than *requiring* 6.0.0.
+Patch17:        atuin-relax-directories.patch
+# * chore(deps): update whoami dependency to v2
+# * https://github.com/atuinsh/atuin/pull/3118
+# * Without changes to Cargo.lock
+Patch18:        atuin-whoami2.patch
 
 BuildRequires:  cargo-rpm-macros >= 24
-%if %{with check}
+%if %{with check} && %{with pgtests}
 BuildRequires:  postgresql-test-rpm-macros
 %endif
 
@@ -129,7 +161,7 @@ if [ -n "\${BASH_VERSION-}" ]; then
   source %{_libexecdir}/atuin/atuin-init.bash
 
 # Check for zsh environment
-elif [ -n "\$ZSH_VERSION-}" ]; then
+elif [ -n "\${ZSH_VERSION-}" ]; then
   # Skip noninteractive shells.
   [[ \$- != *i* ]] && return
 
@@ -159,6 +191,7 @@ install -Dpm 0755 other_installs/profile.d/atuin.sh %{buildroot}%{_sysconfdir}/p
 
 %if %{with check}
 %check
+%if %{with pgtests}
 # start a postgres instance for the tests to use
 export PGTESTS_LOCALE="C.UTF-8"
 export PGTESTS_USERS="atuin:pass"
@@ -166,6 +199,9 @@ export PGTESTS_DATABASES="atuin:atuin"
 export PGTESTS_PORT=5432
 %postgresql_tests_run
 %cargo_test -a
+%else
+%cargo_test -a -- -- --skip sync --skip change_password --skip multi_user_test --skip registration
+%endif
 %endif
 
 %files
