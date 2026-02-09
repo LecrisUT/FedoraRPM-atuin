@@ -68,6 +68,12 @@ License:        %{shrink:
 
 URL:            https://atuin.sh
 Source:         %forgesource
+# Relax MSRV. Atuin always tries to use the latest rust version, but that
+# breaks epel9 builds. Sometimes we can get away with just relaxing the MSRV
+# when they haven't started to use the latest rust syntax. If that doesn't work
+# try to package the latest version supported for epel and wait for rhel9 to
+# catch up.
+Patch:        atuin-relax-MSRV.patch
 # * Remove divan, seems like it's a benchmark-only dependency
 Patch:        atuin-remove-divan.patch
 # * Update tiny-bip39 to 2.0.0
