@@ -24,6 +24,24 @@ packages:
     downstream_package_name: atuin
     upstream_package_name: atuin
     actions: *actions-use-spec
+  rust-norm:
+    paths: [ rust-norm ]
+    specfile_path: rust-norm.spec
+    downstream_package_name: rust-norm
+    upstream_package_name: norm
+    actions: *actions-rust2rpm-with-patch
+  rust-metrics-exporter-prometheus:
+    paths: [ rust-metrics-exporter-prometheus ]
+    specfile_path: rust-metrics-exporter-prometheus.spec
+    downstream_package_name: rust-metrics-exporter-prometheus
+    upstream_package_name: metrics-exporter-prometheus
+    actions: *actions-rust2rpm-with-patch
+  rust-metrics-util:
+    paths: [ rust-metrics-util ]
+    specfile_path: rust-metrics-util.spec
+    downstream_package_name: rust-metrics-util
+    upstream_package_name: metrics-util
+    actions: *actions-rust2rpm-with-patch
 
 srpm_build_deps:
   - rust2rpm
