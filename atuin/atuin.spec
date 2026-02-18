@@ -7,7 +7,7 @@
 %global forgeurl https://github.com/atuinsh/atuin
 
 Name:           atuin
-Version:        18.11.0
+Version:        18.12.1
 Release:        %autorelease
 Summary:        Magical shell history
 
@@ -75,13 +75,6 @@ Source:         %forgesource
 Patch:        atuin-relax-MSRV.patch
 # * Remove divan, seems like it's a benchmark-only dependency
 Patch:        atuin-remove-divan.patch
-# * Update tiny-bip39 to 2.0.0
-# * Cherry-picked https://github.com/atuinsh/atuin/pull/2643
-Patch:        atuin-Update-tiny-bip39.patch
-# * chore(deps): update whoami dependency to v2
-# * https://github.com/atuinsh/atuin/pull/3118
-# * Without changes to Cargo.lock
-Patch:        atuin-whoami2.patch
 
 BuildRequires:  cargo-rpm-macros >= 24
 %if %{with check} && %{with pgtests}

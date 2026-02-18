@@ -3,9 +3,9 @@ diff -ru atuin-18.11.0/Cargo.toml atuin-18.11.0-new/Cargo.toml
 +++ atuin-18.11.0-new/Cargo.toml	2026-02-09 12:06:56.973776476 +0100
 @@ -7,7 +7,7 @@
  [workspace.package]
- version = "18.11.0"
+ version = "18.12.1"
  authors = ["Ellie Huxtable <ellie@atuin.sh>"]
--rust-version = "1.91"
+-rust-version = "1.93"
 +rust-version = "1.88"
  license = "MIT"
  homepage = "https://atuin.sh"
