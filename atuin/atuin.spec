@@ -12,7 +12,6 @@ Release:        %autorelease
 Summary:        Magical shell history
 
 SourceLicense:  MIT
-# (Apache-2.0 OR MIT) AND BSD-3-Clause
 # (MIT OR Apache-2.0) AND Unicode-3.0
 # (MIT OR Apache-2.0) AND Unicode-DFS-2016
 # 0BSD OR MIT OR Apache-2.0
