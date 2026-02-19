@@ -1,19 +1,12 @@
-Subject: [PATCH] Relax rust MSRV
----
-Index: Cargo.toml
-IDEA additional info:
-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
-<+>UTF-8
-===================================================================
-diff --git a/Cargo.toml b/Cargo.toml
---- a/Cargo.toml	(revision cc54eaa6edeecb1220aaa81d3d35214ed624b6a8)
-+++ b/Cargo.toml	(revision 2515b10be30ab6194b1c6fb84655774cc5a83850)
+diff -ru atuin-18.11.0/Cargo.toml atuin-18.11.0-new/Cargo.toml
+--- atuin-18.11.0/Cargo.toml	2026-01-13 00:46:58.000000000 +0100
++++ atuin-18.11.0-new/Cargo.toml	2026-02-09 12:06:56.973776476 +0100
 @@ -7,7 +7,7 @@
  [workspace.package]
- version = "18.6.1"
+ version = "18.11.0"
  authors = ["Ellie Huxtable <ellie@atuin.sh>"]
--rust-version = "1.86"
-+rust-version = "1.85"
+-rust-version = "1.91"
++rust-version = "1.88"
  license = "MIT"
  homepage = "https://atuin.sh"
  repository = "https://github.com/atuinsh/atuin"
