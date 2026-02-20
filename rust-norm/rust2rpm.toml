@@ -1,7 +1,0 @@
-[features]
-enable-all = true
-
-[package]
-cargo-toml-patch-comments = [
-    "- Remove criterion (benchmark only)",
-]

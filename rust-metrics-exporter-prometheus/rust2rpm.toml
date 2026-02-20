@@ -3,5 +3,5 @@ enable-all = true
 
 [package]
 cargo-toml-patch-comments = [
-    "- Switch rustls default provider",
+    "- Switch hyper-rustls provider to ring",
 ]

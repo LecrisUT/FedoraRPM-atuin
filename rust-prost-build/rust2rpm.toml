@@ -1,0 +1,18 @@
+[features]
+hide = [
+    # missing dependency: pulldown-cmark-to-cmark ^10.0.1
+    "cleanup-markdown",
+]
+
+[requires]
+build = [
+    "/usr/bin/protoc",
+]
+lib = [
+    "/usr/bin/protoc",
+]
+
+[tests]
+skip = ["tests::test_generate_no_empty_outputs"]
+skip-exact = true
+comments = ["skip a test that requires a files not included in published crates"]

@@ -24,24 +24,36 @@ packages:
     downstream_package_name: atuin
     upstream_package_name: atuin
     actions: *actions-use-spec
-  rust-norm:
-    paths: [ rust-norm ]
-    specfile_path: rust-norm.spec
-    downstream_package_name: rust-norm
-    upstream_package_name: norm
-    actions: *actions-rust2rpm-with-patch
   rust-metrics-exporter-prometheus:
     paths: [ rust-metrics-exporter-prometheus ]
     specfile_path: rust-metrics-exporter-prometheus.spec
     downstream_package_name: rust-metrics-exporter-prometheus
     upstream_package_name: metrics-exporter-prometheus
     actions: *actions-rust2rpm-with-patch
-  rust-metrics-util:
-    paths: [ rust-metrics-util ]
-    specfile_path: rust-metrics-util.spec
-    downstream_package_name: rust-metrics-util
-    upstream_package_name: metrics-util
+  rust-prost:
+    paths: [ rust-prost ]
+    specfile_path: rust-prost.spec
+    downstream_package_name: rust-prost
+    upstream_package_name: prost
     actions: *actions-rust2rpm-with-patch
+  rust-prost-build:
+    paths: [ rust-prost-build ]
+    specfile_path: rust-prost-build.spec
+    downstream_package_name: rust-prost-build
+    upstream_package_name: prost-build
+    actions: *actions-rust2rpm
+  rust-prost-types:
+    paths: [ rust-prost-types ]
+    specfile_path: rust-prost-types.spec
+    downstream_package_name: rust-prost-types
+    upstream_package_name: prost-types
+    actions: *actions-rust2rpm
+  rust-prost-derive:
+    paths: [ rust-prost-derive ]
+    specfile_path: rust-prost-derive.spec
+    downstream_package_name: rust-prost-derive
+    upstream_package_name: prost-derive
+    actions: *actions-rust2rpm
 
 srpm_build_deps:
   - rust2rpm
