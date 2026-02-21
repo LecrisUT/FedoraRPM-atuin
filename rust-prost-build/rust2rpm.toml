@@ -6,13 +6,19 @@ hide = [
 
 [requires]
 build = [
-    "/usr/bin/protoc",
+    "protobuf-devel",
 ]
 lib = [
-    "/usr/bin/protoc",
+    "protobuf-devel",
 ]
 
 [tests]
-skip = ["tests::test_generate_no_empty_outputs"]
+skip = [
+    "tests::test_generate_no_empty_outputs",
+    "tests::test_generate_deprecated",
+]
 skip-exact = true
-comments = ["skip a test that requires a files not included in published crates"]
+comments = [
+    "test_generate_no_empty_outputs: requires a files not included in published crates",
+    "test_generate_deprecated: test fails on epel9 due to version of protobuf",
+]

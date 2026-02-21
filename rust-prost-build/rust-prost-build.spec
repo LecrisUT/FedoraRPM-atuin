@@ -14,7 +14,7 @@ URL:            https://crates.io/crates/prost-build
 Source:         %{crates_source}
 
 BuildRequires:  cargo-rpm-macros >= 24
-BuildRequires:  /usr/bin/protoc
+BuildRequires:  protobuf-devel
 
 %global _description %{expand:
 Generate Prost annotated Rust types from Protocol Buffers files.}
@@ -24,7 +24,7 @@ Generate Prost annotated Rust types from Protocol Buffers files.}
 %package        devel
 Summary:        %{summary}
 BuildArch:      noarch
-Requires:       /usr/bin/protoc
+Requires:       protobuf-devel
 
 %description    devel %{_description}
 
@@ -75,8 +75,13 @@ use the "format" feature of the "%{crate}" crate.
 
 %if %{with check}
 %check
-# * skip a test that requires a files not included in published crates
-%cargo_test -- -- --exact --skip tests::test_generate_no_empty_outputs
+# * test_generate_no_empty_outputs: requires a files not included in published
+#   crates
+# * test_generate_deprecated: test fails on epel9 due to version of protobuf
+%{cargo_test -- -- --exact %{shrink:
+    --skip tests::test_generate_no_empty_outputs
+    --skip tests::test_generate_deprecated
+}}
 %endif
 
 %changelog
