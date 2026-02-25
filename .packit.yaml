@@ -116,6 +116,14 @@ packages:
     actions: *actions-rust2rpm
     targets:
       - fedora-rawhide
+  rust-rbspy-ruby-structs:
+    paths: [ rust-rbspy-ruby-structs ]
+    specfile_path: rust-rbspy-ruby-structs.spec
+    downstream_package_name: rust-rbspy-ruby-structs
+    upstream_package_name: rbspy-ruby-structs
+    actions: *actions-rust2rpm
+    targets:
+      - fedora-rawhide
   rust-rbspy-testdata:
     paths: [ rust-rbspy-testdata ]
     specfile_path: rust-rbspy-testdata.spec
