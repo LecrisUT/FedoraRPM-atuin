@@ -1,0 +1,7 @@
+[package]
+cargo-install-bin = false
+
+[features]
+hide = [
+    "bin",
+]

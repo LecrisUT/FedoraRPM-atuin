@@ -1,0 +1,4 @@
+[package]
+cargo-toml-patch-comments = [
+    "Relax logos dependency",
+]

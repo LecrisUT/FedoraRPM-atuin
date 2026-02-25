@@ -1,0 +1,25 @@
+[package]
+cargo-toml-patch-comments = [
+    "Add dependencies to run build.rs",
+]
+
+[requires]
+build = [
+    "protobuf-devel",
+]
+
+[[package.extra-sources]]
+number = 10
+file = "build.rs"
+comments = [
+    "Move codegen to inside the crate",
+    "See https://github.com/hyperium/tonic/blob/master/codegen/src/main.rs",
+]
+
+[scripts]
+prep.post = [
+    "# Remove pre-generated files",
+    "# src/generated/types.bin file has embedded license of MIT, Apache-2.0 and BSD-3-Clause",
+    "rm -rf src/generated",
+    "cp -p '%{SOURCE10}' ."
+]

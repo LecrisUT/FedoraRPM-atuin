@@ -1,0 +1,18 @@
+[requires]
+test = [
+    "ruby",
+    "rubygems",
+]
+
+[tests]
+skip = [
+    "core::ruby_spy::tests::test_get_trace",
+    "core::ruby_spy::tests::test_get_trace_when_process_has_exited",
+    "sampler::tests::test_sample_single_process_with_time_limit",
+    "sampler::tests::test_sample_single_process",
+    "sampler::tests::test_sample_subprocesses",
+]
+comments = [
+    "skip tests that load a Ruby script which is not included in published crates",
+]
+

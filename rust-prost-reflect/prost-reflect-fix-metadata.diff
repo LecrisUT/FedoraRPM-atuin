@@ -1,0 +1,11 @@
+--- prost-reflect-0.16.3/Cargo.toml	1970-01-01T00:00:01+00:00
++++ prost-reflect-0.16.3/Cargo.toml	2026-02-25T16:49:32.983631+00:00
+@@ -58,7 +58,7 @@
+ optional = true
+ 
+ [dependencies.logos]
+-version = "0.15.0"
++version = ">=0.14.0,<0.16"
+ optional = true
+ 
+ [dependencies.miette]

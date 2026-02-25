@@ -1,0 +1,11 @@
+--- protox-parse-0.9.0/Cargo.toml	1970-01-01T00:00:01+00:00
++++ protox-parse-0.9.0/Cargo.toml	2026-02-25T15:53:02.168223+00:00
+@@ -63,7 +63,7 @@
+ path = "src/lib.rs"
+ 
+ [dependencies.logos]
+-version = "0.15.0"
++version = ">=0.14.0,<0.16"
+ 
+ [dependencies.miette]
+ version = "7.2.0"

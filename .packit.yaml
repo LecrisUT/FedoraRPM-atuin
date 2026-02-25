@@ -54,6 +54,76 @@ packages:
     downstream_package_name: rust-prost-derive
     upstream_package_name: prost-derive
     actions: *actions-rust2rpm
+  rust-protox:
+    paths: [ rust-protox ]
+    specfile_path: rust-protox.spec
+    downstream_package_name: rust-protox
+    upstream_package_name: protox
+    actions: *actions-rust2rpm
+  rust-protox-parse:
+    paths: [ rust-protox-parse ]
+    specfile_path: rust-protox-parse.spec
+    downstream_package_name: rust-protox-parse
+    upstream_package_name: protox-parse
+    actions: *actions-rust2rpm-with-patch
+  rust-quanta:
+    paths: [ rust-quanta ]
+    specfile_path: rust-quanta.spec
+    downstream_package_name: rust-quanta
+    upstream_package_name: quanta
+    actions: *actions-rust2rpm-with-patch
+  rust-tonic:
+    paths: [ rust-tonic ]
+    specfile_path: rust-tonic.spec
+    downstream_package_name: rust-tonic
+    upstream_package_name: tonic
+    actions: *actions-rust2rpm-with-patch
+  rust-tonic-build:
+    paths: [ rust-tonic-build ]
+    specfile_path: rust-tonic-build.spec
+    downstream_package_name: rust-tonic-build
+    upstream_package_name: tonic-build
+    actions: *actions-rust2rpm
+  rust-tonic-prost:
+    paths: [ rust-tonic-prost ]
+    specfile_path: rust-tonic-prost.spec
+    downstream_package_name: rust-tonic-prost
+    upstream_package_name: tonic-prost
+    actions: *actions-rust2rpm
+  rust-tonic-prost-build:
+    paths: [ rust-tonic-prost-build ]
+    specfile_path: rust-tonic-prost-build.spec
+    downstream_package_name: rust-tonic-prost-build
+    upstream_package_name: tonic-prost-build
+    actions: *actions-rust2rpm
+  rust-tonic-types:
+    paths: [ rust-tonic-types ]
+    specfile_path: rust-tonic-types.spec
+    downstream_package_name: rust-tonic-types
+    upstream_package_name: tonic-types
+    actions: *actions-rust2rpm-with-patch
+  rust-prost-reflect:
+    paths: [ rust-prost-reflect ]
+    specfile_path: rust-prost-reflect.spec
+    downstream_package_name: rust-prost-reflect
+    upstream_package_name: prost-reflect
+    actions: *actions-rust2rpm-with-patch
+  rust-rbspy:
+    paths: [ rust-rbspy ]
+    specfile_path: rust-rbspy.spec
+    downstream_package_name: rust-rbspy
+    upstream_package_name: rbspy
+    actions: *actions-rust2rpm
+    targets:
+      - fedora-rawhide
+  rust-rbspy-testdata:
+    paths: [ rust-rbspy-testdata ]
+    specfile_path: rust-rbspy-testdata.spec
+    downstream_package_name: rust-rbspy-testdata
+    upstream_package_name: rbspy-testdata
+    actions: *actions-rust2rpm
+    targets:
+      - fedora-rawhide
 
 srpm_build_deps:
   - rust2rpm

@@ -1,0 +1,26 @@
+[features]
+enable-all = true
+hide = [
+    "tls-aws-lc",
+]
+
+[package]
+summary = "GRPC over HTTP/2 implementation"
+cargo-toml-patch-comments = [
+    "Remove bencher dependency (benchmark only)",
+]
+
+[scripts.prep]
+post = [
+    "# Remove benches",
+    "rm -r benches",
+]
+
+[tests]
+comments = [
+    "encode_too_big: Fails to allocate memory for i686",
+]
+skip = [
+    "codec::prost::tests::encode_too_big",
+]
+

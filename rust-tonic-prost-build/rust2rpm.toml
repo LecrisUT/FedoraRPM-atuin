@@ -1,0 +1,18 @@
+[features]
+hide = [
+    "cleanup-markdown",
+]
+
+[package]
+license-files.include = ["LICENSE"]
+
+[[package.extra-sources]]
+number = 10
+file = "https://github.com/hyperium/tonic/raw/refs/tags/v0.14.5/LICENSE"
+comments = [
+    "Missing license file in crate after exploding the crate.",
+    "https://github.com/hyperium/tonic/pull/2321#issuecomment-3960424068",
+]
+
+[scripts.prep]
+pre = ["cp -p '%{SOURCE10}' ."]

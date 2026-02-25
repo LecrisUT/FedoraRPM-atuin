@@ -1,0 +1,53 @@
+From beecf59175a392878662d55518326e6534675790 Mon Sep 17 00:00:00 2001
+From: Cristian Le <git@lecris.dev>
+Date: Tue, 24 Feb 2026 18:00:35 +0100
+Subject: [PATCH] Bump prost-related crates
+
+---
+ Cargo.lock                     | 241 +++++++++++++++++++--------------
+ crates/atuin-daemon/Cargo.toml |  14 +-
+ crates/atuin-daemon/build.rs   |   2 +-
+ 3 files changed, 151 insertions(+), 106 deletions(-)
+
+diff --git a/crates/atuin-daemon/Cargo.toml b/crates/atuin-daemon/Cargo.toml
+index a3cf8b0cad5..36917789c27 100644
+--- a/crates/atuin-daemon/Cargo.toml
++++ b/crates/atuin-daemon/Cargo.toml
+@@ -27,10 +27,11 @@ tracing = { workspace = true }
+ tracing-subscriber = { workspace = true }
+ 
+ dashmap = "5.5.3"
+-tonic-types = "0.12.0"
+-tonic = "0.12"
+-prost = "0.13"
+-prost-types = "0.13"
++tonic-types = "0.14"
++tonic = "0.14"
++tonic-prost = "0.14"
++prost = "0.14"
++prost-types = "0.14"
+ tokio-stream = {version="0.1.14", features=["net"]}
+ hyper-util = "0.1"
+ 
+@@ -40,5 +41,6 @@ [target.'cfg(target_os = "linux")'.dependencies]
+ listenfd = "1.0.1"
+ 
+ [build-dependencies]
+-protox = "0.8.0"
+-tonic-build = "0.12"
++protox = "0.9"
++tonic-build = "0.14"
++tonic-prost-build = "0.14"
+diff --git a/crates/atuin-daemon/build.rs b/crates/atuin-daemon/build.rs
+index 767a4a121f7..fbe34d12b1b 100644
+--- a/crates/atuin-daemon/build.rs
++++ b/crates/atuin-daemon/build.rs
+@@ -12,7 +12,7 @@ fn main() -> std::io::Result<()> {
+         .join("file_descriptor_set.bin");
+     fs::write(&file_descriptor_path, file_descriptors.encode_to_vec()).unwrap();
+ 
+-    tonic_build::configure()
++    tonic_prost_build::configure()
+         .build_server(true)
+         .file_descriptor_set_path(&file_descriptor_path)
+         .skip_protoc_run()

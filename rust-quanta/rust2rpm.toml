@@ -1,0 +1,27 @@
+[features]
+enable = [
+    "prost",
+]
+
+[scripts]
+install.pre = [
+    "# remove extraneous files from being installed",
+    "rm Cross.toml release.toml rust-toolchain.toml",
+]
+
+[package]
+cargo-toml-patch-comments = [
+    "Bump average dependency",
+    "Bump prost-types dependency",
+    "Remove flaky_tests from default feature",
+    "Remove criterion dependency (benchmark only)",
+]
+
+[tests]
+skip = [
+    "instant::tests::test_recent",
+]
+comments = [
+    "More flaky tests"
+]
+

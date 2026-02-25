@@ -73,8 +73,11 @@ Source:         %forgesource
 # try to package the latest version supported for epel and wait for rhel9 to
 # catch up.
 Patch:        atuin-relax-MSRV.patch
-# * Remove divan, seems like it's a benchmark-only dependency
+# Remove divan, seems like it's a benchmark-only dependency
 Patch:        atuin-remove-divan.patch
+# Bump prost-* dependencies to 0.14
+# Cherry-picked from https://github.com/atuinsh/atuin/pull/3203
+Patch:        3203.patch
 
 BuildRequires:  cargo-rpm-macros >= 24
 %if %{with check} && %{with pgtests}

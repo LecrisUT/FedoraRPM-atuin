@@ -1,0 +1,26 @@
+--- tonic-types-0.14.5/Cargo.toml	1970-01-01T00:00:01+00:00
++++ tonic-types-0.14.5/Cargo.toml	2026-02-25T16:46:01.735684+00:00
+@@ -18,7 +18,7 @@
+     "Lucio Franco <luciofranco14@gmail.com>",
+     "Rafael Lemos <flemos.rafael.dev@gmail.com>",
+ ]
+-build = false
++build = "build.rs"
+ autolib = false
+ autobins = false
+ autoexamples = false
+@@ -53,6 +53,14 @@
+ name = "tonic_types"
+ path = "src/lib.rs"
+ 
++[build-dependencies.tempfile]
++version = "3.8.0"
++
++[build-dependencies.tonic-build]
++version = "0.14"
++default-features = false
++features = ["prost"]
++
+ [dependencies.prost]
+ version = "0.14"
+ 
