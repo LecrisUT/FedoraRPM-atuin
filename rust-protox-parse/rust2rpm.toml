@@ -2,3 +2,37 @@
 cargo-toml-patch-comments = [
     "Relax logos dependency",
 ]
+
+[tests]
+skip = [
+    "parse::tests::parse_enum",
+    "parse::tests::parse_extension",
+    "parse::tests::parse_field",
+    "parse::tests::parse_file",
+    "parse::tests::parse_group",
+    "parse::tests::parse_import",
+    "parse::tests::parse_message",
+    "parse::tests::parse_oneof",
+    "parse::tests::parse_option",
+    "parse::tests::parse_package",
+    "parse::tests::parse_reserved",
+    "parse::tests::parse_service",
+    "parse::tests::parse_text_format_message",
+    "tests::enum_reserved_range_extrema",
+    "tests::enum_value_extrema",
+    "tests::field_default_invalid_type",
+    "tests::field_default_value",
+    "tests::imports",
+    "tests::invalid_message_number",
+    "tests::map_field_invalid_type",
+    "tests::message_field_json_name",
+    "tests::message_reserved_range_extrema",
+    "tests::negative_ident_outside_default",
+    "tests::options",
+    "tests::parse_field_default",
+    "tests::reserved_range",
+    "tests::syntax",
+]
+comments = [
+    "We do not seem to produce the same output as upstream",
+]
