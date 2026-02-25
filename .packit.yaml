@@ -95,7 +95,7 @@ packages:
     specfile_path: rust-tonic-prost-build.spec
     downstream_package_name: rust-tonic-prost-build
     upstream_package_name: tonic-prost-build
-    actions: *actions-rust2rpm
+    actions: *actions-rust2rpm-with-patch
   rust-tonic-types:
     paths: [ rust-tonic-types ]
     specfile_path: rust-tonic-types.spec

@@ -5,6 +5,9 @@ hide = [
 
 [package]
 license-files.include = ["LICENSE"]
+cargo-toml-patch-comments = [
+    "Drop cleanup-markdown from default",
+]
 
 [[package.extra-sources]]
 number = 10

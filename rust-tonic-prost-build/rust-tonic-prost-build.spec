@@ -15,6 +15,9 @@ Source:         %{crates_source}
 # * Missing license file in crate after exploding the crate.
 # * https://github.com/hyperium/tonic/pull/2321#issuecomment-3960424068
 Source10:       https://github.com/hyperium/tonic/raw/refs/tags/v0.14.5/LICENSE
+# Manually created patch for downstream crate metadata changes
+# * Drop cleanup-markdown from default
+Patch:          tonic-prost-build-fix-metadata.diff
 
 BuildRequires:  cargo-rpm-macros >= 24
 
