@@ -1,5 +1,4 @@
 [features]
-enable-all = true
 hide = [
     "tls-aws-lc",
 ]
