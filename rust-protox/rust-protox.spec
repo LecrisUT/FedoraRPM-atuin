@@ -65,7 +65,35 @@ use the "default" feature of the "%{crate}" crate.
 
 %if %{with check}
 %check
-%cargo_test -f bin
+# * google_*: Depends on src/google/protobuf files that are not included
+%{cargo_test -f bin -- -- --exact %{shrink:
+    --skip google_map_proto2_unittest
+    --skip google_map_unittest
+    --skip google_protobuf_any
+    --skip google_protobuf_api
+    --skip google_protobuf_compiler_plugin
+    --skip google_protobuf_descriptor
+    --skip google_protobuf_duration
+    --skip google_protobuf_empty
+    --skip google_protobuf_field_mask
+    --skip google_protobuf_source_context
+    --skip google_protobuf_struct
+    --skip google_protobuf_timestamp
+    --skip google_protobuf_type
+    --skip google_protobuf_wrappers
+    --skip google_test_messages_proto2
+    --skip google_test_messages_proto3
+    --skip google_unittest
+    --skip google_unittest_empty
+    --skip google_unittest_enormous_descriptor
+    --skip google_unittest_import
+    --skip google_unittest_no_field_presence
+    --skip google_unittest_preserve_unknown_enum
+    --skip google_unittest_preserve_unknown_enum2
+    --skip google_unittest_proto3
+    --skip google_unittest_proto3_optional
+    --skip google_unittest_well_known_types
+}}
 %endif
 
 %changelog

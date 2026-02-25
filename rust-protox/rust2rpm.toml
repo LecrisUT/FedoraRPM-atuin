@@ -5,3 +5,37 @@ cargo-install-bin = false
 hide = [
     "bin",
 ]
+
+[tests]
+skip = [
+    "google_map_proto2_unittest",
+    "google_map_unittest",
+    "google_protobuf_any",
+    "google_protobuf_api",
+    "google_protobuf_compiler_plugin",
+    "google_protobuf_descriptor",
+    "google_protobuf_duration",
+    "google_protobuf_empty",
+    "google_protobuf_field_mask",
+    "google_protobuf_source_context",
+    "google_protobuf_struct",
+    "google_protobuf_timestamp",
+    "google_protobuf_type",
+    "google_protobuf_wrappers",
+    "google_test_messages_proto2",
+    "google_test_messages_proto3",
+    "google_unittest",
+    "google_unittest_empty",
+    "google_unittest_enormous_descriptor",
+    "google_unittest_import",
+    "google_unittest_no_field_presence",
+    "google_unittest_preserve_unknown_enum",
+    "google_unittest_preserve_unknown_enum2",
+    "google_unittest_proto3",
+    "google_unittest_proto3_optional",
+    "google_unittest_well_known_types",
+]
+skip-exact = true
+comments = [
+    "google_*: Depends on src/google/protobuf files that are not included",
+]
