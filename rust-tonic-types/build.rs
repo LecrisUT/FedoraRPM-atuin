@@ -36,7 +36,6 @@ fn codegen(
     build_client: bool,
     build_server: bool,
 ) {
-    if out_dir.exists(){return;}
 
     let tempdir = tempfile::Builder::new()
         .prefix("tonic-codegen-")
@@ -47,6 +46,8 @@ fn codegen(
     let include_dirs = include_dirs.iter().map(|&path| root_dir.join(path));
     let out_dir = root_dir.join(out_dir);
     let file_descriptor_set_path = root_dir.join(file_descriptor_set_path);
+
+    if out_dir.exists(){return;}
 
     let fds = protox::compile(iface_files, include_dirs).unwrap();
 
@@ -59,6 +60,8 @@ fn codegen(
         .out_dir(&tempdir)
         .compile_fds(fds)
         .unwrap();
+
+    let _ = std::fs::create_dir(out_dir.clone());
 
     for path in std::fs::read_dir(tempdir.path()).unwrap() {
         let path = path.unwrap().path();

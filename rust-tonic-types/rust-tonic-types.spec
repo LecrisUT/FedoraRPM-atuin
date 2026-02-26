@@ -57,7 +57,6 @@ use the "default" feature of the "%{crate}" crate.
 %autosetup -n %{crate}-%{version} -p1
 %cargo_prep
 # Remove pre-generated files
-# src/generated/types.bin file has embedded license of MIT, Apache-2.0 and BSD-3-Clause
 rm -rf src/generated
 cp -p '%{SOURCE10}' .
 
