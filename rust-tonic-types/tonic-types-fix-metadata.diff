@@ -9,10 +9,22 @@
  autolib = false
  autobins = false
  autoexamples = false
-@@ -53,6 +53,13 @@
+@@ -53,6 +53,25 @@
  name = "tonic_types"
  path = "src/lib.rs"
  
++[build-dependencies.protox]
++version = "0.9"
++
++[build-dependencies.prettyplease]
++version = "0.2"
++
++[build-dependencies.quote]
++version = "1"
++
++[build-dependencies.syn]
++version = "2"
++
 +[build-dependencies.tempfile]
 +version = "3.8.0"
 +
