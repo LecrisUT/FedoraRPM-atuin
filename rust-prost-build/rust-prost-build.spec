@@ -12,9 +12,13 @@ Summary:        Generate Prost annotated Rust types from Protocol Buffers files
 License:        Apache-2.0
 URL:            https://crates.io/crates/prost-build
 Source:         %{crates_source}
+# * Pass --experimental_allow_proto3_optional to fix epel9 incompatibility with
+#   protoc
+# * https://github.com/tokio-rs/prost/issues/1410
+Patch10:        prost-build-0.14.3-Pass_experimental_allow_proto3_optional.patch
 
 BuildRequires:  cargo-rpm-macros >= 24
-BuildRequires:  /usr/bin/protoc
+BuildRequires:  protobuf-devel
 
 %global _description %{expand:
 Generate Prost annotated Rust types from Protocol Buffers files.}
@@ -75,9 +79,6 @@ use the "format" feature of the "%{crate}" crate.
 
 %if %{with check}
 %check
-%if 0%{?epel} && 0%{?epel} < 10
-PROTOC='/usr/bin/protoc --experimental_allow_proto3_optional'
-%endif
 %cargo_test
 %endif
 

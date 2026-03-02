@@ -4,17 +4,18 @@ hide = [
     "cleanup-markdown",
 ]
 
+[[package.extra-patches]]
+number = 10
+file = "prost-build-0.14.3-Pass_experimental_allow_proto3_optional.patch"
+comments = [
+    "Pass --experimental_allow_proto3_optional to fix epel9 incompatibility with protoc",
+    "https://github.com/tokio-rs/prost/issues/1410",
+]
+
 [requires]
 build = [
-    "/usr/bin/protoc",
+    "protobuf-devel",
 ]
 lib = [
     "/usr/bin/protoc",
-]
-
-[scripts]
-check.pre = [
-    "%if 0%{?epel} && 0%{?epel} < 10",
-    "export PROTOC='/usr/bin/protoc --experimental_allow_proto3_optional'",
-    "%endif",
 ]

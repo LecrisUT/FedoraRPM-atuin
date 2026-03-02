@@ -1,0 +1,11 @@
+diff -ru prost-build-0.14.3/src/lib.rs prost-build-0.14.3-new/src/lib.rs
+--- prost-build-0.14.3/src/lib.rs	2006-07-24 03:21:28.000000000 +0200
++++ prost-build-0.14.3-new/src/lib.rs	2026-03-02 09:28:56.284777346 +0100
+@@ -614,6 +614,7 @@
+ 
+         Config::new()
+             .out_dir(tempdir.path())
++            .protoc_arg("--experimental_allow_proto3_optional")
+             .compile_protos(
+                 &["src/fixtures/deprecated/all_deprecated.proto"],
+                 &["src/fixtures/deprecated"],
