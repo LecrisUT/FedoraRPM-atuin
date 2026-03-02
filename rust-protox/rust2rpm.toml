@@ -1,6 +1,14 @@
 [package]
 cargo-install-bin = false
 
+[[package.extra-patches]]
+number = 10
+file = "protox-0.9.1-Pass_experimental_allow_proto3_optional.patch"
+comments = [
+    "Pass --experimental_allow_proto3_optional to fix epel9 incompatibility with protoc",
+    "https://github.com/tokio-rs/prost/issues/1410",
+]
+
 [features]
 hide = [
     "bin",

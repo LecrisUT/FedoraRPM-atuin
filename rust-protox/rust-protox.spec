@@ -15,6 +15,10 @@ Summary:        Rust implementation of the protobuf compiler
 License:        MIT OR Apache-2.0
 URL:            https://crates.io/crates/protox
 Source:         %{crates_source}
+# * Pass --experimental_allow_proto3_optional to fix epel9 incompatibility with
+#   protoc
+# * https://github.com/tokio-rs/prost/issues/1410
+Patch10:        protox-0.9.1-Pass_experimental_allow_proto3_optional.patch
 
 BuildRequires:  cargo-rpm-macros >= 26
 BuildRequires:  protobuf-devel
