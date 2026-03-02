@@ -51,6 +51,8 @@ fn codegen(
 
     let fds = protox::compile(iface_files, include_dirs).unwrap();
 
+    let _ = std::fs::create_dir(out_dir.clone());
+
     write_fds(&fds, &file_descriptor_set_path);
 
     tonic_prost_build::configure()
@@ -60,8 +62,6 @@ fn codegen(
         .out_dir(&tempdir)
         .compile_fds(fds)
         .unwrap();
-
-    let _ = std::fs::create_dir(out_dir.clone());
 
     for path in std::fs::read_dir(tempdir.path()).unwrap() {
         let path = path.unwrap().path();
