@@ -218,18 +218,6 @@ use the "prost-types" feature of the "%{crate}" crate.
 %files       -n %{name}+prost-types-devel
 %ghost %{crate_instdir}/Cargo.toml
 
-%package     -n %{name}+protobuf-devel
-Summary:        %{summary}
-BuildArch:      noarch
-
-%description -n %{name}+protobuf-devel %{_description}
-
-This package contains library source intended for building other packages which
-use the "protobuf" feature of the "%{crate}" crate.
-
-%files       -n %{name}+protobuf-devel
-%ghost %{crate_instdir}/Cargo.toml
-
 %package     -n %{name}+push-gateway-devel
 Summary:        %{summary}
 BuildArch:      noarch
@@ -305,19 +293,22 @@ use the "uds-listener" feature of the "%{crate}" crate.
 %prep
 %autosetup -n %{crate}-%{version} -p1
 %cargo_prep
+# Remove proto files which seem to not be accounted for in the license
+# https://github.com/metrics-rs/metrics/issues/677
+rm -r proto/
 
 %generate_buildrequires
-%cargo_generate_buildrequires -a
+%cargo_generate_buildrequires
 
 %build
-%cargo_build -a
+%cargo_build
 
 %install
-%cargo_install -a
+%cargo_install
 
 %if %{with check}
 %check
-%cargo_test -a
+%cargo_test
 %endif
 
 %changelog

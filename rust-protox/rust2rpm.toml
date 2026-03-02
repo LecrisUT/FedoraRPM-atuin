@@ -34,13 +34,8 @@ skip = [
     "google_unittest_proto3",
     "google_unittest_proto3_optional",
     "google_unittest_well_known_types",
-    "generate_synthetic_oneof",
-    "generate_synthetic_oneof_ordering",
-    "reserved_ranges",
 ]
 skip-exact = true
 comments = [
-    "google_*: Depends on src/google/protobuf files that are not included",
-    "generate_synthetic_*: Fails on Epel9 because of missing `--experimental_allow_proto3_optional`",
-    "reserved_ranges: Unclear, maybe related to optional as well"
+    "google_*: Does not take proto files from /usr/include/google/*",
 ]

@@ -1,7 +1,18 @@
 [features]
-enable-all = true
+hide = [
+    # Not needed right now and has a license issue
+    # https://github.com/metrics-rs/metrics/issues/677
+    "protobuf",
+]
 
 [package]
 cargo-toml-patch-comments = [
     "- Switch hyper-rustls provider to ring",
+]
+
+[scripts]
+prep.post = [
+    "# Remove proto files which seem to not be accounted for in the license",
+    "# https://github.com/metrics-rs/metrics/issues/677",
+    "rm -r proto/",
 ]
