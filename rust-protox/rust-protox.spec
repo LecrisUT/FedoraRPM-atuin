@@ -71,6 +71,8 @@ use the "default" feature of the "%{crate}" crate.
 %if %{with check}
 %check
 # * google_*: Tries to access files in src/protobuf/* which are stripped
+# * reserved_ranges: On epel9 the protoc and protox give different results, but not sure if it's different to Fedora also
+#   https://github.com/andrewhickman/protox/issues/101
 %{cargo_test -f bin -- -- --exact %{shrink:
     --skip google_map_proto2_unittest
     --skip google_map_unittest
@@ -98,6 +100,7 @@ use the "default" feature of the "%{crate}" crate.
     --skip google_unittest_proto3
     --skip google_unittest_proto3_optional
     --skip google_unittest_well_known_types
+    --skip reserved_ranges
 }}
 %endif
 
