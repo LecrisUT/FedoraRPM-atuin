@@ -22,3 +22,11 @@ prep.post = [
     "rm -rf src/generated",
     "cp -p '%{SOURCE10}' .",
 ]
+
+[tests]
+comments = [
+    "generated::google_rpc: Interpreted as a doc test, but it is not.",
+]
+skip = [
+    "generated::google_rpc::",
+]

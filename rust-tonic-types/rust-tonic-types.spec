@@ -71,7 +71,8 @@ cp -p '%{SOURCE10}' .
 
 %if %{with check}
 %check
-%cargo_test
+# * generated::google_rpc: Interpreted as a doc test, but it is not.
+%cargo_test -- -- --skip generated::google_rpc::
 %endif
 
 %changelog
