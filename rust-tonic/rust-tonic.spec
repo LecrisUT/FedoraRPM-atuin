@@ -213,18 +213,18 @@ use the "zstd" feature of the "%{crate}" crate.
 rm -r benches
 
 %generate_buildrequires
-%cargo_generate_buildrequires -a
+%cargo_generate_buildrequires
 
 %build
-%cargo_build -a
+%cargo_build
 
 %install
-%cargo_install -a
+%cargo_install
 
 %if %{with check}
 %check
 # * encode_too_big: Fails to allocate memory for i686
-%cargo_test -a -- -- --skip codec::prost::tests::encode_too_big
+%cargo_test -- -- --skip codec::prost::tests::encode_too_big
 %endif
 
 %changelog

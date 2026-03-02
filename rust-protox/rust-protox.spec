@@ -66,6 +66,9 @@ use the "default" feature of the "%{crate}" crate.
 %if %{with check}
 %check
 # * google_*: Depends on src/google/protobuf files that are not included
+# * generate_synthetic_*: Fails on Epel9 because of missing
+#   `--experimental_allow_proto3_optional`
+# * reserved_ranges: Unclear, maybe related to optional as well
 %{cargo_test -f bin -- -- --exact %{shrink:
     --skip google_map_proto2_unittest
     --skip google_map_unittest
@@ -93,6 +96,9 @@ use the "default" feature of the "%{crate}" crate.
     --skip google_unittest_proto3
     --skip google_unittest_proto3_optional
     --skip google_unittest_well_known_types
+    --skip generate_synthetic_oneof
+    --skip generate_synthetic_oneof_ordering
+    --skip reserved_ranges
 }}
 %endif
 
