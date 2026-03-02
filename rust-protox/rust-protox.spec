@@ -66,7 +66,7 @@ use the "default" feature of the "%{crate}" crate.
 
 %if %{with check}
 %check
-# * google_*: Does not take proto files from /usr/include/google/*
+# * google_*: Tries to access files in src/protobuf/* which are stripped
 %{cargo_test -f bin -- -- --exact %{shrink:
     --skip google_map_proto2_unittest
     --skip google_map_unittest
