@@ -6,7 +6,7 @@
 %global forgeurl https://github.com/atuinsh/atuin
 
 Name:           atuin
-Version:        18.12.1
+Version:        18.15.2
 Release:        %autorelease
 Summary:        Magical shell history
 
