@@ -1,9 +1,0 @@
-[package]
-cargo-toml-patch-comments = [
-    "Relax logos dependency",
-]
-
-[scripts.check]
-pre = [
-    "export INSTA_UPDATE=always"
-]
