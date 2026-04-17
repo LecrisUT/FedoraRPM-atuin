@@ -1,0 +1,3 @@
+# atuin
+
+The atuin package
